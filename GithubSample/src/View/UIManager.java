@@ -1,5 +1,7 @@
 package View;
 
+import java.awt.*;
+
 import javax.swing.*;
 
 interface UIManagerInterface {
@@ -23,6 +25,21 @@ public class UIManager extends JFrame implements UIManagerInterface{
 	private Multi_Login multi_login_label;
 	
 	public UIManager() {
+		
+		setTitle("Tower Defense!!");
+		setSize(1000,640);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		//setLayout(new CardLayout());//setvisible로 창열고 닫기
+		
+		main_panel = Main_Panel.getInstance();//메인 메뉴 페널 열기(싱글톤)
+		
+		
+		this.add(main_panel);//error
+		
+		setVisible(true);
+		
+		
+		
 		
 	}
 
@@ -62,6 +79,18 @@ public class UIManager extends JFrame implements UIManagerInterface{
 	public Multi_Login getMultiLoginLabel() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	
+	public static void main(String[] args) {
+		
+	new UIManager();
+		
+		
+		
+		
+		
+		
+		
 	}
 	
 	

@@ -12,16 +12,8 @@ interface Main_Panel_Interface {
 	
 	// Main Panel에 존재하는 레이블의 객체를 반환하는 함수
 	JLabel getSingleLabel();
-	JLabel getPressedSingleLabel();
-	
 	JLabel getMultiLabel();
-	JLabel getPressedMultiLabel();
-	
-	JLabel getDifficultyLabel();
-	JLabel getPressedDifficultyLabel();
-	
 	JLabel getExitLabel();
-	JLabel getPressedExitLabel();
 }
 
 interface Single_Panel_Interface {
