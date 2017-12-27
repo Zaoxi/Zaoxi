@@ -1,6 +1,7 @@
 package Control;
 import java.util.ArrayList;
 
+// 영역을 표현하는 클래스
 class Area {
 	// 타워가 존재하는지 표시
 	private boolean istower = false;
