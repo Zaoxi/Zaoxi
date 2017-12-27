@@ -11,17 +11,10 @@ interface Main_Panel_Interface {
 	File MAIN_BACKGROUND_IMG = new File("/Image/Label/main_background.png");
 	
 	// Main Panel에 존재하는 레이블의 객체를 반환하는 함수
-	JLabel getSingleLabel();
-	JLabel getPressedSingleLabel();
-	
-	JLabel getMultiLabel();
-	JLabel getPressedMultiLabel();
-	
-	JLabel getDifficultyLabel();
-	JLabel getPressedDifficultyLabel();
-	
+	JLabel getSingleLabel();	
+	JLabel getMultiLabel();	
+	JLabel getDifficultyLabel();	
 	JLabel getExitLabel();
-	JLabel getPressedExitLabel();
 }
 
 interface Single_Panel_Interface {

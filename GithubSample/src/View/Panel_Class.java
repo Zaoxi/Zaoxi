@@ -23,19 +23,7 @@ class Main_Panel extends JPanel implements Main_Panel_Interface {
 	}
 
 	@Override
-	public JLabel getPressedSingleLabel() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public JLabel getMultiLabel() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public JLabel getPressedMultiLabel() {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -47,19 +35,7 @@ class Main_Panel extends JPanel implements Main_Panel_Interface {
 	}
 
 	@Override
-	public JLabel getPressedDifficultyLabel() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public JLabel getExitLabel() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public JLabel getPressedExitLabel() {
 		// TODO Auto-generated method stub
 		return null;
 	}
