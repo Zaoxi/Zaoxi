@@ -6,9 +6,7 @@ interface Multi_Login_Interface {
 	// Multi_Login 레이블 상의 레이블 객체들을 반환하는 함수
 	JTextField getIDField();
 	JLabel getLoginLabel();
-	JLabel getPressedLoginLabel();
 	JLabel getCancelLabel();
-	JLabel getPressedCancelLabel();
 }
 
 
@@ -27,21 +25,8 @@ class Multi_Login extends JLabel implements Multi_Login_Interface {
 	}
 
 	@Override
-	public JLabel getPressedLoginLabel() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public JLabel getCancelLabel() {
 		// TODO Auto-generated method stub
 		return null;
-	}
-
-	@Override
-	public JLabel getPressedCancelLabel() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
+	}	
 }
