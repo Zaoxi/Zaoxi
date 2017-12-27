@@ -29,12 +29,6 @@ class Main_Panel extends JPanel implements Main_Panel_Interface {
 	}
 
 	@Override
-	public JLabel getDifficultyLabel() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public JLabel getExitLabel() {
 		// TODO Auto-generated method stub
 		return null;
