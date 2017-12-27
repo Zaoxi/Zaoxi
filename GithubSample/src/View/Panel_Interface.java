@@ -37,6 +37,7 @@ interface Single_Panel_Interface {
 	File MENUBAR = new File("/Image/Label/single_menubar.png");
 	
 	// Single Panel 에 존재하는 점수 레이블과 자원 레이블을 반환하는 함수
+	JLabel getMapLabel();
 	JLabel getScoreLabel();
 	JLabel getMoneyLabel();
 }
@@ -53,6 +54,7 @@ interface Multi_Panel_Interface {
 	File MENUBAR = new File("/Image/Label/single_menubar.png");
 	
 	// Multi Panel 에 존재하는 점수 레이블과 자원 레이블을 반환하는 함수
+	JLabel getMapLabel();
 	JLabel getScoreLabel();
 	JLabel getMoneyLabel();
 }

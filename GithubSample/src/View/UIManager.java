@@ -28,7 +28,9 @@ public class UIManager extends JFrame implements UIManagerInterface{
 
 	@Override
 	public Main_Panel getMainPanel() {
-		// TODO Auto-generated method stub
+
+
+		
 		return null;
 	}
 

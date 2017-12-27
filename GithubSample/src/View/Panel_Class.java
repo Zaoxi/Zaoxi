@@ -6,7 +6,7 @@ class Main_Panel extends JPanel implements Main_Panel_Interface {
 	static private Main_Panel instance = null;
 	
 	private Main_Panel() {
-		instance = this;
+		instance = this;//singletone
 	}
 	
 	static public Main_Panel getInstance() {
@@ -79,6 +79,11 @@ class Single_Panel extends JPanel implements Single_Panel_Interface {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	@Override
+	public JLabel getMapLabel() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
 
 class Multi_Panel extends JPanel implements Multi_Panel_Interface {
@@ -92,6 +97,11 @@ class Multi_Panel extends JPanel implements Multi_Panel_Interface {
 	}
 	@Override
 	public JLabel getMoneyLabel() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public JLabel getMapLabel() {
 		// TODO Auto-generated method stub
 		return null;
 	}
