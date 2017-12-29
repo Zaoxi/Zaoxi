@@ -11,17 +11,31 @@ abstract class Monster {
 	protected Point center;	// map_label상에서 몬스터의 center 좌표(x, y)
 	protected int move_count;	// 몬스터의 이미지 전환 주기 카운트
 	// 레이블과 이미지
-	protected ImageIcon[] img = new ImageIcon[2];
+	static public ImageIcon[][] imgDir = new ImageIcon[10][];
 	protected JLabel monster;
 	
 	final static int DOWN = 0, UP = 1, RIGHT = 2, LEFT = 3;	// 방향 플래그
 	final static int CHANGE = 3;				// 몬스터의 이미지의 전환 주기
 	
-	public Monster(int hp, int speed, Point real, ImageIcon img1, ImageIcon img2) {
+	// imgDir 2차원 String 배열에 몬스터 이미지의 경로를 설정하는 static 함수
+	public static void setImageDir() {
+		for(int i=0; i<imgDir.length; i++) {
+			imgDir[i] = new ImageIcon[8];
+			
+			for(int j=0; j<4; j++) {
+				for(int k=0; k<2; k++) {
+					imgDir[i][j*2+k] = new ImageIcon("Image/Monster/monster" + i + "_" + j + k + ".png");
+				}
+			}
+		}
+	}
+	
+	public Monster(int hp, int speed, Point real) {
 		real_pos = new Point(real.getX(), real.getY());
 		this.hp = hp;
 		this.speed = speed;
 		
+		// 좌표값 설정
 		center = real_pos.getCenterPosition();
 		pos = center.getMapPosition();			// center값을 기준으로 판단
 		move_count = 0;

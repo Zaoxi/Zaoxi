@@ -1,5 +1,6 @@
 package Control;
 import java.util.ArrayList;
+import javax.swing.*;
 
 // 영역을 표현하는 클래스
 class Area {
@@ -9,19 +10,25 @@ class Area {
 	private boolean isattack = false;
 	// road(길)인지 아닌지 표시
 	private boolean isroad = false;
+	// start 지점과 end 지점 표시
+	private boolean isstart = false;
+	private boolean isend = false;
+	// 몬스터의 경로를 표시
+	private int direction = -1;
+	
 	// 공격지점으로 설정되어 있다면 몇개의 타워가 공격중인지 표시
 	private ArrayList<Integer> attacking;
 	
 	// 타워의 총 수
-	final int NUM_TOWER = 6;
+	final public static int NUM_TOWER = 6;
 	
 	// 타워설정 값
-	final int TOWER0 = 0;
-	final int TOWER1 = 1;
-	final int TOWER2 = 2;
-	final int TOWER3 = 3;
-	final int TOWER4 = 4;
-	final int TOWER5 = 5;
+	final public static int TOWER0 = 0;
+	final public static int TOWER1 = 1;
+	final public static int TOWER2 = 2;
+	final public static int TOWER3 = 3;
+	final public static int TOWER4 = 4;
+	final public static int TOWER5 = 5;
 	
 	public Area() {
 		attacking = new ArrayList<Integer>(NUM_TOWER);
@@ -39,6 +46,15 @@ class Area {
 	public boolean isRoad() {
 		return isroad;
 	}
+	public boolean isStart() {
+		return isstart;
+	}
+	public boolean isEnd() {
+		return isend;
+	}
+	public int getDirection() {
+		return direction;
+	}
 	
 	// 공격지점으로 설정되어 있다면, 몇개의 어떤타워들이 공격하고 있는지 반환하는 함수
 	public ArrayList<Integer> getAttackingTower() {
@@ -54,6 +70,19 @@ class Area {
 	public void setRoad(boolean exist) {
 		isroad = exist;
 	}
+	// start 지점으로 설정하는 함수
+	public void setStart(boolean exist) {
+		isstart = exist;
+	}
+	public void setEnd(boolean exist) {
+		isend = exist;
+	}
+	
+	// 몬스터의 경로를 설정하는 함수, Monster 클래스의 static 변수를 이용
+	public void setDirection(int _direction) {
+		direction = _direction;
+	}
+	
 	// 공격지점으로 설정하는 함수, 패러미터 중 attack = true 공격지점 설정, attack = false 공격지점 해제
 	public void setAttack(int tower, boolean attack) {
 		if(tower < 0 || tower >= NUM_TOWER)
@@ -66,8 +95,10 @@ class Area {
 		}
 		else {	// 공격지점을 해제할 경우 attack = false
 			int num = attacking.get(tower);
-			if(num <= 0)
+			if(num <= 0) {
+				isattack = attack;
 				return;
+			}
 			
 			attacking.set(tower, num - 1);
 			
@@ -85,7 +116,8 @@ class Area {
 class Map {
 	protected Area[][] map;
 	
-	final int SIZE = 8;
+	final public static int SIZE = 8;
+	final public static ImageIcon ROAD = new ImageIcon("Image/Map/road.png");
 	
 	
 	public Map() {
