@@ -22,7 +22,7 @@ abstract class Monster {
 	static public ImageIcon[][] imgDir = new ImageIcon[10][];
 	protected JLabel monster;
 	
-	final static int DOWN = 0, UP = 1, RIGHT = 2, LEFT = 3;	// 방향 플래그
+	final static int DOWN = 0, UP = 1, RI                    GHT = 2, LEFT = 3;	// 방향 플래그
 	final static int CHANGE = 3;				// 몬스터의 이미지의 전환 주기
 	
 	// imgDir 2차원 String 배열에 몬스터 이미지의 경로를 설정하는 static 함수
