@@ -15,11 +15,6 @@ class Area {
 	private boolean isend = false;
 	// 몬스터의 방향전환 플래그를 표시
 	private int direction = -1;
-	// 공격지점으로 설정되어 있다면 몇개의 타워가 공격중인지 표시
-	private ArrayList<Integer> attacking;
-	
-	// 타워의 총 수
-	final public static int NUM_TOWER = 6;
 	
 	// 타워설정 값
 	final public static int TOWER0 = 0;
@@ -30,10 +25,7 @@ class Area {
 	final public static int TOWER5 = 5;
 	
 	public Area() {
-		attacking = new ArrayList<Integer>(NUM_TOWER);
-		
-		for(int i=0; i<NUM_TOWER; i++)
-			attacking.add(0);
+
 	}
 	
 	public boolean isTower() {
@@ -55,12 +47,6 @@ class Area {
 		return direction;
 	}
 	
-	// 공격지점으로 설정되어 있다면, 몇개의 어떤타워들이 공격하고 있는지 반환하는 함수
-	public ArrayList<Integer> getAttackingTower() {
-		if(isattack)
-			return attacking;
-		return null;
-	}
 	// 타워의 존재를 설정하는 함수
 	public void setTower(boolean exist) {
 		istower = exist;
@@ -80,34 +66,6 @@ class Area {
 	// 몬스터의 경로를 설정하는 함수, Monster 클래스의 static 변수를 이용
 	public void setDirection(int _direction) {
 		direction = _direction;
-	}
-	
-	// 공격지점으로 설정하는 함수, 패러미터 중 attack = true 공격지점 설정, attack = false 공격지점 해제
-	public void setAttack(int tower, boolean attack) {
-		if(tower < 0 || tower >= NUM_TOWER)
-			return;
-		
-		// 공격지점으로 설정할 경우 attack = true
-		if(attack) {
-			isattack = attack;
-			attacking.set(tower, attacking.get(tower)+1);
-		}
-		else {	// 공격지점을 해제할 경우 attack = false
-			int num = attacking.get(tower);
-			if(num <= 0) {
-				isattack = attack;
-				return;
-			}
-			
-			attacking.set(tower, num - 1);
-			
-			// 현재 공격지점으로 설정되있는 타워가 존재하는지 검사
-			for(int i=0; i<NUM_TOWER; i++) 
-				if(attacking.get(i)!=0)
-					return;
-			
-			isattack = false;
-		}
 	}
 }
 
