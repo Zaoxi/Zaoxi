@@ -13,9 +13,8 @@ class Area {
 	// start 지점과 end 지점 표시
 	private boolean isstart = false;
 	private boolean isend = false;
-	// 몬스터의 경로를 표시
+	// 몬스터의 방향전환 플래그를 표시
 	private int direction = -1;
-	
 	// 공격지점으로 설정되어 있다면 몇개의 타워가 공격중인지 표시
 	private ArrayList<Integer> attacking;
 	
@@ -117,10 +116,14 @@ class Map {
 	protected Area[][] map;
 	
 	final public static int SIZE = 8;
+	final public static int MAP_WIDTH = 640, MAP_HEIGHT = 640;
+	final public static int IMG_WIDTH = MAP_WIDTH/SIZE, IMG_HEIGHT = MAP_HEIGHT/SIZE;
+	
 	final public static ImageIcon ROAD = new ImageIcon("Image/Map/road.png");
+	protected JLabel mapLabel;
 	
-	
-	public Map() {
+	public Map(JLabel map_label) {
+		mapLabel = map_label;
 		// 정수형 2차원 배열 map을 초기화 하는 작업
 		map = new Area[SIZE][];
 		for(int i=0; i<SIZE; i++) {
@@ -133,30 +136,51 @@ class Map {
 	public Area[][] getMap() {
 		return map;
 	}
+	
+	// 배열 위치를 지정하면 길 이미지를 삽입해주는 함수
+	public void setRoadImg(int x, int y) {
+		JLabel roadLabel = new JLabel(ROAD);
+		roadLabel.setBounds(x*IMG_WIDTH, y*IMG_HEIGHT, IMG_WIDTH, IMG_HEIGHT);
+		mapLabel.add(roadLabel);
+	}
 }
 
 class MapArray1 extends Map {
-	public MapArray1() {
-		super();
+	public MapArray1(JLabel map_label) {
+		super(map_label);
 		
 		// 1단계 맵 설정
+		// 시작 지점 설정
+		map[0][0].setStart(true);
+		map[0][1].setEnd(true);
+		
+		// 길 이미지 삽입, 길 표시
 		for(int i=0; i<SIZE; i++) {
 			if(i==0 || i == SIZE-1) {
 				for(int j=0; j<SIZE; j++) {
 					map[i][j].setRoad(true);
+					setRoadImg(i, j);
 				}
 			}
 			else {
 				map[i][0].setRoad(true);
+				setRoadImg(i, 0);
 				map[i][SIZE-1].setRoad(true);
+				setRoadImg(i, SIZE-1);
 			}
 		}
+		
+		// 몬스터 경로 설정
+		map[0][0].setDirection(Monster.DOWN);
+		map[SIZE-1][0].setDirection(Monster.RIGHT);
+		map[SIZE-1][SIZE-1].setDirection(Monster.UP);
+		map[0][SIZE-1].setDirection(Monster.LEFT);
 	}
 }
 
 class MapArray2 extends Map {
-	public MapArray2() {
-		super();
+	public MapArray2(JLabel map_label) {
+		super(map_label);
 		
 		// 2단계 맵 설정
 		for(int i=0; i<SIZE; i++) {
@@ -174,8 +198,8 @@ class MapArray2 extends Map {
 }
 
 class MapArray3 extends Map {
-	public MapArray3() {
-		super();
+	public MapArray3(JLabel map_label) {
+		super(map_label);
 		
 		// 3단계 맵 설정
 		for(int i=0; i<SIZE; i++) {
@@ -193,8 +217,8 @@ class MapArray3 extends Map {
 }
 
 class MapArray4 extends Map {
-	public MapArray4() {
-		super();
+	public MapArray4(JLabel map_label) {
+		super(map_label);
 		
 		// 4단계 맵 설정
 		for(int i=0; i<SIZE; i++) {
@@ -212,8 +236,8 @@ class MapArray4 extends Map {
 }
 
 class MapArray5 extends Map {
-	public MapArray5() {
-		super();
+	public MapArray5(JLabel map_label) {
+		super(map_label);
 		
 		// 5단계 맵 설정
 		for(int i=0; i<SIZE; i++) {
@@ -231,8 +255,8 @@ class MapArray5 extends Map {
 }
 
 class MapArray6 extends Map {
-	public MapArray6() {
-		super();
+	public MapArray6(JLabel map_label) {
+		super(map_label);
 		
 		// 6단계 맵 설정
 		for(int i=0; i<SIZE; i++) {
@@ -250,8 +274,8 @@ class MapArray6 extends Map {
 }
 
 class MapArray7 extends Map {
-	public MapArray7() {
-		super();
+	public MapArray7(JLabel map_label) {
+		super(map_label);
 		
 		// 7단계 맵 설정
 		for(int i=0; i<SIZE; i++) {
@@ -269,8 +293,8 @@ class MapArray7 extends Map {
 }
 
 class MapArray8 extends Map {
-	public MapArray8() {
-		super();
+	public MapArray8(JLabel map_label) {
+		super(map_label);
 		
 		// 8단계 맵 설정
 		for(int i=0; i<SIZE; i++) {
@@ -288,8 +312,8 @@ class MapArray8 extends Map {
 }
 
 class MapArray9 extends Map {
-	public MapArray9() {
-		super();
+	public MapArray9(JLabel map_label) {
+		super(map_label);
 		
 		// 9단계 맵 설정
 		for(int i=0; i<SIZE; i++) {
@@ -307,8 +331,8 @@ class MapArray9 extends Map {
 }
 
 class MapArray10 extends Map {
-	public MapArray10() {
-		super();
+	public MapArray10(JLabel map_label) {
+		super(map_label);
 		
 		// 10단계 맵 설정
 		for(int i=0; i<SIZE; i++) {

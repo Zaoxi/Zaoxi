@@ -3,9 +3,12 @@ package Control;
 public class Point {
 	private int x, y;
 	// 640 x 640을 80 x 80으로 총 64개로 나눈다.
-	final int WIDTH = 80, HEIGHT = 80;
+	final public static int WIDTH = 80, HEIGHT = 80;
 	// 한 변의 개수
-	final int SIZE = 8;
+	final public static int SIZE = 8;
+	
+	// 오차범위
+	final public static int TERM = 10;
 	
 	public Point(int x, int y) {
 		this.x = x;
@@ -26,6 +29,19 @@ public class Point {
 		int temp_y = y/HEIGHT;
 		
 		return new Point(temp_x, temp_y);
+	}
+	public static boolean getEnterPerfectly(Point center, Point map_pos) {
+		Point temp = new Point(map_pos.getX(), map_pos.getY());
+		temp.setX(map_pos.getX()*WIDTH);
+		temp.setY(map_pos.getY()*HEIGHT);
+		
+		// center좌표가 map의 각 위치의 오차범위 이내에 들어간다면 true를 반환, else false
+		if(temp.getX() - TERM < center.getX() && temp.getX() + TERM > center.getX()) {
+			if(temp.getY() - TERM < center.getY() && temp.getY() + TERM > center.getY())
+				return true;
+		}
+		
+		return false;
 	}
 	
 	public int getX() {
