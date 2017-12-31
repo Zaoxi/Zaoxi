@@ -2,7 +2,7 @@ package Control;
 import java.io.*;
 import java.util.ArrayList;
 
-import View.ViewManager;
+import View.UIManager;
 
 import javax.swing.*;
 
@@ -134,13 +134,12 @@ class Monster0 extends Monster implements Runnable {
 	
 	private boolean monsterFlag = true;
 	
-	public Monster0(Point real, Map _map, JLabel map_label) {
+	public Monster0(Control_Manager c, Point real, Map _map, JLabel map_label) {
 		super(NUM, HP, MONSTER0_SPEED, real, _map, map_label);
-		
+		control = c;
 		// TODO Auto-generated constructor stub
 		// 몬스터의 초기 위치와 방향 지정
 		monster = new JLabel(imgDir[NUM][map.getMap()[mapPos.getX()][mapPos.getY()].getDirection()*2]);
-		control = Control_Manager.getInstance(null);
 	}
 
 	@Override
