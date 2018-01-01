@@ -136,7 +136,7 @@ abstract class Monster {
 
 class Monster0 extends Monster implements Runnable {
 	// Monster0의 스피드
-	final public static int MONSTER0_SPEED = 10;
+	final public static int MONSTER0_SPEED = 1;
 	final public static int NUM = 0;
 	final public static int HP = 20;
 	final public static int MONEY = 20;
