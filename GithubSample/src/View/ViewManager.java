@@ -11,7 +11,7 @@ public class ViewManager extends JFrame{
 	
 	public ViewManager() {
 		setTitle("Tower Defense");
-		setSize(1000, 640);
+		setSize(1000, 680);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		Container c = getContentPane();
 		card = new CardLayout();
@@ -25,7 +25,6 @@ public class ViewManager extends JFrame{
 		c.add("single", singlePanel);
 		c.add("multi", multiPanel);
 		
-		setSize(1000, 640);
 		this.setVisible(true);
 	}
 	

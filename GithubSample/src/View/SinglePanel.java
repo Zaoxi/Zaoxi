@@ -48,6 +48,7 @@ public class SinglePanel extends JPanel {
 		towerPanel = new JPanel();
 		towerPanel.setSize(360, 640);
 		towerPanel.setLayout(new GridLayout(5, 2, 10, 10));
+		mapLabel.setLayout(null);
 		
 		tower0.setText("100");
 		tower1.setText("200");

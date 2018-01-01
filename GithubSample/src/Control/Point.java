@@ -30,6 +30,8 @@ public class Point {
 		
 		return new Point(temp_x, temp_y);
 	}
+	
+	
 	public static boolean getEnterPerfectly(Point center, Point map_pos) {
 		Point temp = new Point(map_pos.getX(), map_pos.getY());
 		temp.setX(map_pos.getX()*WIDTH);

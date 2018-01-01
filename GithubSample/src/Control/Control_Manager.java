@@ -144,21 +144,21 @@ public class Control_Manager {
 	// 게임의 상태를 지속적으로 체크하면서 게임 상태를 전환시키는 스레드
 		class CheckGameState extends Thread {
 			final public static int STAGE1_NUM_MONSTER = 10;
-			final public static int STAGE2_NUM_MONSTER = 20;
-			final public static int STAGE3_NUM_MONSTER = 30;
-			final public static int STAGE4_NUM_MONSTER = 40;
-			final public static int STAGE5_NUM_MONSTER = 50;
-			final public static int STAGE6_NUM_MONSTER = 60;
-			final public static int STAGE7_NUM_MONSTER = 70;
-			final public static int STAGE8_NUM_MONSTER = 80;
-			final public static int STAGE9_NUM_MONSTER = 90;
-			final public static int STAGE10_NUM_MONSTER = 100;
+			final public static int STAGE2_NUM_MONSTER = 10;
+			final public static int STAGE3_NUM_MONSTER = 10;
+			final public static int STAGE4_NUM_MONSTER = 10;
+			final public static int STAGE5_NUM_MONSTER = 10;
+			final public static int STAGE6_NUM_MONSTER = 10;
+			final public static int STAGE7_NUM_MONSTER = 10;
+			final public static int STAGE8_NUM_MONSTER = 10;
+			final public static int STAGE9_NUM_MONSTER = 10;
+			final public static int STAGE10_NUM_MONSTER = 10;
 			
 			public void run() {
 				while(stateFlag) {
 					// Stage1
 					if(gameFlag == STAGE1 && stateFlag) {
-						setMoney(2000); setScore(0);
+						setMoney(500); setScore(0);
 						
 						
 						Stage1_Monster stage1 = new Stage1_Monster(this);
@@ -170,16 +170,23 @@ public class Control_Manager {
 								// TODO Auto-generated catch block
 								e.printStackTrace();
 							}
+							
 						}
+						// 게임 끝
+						ui.getSinglePanel().getMapLabel().removeAll();
+						ui.getSinglePanel().getMapLabel().addMouseMotionListener(new MapLabelListener());
+						MapLabelListener.select = MapLabelListener.NONE;
+						
+						while(!monsterList.isEmpty()) {
+							monsterList.get(monsterList.size() - 1).setMonsterFalse();
+							monsterList.remove(monsterList.size() - 1);
+						}
+						while(!towerList.isEmpty()) {
+							towerList.get(towerList.size() - 1).setTowerFalse();
+							towerList.remove(towerList.size() - 1);
+						}
+						
 						if(STAGE1 <= gameFlag && gameFlag <= STAGE10) {
-							// 게임 끝
-							ui.getSinglePanel().getMapLabel().removeAll();
-							for(int i=0; i<monsterList.size(); i++) {
-								monsterList.get(i).setMonsterFalse();
-							}
-							for(int i=0; i<towerList.size(); i++) {
-								towerList.get(i).setTowerFalse();
-							}
 							gameFlag = STAGE2;
 						}
 					}
@@ -197,15 +204,23 @@ public class Control_Manager {
 								e.printStackTrace();
 							}
 						}
+						
+						ui.getSinglePanel().getMapLabel().removeAll();
+						ui.getSinglePanel().getMapLabel().addMouseMotionListener(new MapLabelListener());
+						MapLabelListener.select = MapLabelListener.NONE;
+						
+						while(!monsterList.isEmpty()) {
+							monsterList.get(monsterList.size() - 1).setMonsterFalse();
+							monsterList.remove(monsterList.size() - 1);
+						}
+						while(!towerList.isEmpty()) {
+							towerList.get(towerList.size() - 1).setTowerFalse();
+							towerList.remove(towerList.size() - 1);
+						}
+						
 						if(STAGE1 <= gameFlag && gameFlag <= STAGE10) {
 							// 게임 끝
-							ui.getSinglePanel().getMapLabel().removeAll();
-							for(int i=0; i<monsterList.size(); i++) {
-								monsterList.get(i).setMonsterFalse();
-							}
-							for(int i=0; i<towerList.size(); i++) {
-								towerList.get(i).setTowerFalse();
-							}
+							
 							gameFlag = STAGE3;
 						}
 					}
@@ -224,15 +239,23 @@ public class Control_Manager {
 								e.printStackTrace();
 							}
 						}
+						
+						ui.getSinglePanel().getMapLabel().removeAll();
+						ui.getSinglePanel().getMapLabel().addMouseMotionListener(new MapLabelListener());
+						MapLabelListener.select = MapLabelListener.NONE;
+						
+						while(!monsterList.isEmpty()) {
+							monsterList.get(monsterList.size() - 1).setMonsterFalse();
+							monsterList.remove(monsterList.size() - 1);
+						}
+						while(!towerList.isEmpty()) {
+							towerList.get(towerList.size() - 1).setTowerFalse();
+							towerList.remove(towerList.size() - 1);
+						}
+						
 						if(STAGE1 <= gameFlag && gameFlag <= STAGE10) {
 							// 게임 끝
-							ui.getSinglePanel().getMapLabel().removeAll();
-							for(int i=0; i<monsterList.size(); i++) {
-								monsterList.get(i).setMonsterFalse();
-							}
-							for(int i=0; i<towerList.size(); i++) {
-								towerList.get(i).setTowerFalse();
-							}
+
 							gameFlag = STAGE4;
 						}
 					}
@@ -252,15 +275,23 @@ public class Control_Manager {
 								e.printStackTrace();
 							}
 						}
+						
+						ui.getSinglePanel().getMapLabel().removeAll();
+						ui.getSinglePanel().getMapLabel().addMouseMotionListener(new MapLabelListener());
+						MapLabelListener.select = MapLabelListener.NONE;
+						
+						while(!monsterList.isEmpty()) {
+							monsterList.get(monsterList.size() - 1).setMonsterFalse();
+							monsterList.remove(monsterList.size() - 1);
+						}
+						while(!towerList.isEmpty()) {
+							towerList.get(towerList.size() - 1).setTowerFalse();
+							towerList.remove(towerList.size() - 1);
+						}
+						
 						if(STAGE1 <= gameFlag && gameFlag <= STAGE10) {
 							// 게임 끝
-							ui.getSinglePanel().getMapLabel().removeAll();
-							for(int i=0; i<monsterList.size(); i++) {
-								monsterList.get(i).setMonsterFalse();
-							}
-							for(int i=0; i<towerList.size(); i++) {
-								towerList.get(i).setTowerFalse();
-							}
+							
 							gameFlag = STAGE5;
 						}
 					}
@@ -280,15 +311,23 @@ public class Control_Manager {
 								e.printStackTrace();
 							}
 						}
+						
+						ui.getSinglePanel().getMapLabel().removeAll();
+						ui.getSinglePanel().getMapLabel().addMouseMotionListener(new MapLabelListener());
+						MapLabelListener.select = MapLabelListener.NONE;
+						
+						while(!monsterList.isEmpty()) {
+							monsterList.get(monsterList.size() - 1).setMonsterFalse();
+							monsterList.remove(monsterList.size() - 1);
+						}
+						while(!towerList.isEmpty()) {
+							towerList.get(towerList.size() - 1).setTowerFalse();
+							towerList.remove(towerList.size() - 1);
+						}
+						
 						if(STAGE1 <= gameFlag && gameFlag <= STAGE10) {
 							// 게임 끝
-							ui.getSinglePanel().getMapLabel().removeAll();
-							for(int i=0; i<monsterList.size(); i++) {
-								monsterList.get(i).setMonsterFalse();
-							}
-							for(int i=0; i<towerList.size(); i++) {
-								towerList.get(i).setTowerFalse();
-							}
+							
 							gameFlag = STAGE6;
 						}
 					}
@@ -307,15 +346,23 @@ public class Control_Manager {
 								e.printStackTrace();
 							}
 						}
+						
+						ui.getSinglePanel().getMapLabel().removeAll();
+						ui.getSinglePanel().getMapLabel().addMouseMotionListener(new MapLabelListener());
+						MapLabelListener.select = MapLabelListener.NONE;
+						
+						while(!monsterList.isEmpty()) {
+							monsterList.get(monsterList.size() - 1).setMonsterFalse();
+							monsterList.remove(monsterList.size() - 1);
+						}
+						while(!towerList.isEmpty()) {
+							towerList.get(towerList.size() - 1).setTowerFalse();
+							towerList.remove(towerList.size() - 1);
+						}
+						
 						if(STAGE1 <= gameFlag && gameFlag <= STAGE10) {
 							// 게임 끝
-							ui.getSinglePanel().getMapLabel().removeAll();
-							for(int i=0; i<monsterList.size(); i++) {
-								monsterList.get(i).setMonsterFalse();
-							}
-							for(int i=0; i<towerList.size(); i++) {
-								towerList.get(i).setTowerFalse();
-							}
+					
 							gameFlag = STAGE7;
 						}
 					}
@@ -335,15 +382,23 @@ public class Control_Manager {
 								e.printStackTrace();
 							}
 						}
+						
+						ui.getSinglePanel().getMapLabel().removeAll();
+						ui.getSinglePanel().getMapLabel().addMouseMotionListener(new MapLabelListener());
+						MapLabelListener.select = MapLabelListener.NONE;
+						
+						while(!monsterList.isEmpty()) {
+							monsterList.get(monsterList.size() - 1).setMonsterFalse();
+							monsterList.remove(monsterList.size() - 1);
+						}
+						while(!towerList.isEmpty()) {
+							towerList.get(towerList.size() - 1).setTowerFalse();
+							towerList.remove(towerList.size() - 1);
+						}
+						
 						if(STAGE1 <= gameFlag && gameFlag <= STAGE10) {
 							// 게임 끝
-							ui.getSinglePanel().getMapLabel().removeAll();
-							for(int i=0; i<monsterList.size(); i++) {
-								monsterList.get(i).setMonsterFalse();
-							}
-							for(int i=0; i<towerList.size(); i++) {
-								towerList.get(i).setTowerFalse();
-							}
+							
 							gameFlag = STAGE8;
 						}
 					}
@@ -363,15 +418,23 @@ public class Control_Manager {
 								e.printStackTrace();
 							}
 						}
+						
+						ui.getSinglePanel().getMapLabel().removeAll();
+						ui.getSinglePanel().getMapLabel().addMouseMotionListener(new MapLabelListener());
+						MapLabelListener.select = MapLabelListener.NONE;
+						
+						while(!monsterList.isEmpty()) {
+							monsterList.get(monsterList.size() - 1).setMonsterFalse();
+							monsterList.remove(monsterList.size() - 1);
+						}
+						while(!towerList.isEmpty()) {
+							towerList.get(towerList.size() - 1).setTowerFalse();
+							towerList.remove(towerList.size() - 1);
+						}
+						
 						if(STAGE1 <= gameFlag && gameFlag <= STAGE10) {
 							// 게임 끝
-							ui.getSinglePanel().getMapLabel().removeAll();
-							for(int i=0; i<monsterList.size(); i++) {
-								monsterList.get(i).setMonsterFalse();
-							}
-							for(int i=0; i<towerList.size(); i++) {
-								towerList.get(i).setTowerFalse();
-							}
+							
 							gameFlag = STAGE9;
 						}
 					}
@@ -391,15 +454,23 @@ public class Control_Manager {
 								e.printStackTrace();
 							}
 						}
+						
+						ui.getSinglePanel().getMapLabel().removeAll();
+						ui.getSinglePanel().getMapLabel().addMouseMotionListener(new MapLabelListener());
+						MapLabelListener.select = MapLabelListener.NONE;
+						
+						while(!monsterList.isEmpty()) {
+							monsterList.get(monsterList.size() - 1).setMonsterFalse();
+							monsterList.remove(monsterList.size() - 1);
+						}
+						while(!towerList.isEmpty()) {
+							towerList.get(towerList.size() - 1).setTowerFalse();
+							towerList.remove(towerList.size() - 1);
+						}
+						
 						if(STAGE1 <= gameFlag && gameFlag <= STAGE10) {
 							// 게임 끝
-							ui.getSinglePanel().getMapLabel().removeAll();
-							for(int i=0; i<monsterList.size(); i++) {
-								monsterList.get(i).setMonsterFalse();
-							}
-							for(int i=0; i<towerList.size(); i++) {
-								towerList.get(i).setTowerFalse();
-							}
+							
 							gameFlag = STAGE10;
 						}
 					}
@@ -419,15 +490,23 @@ public class Control_Manager {
 								e.printStackTrace();
 							}
 						}
+						
+						ui.getSinglePanel().getMapLabel().removeAll();
+						ui.getSinglePanel().getMapLabel().addMouseMotionListener(new MapLabelListener());
+						MapLabelListener.select = MapLabelListener.NONE;
+						
+						while(!monsterList.isEmpty()) {
+							monsterList.get(monsterList.size() - 1).setMonsterFalse();
+							monsterList.remove(monsterList.size() - 1);
+						}
+						while(!towerList.isEmpty()) {
+							towerList.get(towerList.size() - 1).setTowerFalse();
+							towerList.remove(towerList.size() - 1);
+						}
+						
 						if(STAGE1 <= gameFlag && gameFlag <= STAGE10) {
 							// 게임 끝
-							ui.getSinglePanel().getMapLabel().removeAll();
-							for(int i=0; i<monsterList.size(); i++) {
-								monsterList.get(i).setMonsterFalse();
-							}
-							for(int i=0; i<towerList.size(); i++) {
-								towerList.get(i).setTowerFalse();
-							}
+							
 							gameFlag = SINGLE_WIN;
 						}
 					}
@@ -441,21 +520,6 @@ public class Control_Manager {
 						gameFlag = MAIN;
 						ui.getSinglePanel().setVisible(false);
 						ui.getMainPanel().setVisible(true);
-						
-						
-						// 게임 끝
-						ui.getSinglePanel().getMapLabel().removeAll();
-						for(int i=0; i<monsterList.size(); i++) {
-							monsterList.get(i).setMonsterFalse();
-						}
-						for(int i=0; i<towerList.size(); i++) {
-							towerList.get(i).setTowerFalse();
-						}
-						
-						
-						
-		
-					
 					}
 					// Single_win
 					if(gameFlag == SINGLE_WIN && stateFlag) {
@@ -465,28 +529,22 @@ public class Control_Manager {
 						gameFlag = MAIN;
 						ui.getSinglePanel().setVisible(false);
 						ui.getMainPanel().setVisible(true);
-						
-						
-						// 게임 끝
-						ui.getSinglePanel().getMapLabel().removeAll();
-						for(int i=0; i<monsterList.size(); i++) {
-							monsterList.get(i).setMonsterFalse();
-						}
-						for(int i=0; i<towerList.size(); i++) {
-							towerList.get(i).setTowerFalse();
-						}
-						
-						
-						
 					}
 					
 					// Multi
 					if(gameFlag == MULTI && stateFlag) {
 						setMoney(2000);
 						
-						ui.getMultiPanel().getMapLabel().removeAll();
+						ui.getSinglePanel().getMapLabel().removeAll();
+						ui.getSinglePanel().getMapLabel().addMouseListener(new MapLabelListener());
+						ui.getSinglePanel().getMapLabel().addMouseListener(new MapLabelListener());
 						for(int i=0; i<monsterList.size(); i++) {
 							monsterList.get(i).setMonsterFalse();
+							monsterList.remove(i);
+						}
+						for(int i=0; i<towerList.size(); i++) {
+							towerList.get(i).setTowerFalse();
+							towerList.remove(i);
 						}
 					}
 				}
@@ -519,7 +577,6 @@ public class Control_Manager {
 							break;
 						// 약 1.5초 마다 몬스터를 소환
 						Monster0 monster0 = new Monster0(startPos, map, mapLabel);
-						monsterList.add(monster0);
 						Thread monsterThread = new Thread(monster0);
 						monsterThread.start();
 						sleep(1500);
@@ -529,17 +586,13 @@ public class Control_Manager {
 					e.printStackTrace();
 				}
 				// 몬스터가 다 제거될때 까지 대기, 승 패를 판정
-				boolean lose = false;
 				while(!getMonsterList().isEmpty() && stateFlag) {
 					if(gameFlag == SINGLE_LOSE) {
-						lose = true;
 						break;
 					}
 				}
-				if(!lose) {
-					gameFlag = SINGLE_WIN;
-				}
-				stateThread.notify();
+			
+				notify();
 				}
 			}
 		}
@@ -567,15 +620,15 @@ public class Control_Manager {
 							break;
 						// 약 1.5초 마다 몬스터를 소환
 						Monster0 monster0 = new Monster0(startPos, map, mapLabel);
-						Monster1 monster1 = new Monster1(startPos, map, mapLabel);
-						monsterList.add(monster0);
-						monsterList.add(monster1);
 						Thread monsterThread0 = new Thread(monster0);
-						Thread monsterThread1 = new Thread(monster1);
 						monsterThread0.start();
 						sleep(1500);
+						
 						if(getGameFlag() == SINGLE_LOSE) // 게임이 끝날 경우
 							break;
+						
+						Monster1 monster1 = new Monster1(startPos, map, mapLabel);
+						Thread monsterThread1 = new Thread(monster1);
 						monsterThread1.start();
 						sleep(1500);
 					}
@@ -584,17 +637,13 @@ public class Control_Manager {
 					e.printStackTrace();
 				}
 				// 몬스터가 다 제거될때 까지 대기, 승 패를 판정
-				boolean lose = false;
-				while(getMonsterList().isEmpty() && stateFlag) {
+				while(!getMonsterList().isEmpty() && stateFlag) {
 					if(gameFlag == SINGLE_LOSE) {
-						lose = true;
 						break;
 					}
 				}
-				if(!lose) {
-					gameFlag = SINGLE_WIN;
-				}		
-				stateThread.notify();
+				
+				notify();
 				}
 			}
 		}
@@ -624,9 +673,6 @@ public class Control_Manager {
 						Monster0 monster0 = new Monster0(startPos, map, mapLabel);
 						Monster1 monster1 = new Monster1(startPos, map, mapLabel);
 						Monster2 monster2 = new Monster2(startPos, map, mapLabel);
-						monsterList.add(monster0);
-						monsterList.add(monster1);
-						monsterList.add(monster2);
 						Thread monsterThread0 = new Thread(monster0);
 						Thread monsterThread1 = new Thread(monster1);
 						Thread monsterThread2 = new Thread(monster2);
@@ -646,17 +692,12 @@ public class Control_Manager {
 					e.printStackTrace();
 				}
 				// 몬스터가 다 제거될때 까지 대기, 승 패를 판정
-				boolean lose = false;
-				while(getMonsterList().isEmpty() && stateFlag) {
+				while(!getMonsterList().isEmpty() && stateFlag) {
 					if(gameFlag == SINGLE_LOSE) {
-						lose = true;
 						break;
 					}
 				}
-				if(!lose) {
-					gameFlag = SINGLE_WIN;
-				}
-				stateThread.notify();
+				notify();
 				}
 			}
 		}
@@ -687,10 +728,6 @@ public class Control_Manager {
 						Monster1 monster1 = new Monster1(startPos, map, mapLabel);
 						Monster2 monster2 = new Monster2(startPos, map, mapLabel);
 						Monster3 monster3 = new Monster3(startPos, map, mapLabel);
-						monsterList.add(monster0);
-						monsterList.add(monster1);
-						monsterList.add(monster2);
-						monsterList.add(monster3);
 						Thread monsterThread0 = new Thread(monster0);
 						Thread monsterThread1 = new Thread(monster1);
 						Thread monsterThread2 = new Thread(monster2);
@@ -715,17 +752,12 @@ public class Control_Manager {
 					e.printStackTrace();
 				}
 				// 몬스터가 다 제거될때 까지 대기, 승 패를 판정
-				boolean lose = false;
-				while(getMonsterList().isEmpty() && stateFlag) {
+				while(!getMonsterList().isEmpty() && stateFlag) {
 					if(gameFlag == SINGLE_LOSE) {
-						lose = true;
 						break;
 					}
 				}
-				if(!lose) {
-					gameFlag = SINGLE_WIN;
-				}
-				stateThread.notify();
+				notify();
 				}
 			}
 		}
@@ -757,11 +789,6 @@ public class Control_Manager {
 						Monster2 monster2 = new Monster2(startPos, map, mapLabel);
 						Monster3 monster3 = new Monster3(startPos, map, mapLabel);
 						Monster4 monster4 = new Monster4(startPos, map, mapLabel);
-						monsterList.add(monster0);
-						monsterList.add(monster1);
-						monsterList.add(monster2);
-						monsterList.add(monster3);
-						monsterList.add(monster4);
 						Thread monsterThread0 = new Thread(monster0);
 						Thread monsterThread1 = new Thread(monster1);
 						Thread monsterThread2 = new Thread(monster2);
@@ -791,17 +818,12 @@ public class Control_Manager {
 					e.printStackTrace();
 				}
 				// 몬스터가 다 제거될때 까지 대기, 승 패를 판정
-				boolean lose = false;
-				while(getMonsterList().isEmpty() && stateFlag) {
+				while(!getMonsterList().isEmpty() && stateFlag) {
 					if(gameFlag == SINGLE_LOSE) {
-						lose = true;
 						break;
 					}
 				}
-				if(!lose) {
-					gameFlag = SINGLE_WIN;
-				}
-				stateThread.notify();
+				notify();
 				}
 			}
 		}
@@ -834,12 +856,6 @@ public class Control_Manager {
 						Monster3 monster3 = new Monster3(startPos, map, mapLabel);
 						Monster4 monster4 = new Monster4(startPos, map, mapLabel);
 						Monster5 monster5 = new Monster5(startPos, map, mapLabel);
-						monsterList.add(monster0);
-						monsterList.add(monster1);
-						monsterList.add(monster2);
-						monsterList.add(monster3);
-						monsterList.add(monster4);
-						monsterList.add(monster5);
 						Thread monsterThread0 = new Thread(monster0);
 						Thread monsterThread1 = new Thread(monster1);
 						Thread monsterThread2 = new Thread(monster2);
@@ -874,17 +890,12 @@ public class Control_Manager {
 					e.printStackTrace();
 				}
 				// 몬스터가 다 제거될때 까지 대기, 승 패를 판정
-				boolean lose = false;
-				while(getMonsterList().isEmpty() && stateFlag) {
+				while(!getMonsterList().isEmpty() && stateFlag) {
 					if(gameFlag == SINGLE_LOSE) {
-						lose = true;
 						break;
 					}
 				}
-				if(!lose) {
-					gameFlag = SINGLE_WIN;
-				}
-				stateThread.notify();
+				notify();
 				}
 			}
 		}
@@ -918,13 +929,6 @@ public class Control_Manager {
 						Monster4 monster4 = new Monster4(startPos, map, mapLabel);
 						Monster5 monster5 = new Monster5(startPos, map, mapLabel);
 						Monster6 monster6 = new Monster6(startPos, map, mapLabel);
-						monsterList.add(monster0);
-						monsterList.add(monster1);
-						monsterList.add(monster2);
-						monsterList.add(monster3);
-						monsterList.add(monster4);
-						monsterList.add(monster5);
-						monsterList.add(monster6);
 						Thread monsterThread0 = new Thread(monster0);
 						Thread monsterThread1 = new Thread(monster1);
 						Thread monsterThread2 = new Thread(monster2);
@@ -964,17 +968,12 @@ public class Control_Manager {
 					e.printStackTrace();
 				}
 				// 몬스터가 다 제거될때 까지 대기, 승 패를 판정
-				boolean lose = false;
-				while(getMonsterList().isEmpty() && stateFlag) {
+				while(!getMonsterList().isEmpty() && stateFlag) {
 					if(gameFlag == SINGLE_LOSE) {
-						lose = true;
 						break;
 					}
 				}
-				if(!lose) {
-					gameFlag = SINGLE_WIN;
-				}
-				stateThread.notify();
+				notify();
 				}
 			}
 		}
@@ -1009,14 +1008,6 @@ public class Control_Manager {
 						Monster5 monster5 = new Monster5(startPos, map, mapLabel);
 						Monster6 monster6 = new Monster6(startPos, map, mapLabel);
 						Monster7 monster7 = new Monster7(startPos, map, mapLabel);
-						monsterList.add(monster0);
-						monsterList.add(monster1);
-						monsterList.add(monster2);
-						monsterList.add(monster3);
-						monsterList.add(monster4);
-						monsterList.add(monster5);
-						monsterList.add(monster6);
-						monsterList.add(monster7);
 						Thread monsterThread0 = new Thread(monster0);
 						Thread monsterThread1 = new Thread(monster1);
 						Thread monsterThread2 = new Thread(monster2);
@@ -1061,17 +1052,12 @@ public class Control_Manager {
 					e.printStackTrace();
 				}
 				// 몬스터가 다 제거될때 까지 대기, 승 패를 판정
-				boolean lose = false;
-				while(getMonsterList().isEmpty() && stateFlag) {
+				while(!getMonsterList().isEmpty() && stateFlag) {
 					if(gameFlag == SINGLE_LOSE) {
-						lose = true;
 						break;
 					}
 				}
-				if(!lose) {
-					gameFlag = SINGLE_WIN;
-				}
-				stateThread.notify();
+				notify();
 				}
 			}
 		}
@@ -1107,15 +1093,6 @@ public class Control_Manager {
 						Monster6 monster6 = new Monster6(startPos, map, mapLabel);
 						Monster7 monster7 = new Monster7(startPos, map, mapLabel);
 						Monster8 monster8 = new Monster8(startPos, map, mapLabel);
-						monsterList.add(monster0);
-						monsterList.add(monster1);
-						monsterList.add(monster2);
-						monsterList.add(monster3);
-						monsterList.add(monster4);
-						monsterList.add(monster5);
-						monsterList.add(monster6);
-						monsterList.add(monster7);
-						monsterList.add(monster8);
 						Thread monsterThread0 = new Thread(monster0);
 						Thread monsterThread1 = new Thread(monster1);
 						Thread monsterThread2 = new Thread(monster2);
@@ -1165,17 +1142,12 @@ public class Control_Manager {
 					e.printStackTrace();
 				}
 				// 몬스터가 다 제거될때 까지 대기, 승 패를 판정
-				boolean lose = false;
-				while(getMonsterList().isEmpty() && stateFlag) {
+				while(!getMonsterList().isEmpty() && stateFlag) {
 					if(gameFlag == SINGLE_LOSE) {
-						lose = true;
 						break;
 					}
 				}
-				if(!lose) {
-					gameFlag = SINGLE_WIN;
-				}
-				stateThread.notify();
+				notify();
 				}
 			}
 		}
@@ -1212,16 +1184,6 @@ public class Control_Manager {
 						Monster7 monster7 = new Monster7(startPos, map, mapLabel);
 						Monster8 monster8 = new Monster8(startPos, map, mapLabel);
 						Monster9 monster9 = new Monster9(startPos, map, mapLabel);
-						monsterList.add(monster0);
-						monsterList.add(monster1);
-						monsterList.add(monster2);
-						monsterList.add(monster3);
-						monsterList.add(monster4);
-						monsterList.add(monster5);
-						monsterList.add(monster6);
-						monsterList.add(monster7);
-						monsterList.add(monster8);
-						monsterList.add(monster9);
 						Thread monsterThread0 = new Thread(monster0);
 						Thread monsterThread1 = new Thread(monster1);
 						Thread monsterThread2 = new Thread(monster2);
@@ -1275,17 +1237,12 @@ public class Control_Manager {
 					e.printStackTrace();
 				}
 				// 몬스터가 다 제거될때 까지 대기, 승 패를 판정
-				boolean lose = false;
-				while(getMonsterList().isEmpty() && stateFlag) {
+				while(!getMonsterList().isEmpty() && stateFlag) {
 					if(gameFlag == SINGLE_LOSE) {
-						lose = true;
 						break;
 					}
 				}
-				if(!lose) {
-					gameFlag = SINGLE_WIN;
-				}
-				stateThread.notify();
+				notify();
 				}
 			}
 		}

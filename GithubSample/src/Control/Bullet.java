@@ -34,8 +34,8 @@ public class Bullet {
 	}
 	// 공격 지점까지 가는 스피드를 설정한다.
 	public void setAttackPosition() {
-		int xTerm = attackPos.getX() - centerPos.getX();
-		int yTerm = attackPos.getY() - centerPos.getY();
+		int xTerm = attackPos.getY()*Point.WIDTH - realPos.getX();
+		int yTerm = attackPos.getX()*Point.HEIGHT - realPos.getY();
 		
 		term.setX(xTerm/BULLET_SPEED);
 		term.setY(yTerm/BULLET_SPEED);
@@ -44,7 +44,7 @@ public class Bullet {
 	// 탄환이 지정된 방향으로 움직인다.
 	public void move() {
 		realPos.setX(realPos.getX() + term.getX());
-		realPos.setX(realPos.getY() + term.getY());
+		realPos.setY(realPos.getY() + term.getY());
 		centerPos.setX(centerPos.getX() + term.getX());
 		centerPos.setY(centerPos.getY() + term.getY());
 		
@@ -57,8 +57,8 @@ class Bullet0 extends Bullet implements Runnable {
 	final ImageIcon imgEffect = new ImageIcon("Image/Effect/effect0.png");
 	private JLabel mapLabel;
 	private Control_Manager control;
-	final public static int DAMAGE = 5;
-	final public static int BULLET_MILLISECOND = 300;
+	final public static int DAMAGE = 1;
+	final public static int BULLET_MILLISECOND = 100;
 	final public static int EFFECT_MILLISECOND = 500;
 	
 	public Bullet0(Tower _tower, Point towerRealPos, JLabel map_label) {
@@ -74,9 +74,7 @@ class Bullet0 extends Bullet implements Runnable {
 		bullet.setBounds(realPos.getX(), realPos.getY(), Point.WIDTH, Point.HEIGHT);
 		// 공격지점 좌표를 설정하고 속도를설정
 		attackPos = tower.getAttackPosition();
-		attackPos.setX(attackPos.getX()*Point.WIDTH);
-		attackPos.setY(attackPos.getY()*Point.HEIGHT);
-		attackPos = attackPos.getCenterPosition();
+		
 		
 		setAttackPosition();
 		// BULLET_SPEED만큼 이동하고 소멸
@@ -119,8 +117,8 @@ class Bullet1 extends Bullet implements Runnable {
 	final ImageIcon imgEffect = new ImageIcon("Image/Effect/effect1.png");
 	private JLabel mapLabel;
 	private Control_Manager control;
-	final public static int DAMAGE = 5;
-	final public static int BULLET_MILLISECOND = 300;
+	final public static int DAMAGE = 3;
+	final public static int BULLET_MILLISECOND = 100;
 	final public static int EFFECT_MILLISECOND = 500;
 	
 	public Bullet1(Tower _tower, Point towerRealPos, JLabel map_label) {
@@ -136,9 +134,7 @@ class Bullet1 extends Bullet implements Runnable {
 		bullet.setBounds(realPos.getX(), realPos.getY(), Point.WIDTH, Point.HEIGHT);
 		// 공격지점 좌표를 설정하고 속도를설정
 		attackPos = tower.getAttackPosition();
-		attackPos.setX(attackPos.getX()*Point.WIDTH);
-		attackPos.setY(attackPos.getY()*Point.HEIGHT);
-		attackPos = attackPos.getCenterPosition();
+		
 		
 		setAttackPosition();
 		// BULLET_SPEED만큼 이동하고 소멸
@@ -181,7 +177,7 @@ class Bullet2 extends Bullet implements Runnable {
 	private JLabel mapLabel;
 	private Control_Manager control;
 	final public static int DAMAGE = 5;
-	final public static int BULLET_MILLISECOND = 300;
+	final public static int BULLET_MILLISECOND = 100;
 	final public static int EFFECT_MILLISECOND = 500;
 	
 	public Bullet2(Tower _tower, Point towerRealPos, JLabel map_label) {
@@ -197,9 +193,7 @@ class Bullet2 extends Bullet implements Runnable {
 		bullet.setBounds(realPos.getX(), realPos.getY(), Point.WIDTH, Point.HEIGHT);
 		// 공격지점 좌표를 설정하고 속도를설정
 		attackPos = tower.getAttackPosition();
-		attackPos.setX(attackPos.getX()*Point.WIDTH);
-		attackPos.setY(attackPos.getY()*Point.HEIGHT);
-		attackPos = attackPos.getCenterPosition();
+		
 		
 		setAttackPosition();
 		// BULLET_SPEED만큼 이동하고 소멸
@@ -241,8 +235,8 @@ class Bullet3 extends Bullet implements Runnable {
 	final ImageIcon imgEffect = new ImageIcon("Image/Effect/effect3.png");
 	private JLabel mapLabel;
 	private Control_Manager control;
-	final public static int DAMAGE = 5;
-	final public static int BULLET_MILLISECOND = 300;
+	final public static int DAMAGE = 10;
+	final public static int BULLET_MILLISECOND = 100;
 	final public static int EFFECT_MILLISECOND = 500;
 	
 	public Bullet3(Tower _tower, Point towerRealPos, JLabel map_label) {
@@ -258,9 +252,7 @@ class Bullet3 extends Bullet implements Runnable {
 		bullet.setBounds(realPos.getX(), realPos.getY(), Point.WIDTH, Point.HEIGHT);
 		// 공격지점 좌표를 설정하고 속도를설정
 		attackPos = tower.getAttackPosition();
-		attackPos.setX(attackPos.getX()*Point.WIDTH);
-		attackPos.setY(attackPos.getY()*Point.HEIGHT);
-		attackPos = attackPos.getCenterPosition();
+		
 		
 		setAttackPosition();
 		// BULLET_SPEED만큼 이동하고 소멸
@@ -302,8 +294,8 @@ class Bullet4 extends Bullet implements Runnable {
 	final ImageIcon imgEffect = new ImageIcon("Image/Effect/effect4.png");
 	private JLabel mapLabel;
 	private Control_Manager control;
-	final public static int DAMAGE = 5;
-	final public static int BULLET_MILLISECOND = 300;
+	final public static int DAMAGE = 15;
+	final public static int BULLET_MILLISECOND = 100;
 	final public static int EFFECT_MILLISECOND = 500;
 	
 	public Bullet4(Tower _tower, Point towerRealPos, JLabel map_label) {
@@ -319,9 +311,7 @@ class Bullet4 extends Bullet implements Runnable {
 		bullet.setBounds(realPos.getX(), realPos.getY(), Point.WIDTH, Point.HEIGHT);
 		// 공격지점 좌표를 설정하고 속도를설정
 		attackPos = tower.getAttackPosition();
-		attackPos.setX(attackPos.getX()*Point.WIDTH);
-		attackPos.setY(attackPos.getY()*Point.HEIGHT);
-		attackPos = attackPos.getCenterPosition();
+		
 		
 		setAttackPosition();
 		// BULLET_SPEED만큼 이동하고 소멸
@@ -363,8 +353,8 @@ class Bullet5 extends Bullet implements Runnable {
 	final ImageIcon imgEffect = new ImageIcon("Image/Effect/effect5.png");
 	private JLabel mapLabel;
 	private Control_Manager control;
-	final public static int DAMAGE = 5;
-	final public static int BULLET_MILLISECOND = 300;
+	final public static int DAMAGE = 20;
+	final public static int BULLET_MILLISECOND = 100;
 	final public static int EFFECT_MILLISECOND = 500;
 	
 	public Bullet5(Tower _tower, Point towerRealPos, JLabel map_label) {
@@ -380,9 +370,7 @@ class Bullet5 extends Bullet implements Runnable {
 		bullet.setBounds(realPos.getX(), realPos.getY(), Point.WIDTH, Point.HEIGHT);
 		// 공격지점 좌표를 설정하고 속도를설정
 		attackPos = tower.getAttackPosition();
-		attackPos.setX(attackPos.getX()*Point.WIDTH);
-		attackPos.setY(attackPos.getY()*Point.HEIGHT);
-		attackPos = attackPos.getCenterPosition();
+		
 		
 		setAttackPosition();
 		// BULLET_SPEED만큼 이동하고 소멸

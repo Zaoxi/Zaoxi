@@ -96,6 +96,8 @@ class Map {
 			}
 		}
 	}
+	
+	
 	public Area[][] getMap() {
 		return map;
 	}

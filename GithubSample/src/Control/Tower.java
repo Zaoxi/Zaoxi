@@ -18,13 +18,14 @@ public class Tower {
 	protected JLabel mapLabel;
 	// 타워의 공격 시작 플래그
 	protected boolean attackFlag;
+	
 	// 타워의 공격 범위
 	final public static int RANGE = 1;
 	
 	// real 포인트 객체에는 마우스의 위치를 입력해도 된다.
 	public Tower(Point real, Map _map, JLabel map_label) {
 		realPos = real;
-		mapPos = realPos.getMapPosition();
+		mapPos = realPos.getCenterPosition().getMapPosition();
 		attackPos = null;
 		attackFlag = false;
 		map = _map;
@@ -78,6 +79,7 @@ class Tower0 extends Tower implements Runnable {
 	
 	public void setTowerFalse() {
 		towerFlag = false;
+		attackFlag = false;
 	}
 	
 	public void run() {
@@ -94,6 +96,8 @@ class Tower0 extends Tower implements Runnable {
 				e.printStackTrace();
 			}
 		}
+		
+		
 	}
 }
 
@@ -113,6 +117,7 @@ class Tower1 extends Tower implements Runnable {
 	
 	public void setTowerFalse() {
 		towerFlag = false;
+		attackFlag = false;
 	}
 	
 	public void run() {
@@ -147,6 +152,7 @@ class Tower2 extends Tower implements Runnable {
 	
 	public void setTowerFalse() {
 		towerFlag = false;
+		attackFlag = false;
 	}
 	
 	public void run() {
@@ -182,6 +188,7 @@ class Tower3 extends Tower implements Runnable {
 	
 	public void setTowerFalse() {
 		towerFlag = false;
+		attackFlag = false;
 	}
 	
 	public void run() {
@@ -217,6 +224,7 @@ class Tower4 extends Tower implements Runnable {
 	
 	public void setTowerFalse() {
 		towerFlag = false;
+		attackFlag = false;
 	}
 	
 	public void run() {
@@ -252,6 +260,7 @@ class Tower5 extends Tower implements Runnable {
 	
 	public void setTowerFalse() {
 		towerFlag = false;
+		attackFlag = false;
 	}
 	
 	public void run() {
