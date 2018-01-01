@@ -192,7 +192,7 @@ public class Control_Manager {
 					}
 					// Stage2
 					if(gameFlag == STAGE2 && stateFlag) {
-						setMoney(500);
+						setMoney(800);
 						
 						Stage2_Monster stage2 = new Stage2_Monster(this);
 						stage2.start();
@@ -226,7 +226,7 @@ public class Control_Manager {
 					}
 					// Stage3
 					if(gameFlag == STAGE3 && stateFlag) {
-						setMoney(500);
+						setMoney(1000);
 						
 						Stage3_Monster stage3 = new Stage3_Monster(this);
 						stage3.start();
@@ -262,7 +262,7 @@ public class Control_Manager {
 					
 					// Stage4
 					if(gameFlag == STAGE4 && stateFlag) {
-						setMoney(500);
+						setMoney(1000);
 						
 						Stage4_Monster stage4 = new Stage4_Monster(this);
 						stage4.start();
@@ -298,7 +298,7 @@ public class Control_Manager {
 					
 					// Stage5
 					if(gameFlag == STAGE5 && stateFlag) {
-						setMoney(500);
+						setMoney(1200);
 						
 						Stage5_Monster stage5 = new Stage5_Monster(this);
 						stage5.start();
@@ -333,7 +333,7 @@ public class Control_Manager {
 					}
 					// Stage6
 					if(gameFlag == STAGE6 && stateFlag) {
-						setMoney(500);
+						setMoney(1200);
 						
 						Stage6_Monster stage6 = new Stage6_Monster(this);
 						stage6.start();
@@ -369,7 +369,7 @@ public class Control_Manager {
 					
 					// Stage7
 					if(gameFlag == STAGE7 && stateFlag) {
-						setMoney(500);
+						setMoney(1500);
 						
 						Stage7_Monster stage7 = new Stage7_Monster(this);
 						stage7.start();
@@ -405,7 +405,7 @@ public class Control_Manager {
 					
 					// Stage8
 					if(gameFlag == STAGE8 && stateFlag) {
-						setMoney(500);
+						setMoney(1600);
 						
 						Stage8_Monster stage8 = new Stage8_Monster(this);
 						stage8.start();
@@ -441,7 +441,7 @@ public class Control_Manager {
 					
 					// Stage9
 					if(gameFlag == STAGE9 && stateFlag) {
-						setMoney(500);
+						setMoney(1000);
 						
 						Stage9_Monster stage9 = new Stage9_Monster(this);
 						stage9.start();
@@ -477,7 +477,7 @@ public class Control_Manager {
 					
 					// Stage10
 					if(gameFlag == STAGE10 && stateFlag) {
-						setMoney(500);
+						setMoney(800);
 						
 						Stage10_Monster stage10 = new Stage10_Monster(this);
 						stage10.start();
