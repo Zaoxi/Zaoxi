@@ -60,7 +60,7 @@ public class MapLabelListener extends MouseAdapter {
 	
 	public void mouseClicked(MouseEvent e) {
 		map = control.getMapArray();
-		Point pos = new Point(e.getX()/Point.WIDTH, e.getY()/Point.HEIGHT);
+		Point pos = new Point(e.getY()/Point.HEIGHT, e.getX()/Point.WIDTH);
 		
 		if(select == NONE) {	// 아무것도 선택되지 않았을때, 맵 레이블 상의 타워를 선택하는 경우만 존재
 			if(map.getMap()[pos.getX()][pos.getY()].isTower()) {
@@ -72,8 +72,9 @@ public class MapLabelListener extends MouseAdapter {
 					if(towerPos.getX() == pos.getX() && towerPos.getY() == pos.getY()) {
 						select = SELECT;
 						prevTower = towerList.get(i);
+						System.out.println("select" + prevTower);
 					}
-						
+					
 				}
 			}
 		}
@@ -81,7 +82,7 @@ public class MapLabelListener extends MouseAdapter {
 			if(select == TOWER0) { // 타워0
 				if(control.getMoney() >= Tower0.COST) {
 					control.setMoney(control.getMoney() - Tower0.COST);
-					Tower0 tower = new Tower0(new Point(pos.getX()*Point.WIDTH, pos.getY()*Point.HEIGHT), map, mapLabel);
+					Tower0 tower = new Tower0(new Point(pos.getY()*Point.WIDTH, pos.getX()*Point.HEIGHT), map, mapLabel);
 					ArrayList<Tower> towerList = control.getTowerList();
 					towerList.add(tower);
 					Thread towerThread = new Thread(tower);
@@ -93,7 +94,7 @@ public class MapLabelListener extends MouseAdapter {
 			else if(select == TOWER1) { // 타워1
 				if(control.getMoney() >= Tower1.COST) {
 					control.setMoney(control.getMoney() - Tower1.COST);
-					Tower1 tower = new Tower1(new Point(pos.getX()*Point.WIDTH, pos.getY()*Point.HEIGHT), map, mapLabel);
+					Tower1 tower = new Tower1(new Point(pos.getY()*Point.WIDTH, pos.getX()*Point.HEIGHT), map, mapLabel);
 					ArrayList<Tower> towerList = control.getTowerList();
 					towerList.add(tower);
 					Thread towerThread = new Thread(tower);
@@ -105,7 +106,7 @@ public class MapLabelListener extends MouseAdapter {
 			else if(select == TOWER2) { // 타워2
 				if(control.getMoney() >= Tower2.COST) {
 					control.setMoney(control.getMoney() - Tower2.COST);
-					Tower2 tower = new Tower2(new Point(pos.getX()*Point.WIDTH, pos.getY()*Point.HEIGHT), map, mapLabel);
+					Tower2 tower = new Tower2(new Point(pos.getY()*Point.WIDTH, pos.getX()*Point.HEIGHT), map, mapLabel);
 					ArrayList<Tower> towerList = control.getTowerList();
 					towerList.add(tower);
 					Thread towerThread = new Thread(tower);
@@ -117,7 +118,7 @@ public class MapLabelListener extends MouseAdapter {
 			else if(select == TOWER3) {	// 타워3
 				if(control.getMoney() >= Tower3.COST) {
 					control.setMoney(control.getMoney() - Tower3.COST);
-					Tower3 tower = new Tower3(new Point(pos.getX()*Point.WIDTH, pos.getY()*Point.HEIGHT), map, mapLabel);
+					Tower3 tower = new Tower3(new Point(pos.getY()*Point.WIDTH, pos.getX()*Point.HEIGHT), map, mapLabel);
 					ArrayList<Tower> towerList = control.getTowerList();
 					towerList.add(tower);
 					Thread towerThread = new Thread(tower);
@@ -129,7 +130,7 @@ public class MapLabelListener extends MouseAdapter {
 			else if(select == TOWER4) {	// 타워4
 				if(control.getMoney() >= Tower4.COST) {
 					control.setMoney(control.getMoney() - Tower4.COST);
-					Tower4 tower = new Tower4(new Point(pos.getX()*Point.WIDTH, pos.getY()*Point.HEIGHT), map, mapLabel);
+					Tower4 tower = new Tower4(new Point(pos.getY()*Point.WIDTH, pos.getX()*Point.HEIGHT), map, mapLabel);
 					ArrayList<Tower> towerList = control.getTowerList();
 					towerList.add(tower);
 					Thread towerThread = new Thread(tower);
@@ -141,7 +142,7 @@ public class MapLabelListener extends MouseAdapter {
 			else if(select == TOWER5) {	// 타워5
 				if(control.getMoney() >= Tower5.COST) {
 					control.setMoney(control.getMoney() - Tower5.COST);
-					Tower5 tower = new Tower5(new Point(pos.getX()*Point.WIDTH, pos.getY()*Point.HEIGHT), map, mapLabel);
+					Tower5 tower = new Tower5(new Point(pos.getY()*Point.WIDTH, pos.getX()*Point.HEIGHT), map, mapLabel);
 					ArrayList<Tower> towerList = control.getTowerList();
 					towerList.add(tower);
 					Thread towerThread = new Thread(tower);
@@ -158,9 +159,13 @@ public class MapLabelListener extends MouseAdapter {
 			else if(pos.getX() >= prevTower.getMapPosition().getX() - 1 && pos.getX() <= prevTower.getMapPosition().getX() + 1) {	// 유효한 범위 내를 클릭 했을 경우
 				if(pos.getY() >= prevTower.getMapPosition().getY() - 1 && pos.getY() <= prevTower.getMapPosition().getY() + 1) {
 					prevTower.setAttackPosition(new Point(pos.getX(), pos.getY()));
+					System.out.println("(" + pos.getX() + ", " + pos.getY() + ")");
 				}
 			}
 			select = NONE;
 		}
+		
+		TowerListener.selectFlag = false;
 	}
+	
 }

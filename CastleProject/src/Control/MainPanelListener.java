@@ -1,19 +1,22 @@
 package Control;
 import java.awt.event.*;
 import javax.swing.*;
-import View.UIManager;
+import java.awt.*;
 
+import View.ViewManager;
 
+// 싱글버튼 리스너
 class SingleLabelActionListener extends MouseAdapter {
-	private UIManager ui;
+	private ViewManager ui;
 	private Control_Manager control;
 	final private ImageIcon entered = new ImageIcon("Image/Label/pressed_button.png");
 	final private ImageIcon exited = new ImageIcon("Image/Label/button.png");
 	private JLabel singleLabel;
-	public SingleLabelActionListener(UIManager v, Control_Manager c) {
-		ui = v;
+	public SingleLabelActionListener() {
+		control = Control_Manager.getInstance(null);
+		ui = control.getUI();
 		singleLabel = ui.getMainPanel().getSingleLabel();
-		control = c;
+		
 	}
 	public void mouseEntered(MouseEvent e) {
 		singleLabel.setIcon(entered);
@@ -23,25 +26,23 @@ class SingleLabelActionListener extends MouseAdapter {
 		singleLabel.setIcon(exited);
 	}
 	public void mouseClicked(MouseEvent e) {
-		MainPanel main = ui.getMainPanel();
-		SinglePanel single = ui.getSinglePanel();
+		Container c = ui.getContentPane();
+		ui.getCard().show(c, "single");
 		
-		main.setVisible(false);
-		single.setVisible(true);
 		control.setGameFlag(Control_Manager.STAGE1);
 	}
 }
-
+// 멀티버튼 리스너
 class MultiLabelActionListener extends MouseAdapter {
-	private UIManager ui;
+	private ViewManager ui;
 	private Control_Manager control;
 	final private ImageIcon entered = new ImageIcon("Image/Label/pressed_button.png");
 	final private ImageIcon exited = new ImageIcon("Image/Label/button.png");
 	private JLabel multiLabel;
-	public MultiLabelActionListener(UIManager v, Control_Manager c) {
-		ui = v;
+	public MultiLabelActionListener() {
+		control = Control_Manager.getInstance(null);
+		ui = control.getUI();
 		multiLabel = ui.getMainPanel().getMultiLabel();
-		control = c;
 	}
 	public void mouseEntered(MouseEvent e) {
 		multiLabel.setIcon(entered);
@@ -51,25 +52,23 @@ class MultiLabelActionListener extends MouseAdapter {
 		multiLabel.setIcon(exited);
 	}
 	public void mouseClicked(MouseEvent e) {
-		MainPanel main = ui.getMainPanel();
-		MultiPanel multi = ui.getMultiPanel();
+		Container c = ui.getContentPane();
+		ui.getCard().show(c, "multi");
 		
-		main.setVisible(false);
-		multi.setVisible(true);	// 싱글 게임 시작
-		control.setGameFlag(Control_Manager.STAGE1);
+		control.setGameFlag(Control_Manager.MULTI);
 	}
 }
-
+// 나가기 버튼 리스너
 class ExitLabelActionListener extends MouseAdapter {
-	private UIManager ui;
+	private ViewManager ui;
 	private Control_Manager control;
 	final private ImageIcon entered = new ImageIcon("Image/Label/pressed_button.png");
 	final private ImageIcon exited = new ImageIcon("Image/Label/button.png");
 	private JLabel exitLabel;
-	public ExitLabelActionListener(UIManager v, Control_Manager c) {
-		ui = v;
-		exitLabel = ui.getMainPanel().getMultiLabel();
-		control = c;
+	public ExitLabelActionListener() {
+		control = Control_Manager.getInstance(null);
+		ui = control.getUI();
+		exitLabel = ui.getMainPanel().getExitLabel();
 	}
 	public void mouseEntered(MouseEvent e) {
 		exitLabel.setIcon(entered);

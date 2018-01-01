@@ -27,7 +27,7 @@ class SingleLabelActionListener extends MouseAdapter {
 	}
 	public void mouseClicked(MouseEvent e) {
 		Container c = ui.getContentPane();
-		((CardLayout)ui.getLayout()).show(c, "single");
+		ui.getCard().show(c, "single");
 		
 		control.setGameFlag(Control_Manager.STAGE1);
 	}
@@ -53,9 +53,7 @@ class MultiLabelActionListener extends MouseAdapter {
 	}
 	public void mouseClicked(MouseEvent e) {
 		Container c = ui.getContentPane();
-		((CardLayout)ui.getLayout()).show(c, "multi");
-		
-		control.setGameFlag(Control_Manager.STAGE1);
+		ui.getCard().show(c, "multi");
 		
 		control.setGameFlag(Control_Manager.MULTI);
 	}
@@ -70,7 +68,7 @@ class ExitLabelActionListener extends MouseAdapter {
 	public ExitLabelActionListener() {
 		control = Control_Manager.getInstance(null);
 		ui = control.getUI();
-		exitLabel = ui.getMainPanel().getMultiLabel();
+		exitLabel = ui.getMainPanel().getExitLabel();
 	}
 	public void mouseEntered(MouseEvent e) {
 		exitLabel.setIcon(entered);

@@ -22,14 +22,16 @@ public class Point {
 	
 	// Map Label 상의 위치정보를 이용하여 2차원 배열 map_array상에서 어디에 위치하는지 처리하는 함수, center좌표를 기준으로 계산해야된다.
 	public Point getMapPosition() {
-		if(x > 640 || x < 0 || y > 640 || y < 0)		// (x, y)가 지정된 범위를 벗어난다면
-			return null;
+//		if(x > 640 || x < 0 || y > 640 || y < 0)		// (x, y)가 지정된 범위를 벗어난다면
+//			return null;
 		
-		int temp_x = x/WIDTH;
-		int temp_y = y/HEIGHT;
+		int temp_y = x/WIDTH;
+		int temp_x = y/HEIGHT;
 		
 		return new Point(temp_x, temp_y);
 	}
+	
+	
 	public static boolean getEnterPerfectly(Point center, Point map_pos) {
 		Point temp = new Point(map_pos.getX(), map_pos.getY());
 		temp.setX(map_pos.getX()*WIDTH);

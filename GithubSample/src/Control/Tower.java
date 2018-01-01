@@ -41,7 +41,7 @@ public class Tower {
 	}
 	// 타워를 맵레이블에 추가하는 함수
 	public void construct() {
-		Point real = new Point(mapPos.getX()*Point.WIDTH, mapPos.getY()*Point.HEIGHT);
+		Point real = new Point(mapPos.getY()*Point.WIDTH, mapPos.getX()*Point.HEIGHT);
 		tower.setBounds(real.getX(), real.getY(), Point.WIDTH, Point.HEIGHT);
 		mapLabel.add(tower);
 		

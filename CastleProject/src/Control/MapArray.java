@@ -96,6 +96,8 @@ class Map {
 			}
 		}
 	}
+	
+	
 	public Area[][] getMap() {
 		return map;
 	}
@@ -123,33 +125,35 @@ class MapArray1 extends Map {
 		// 1단계 맵 설정
 		// 시작 지점 설정
 		map[0][0].setStart(true);
-		start.setX(0);
-		start.setY(0);
+		start = new Point(0, 0);
 		map[0][1].setEnd(true);
-		end.setX(0);
-		end.setY(1);
+		end = new Point(0, 1);
 		
 		// 길 이미지 삽입, 길 표시
 		for(int i=0; i<SIZE; i++) {
 			if(i==0 || i == SIZE-1) {
 				for(int j=0; j<SIZE; j++) {
 					map[i][j].setRoad(true);
-					setRoadImg(i, j);
+					//setRoadImg(i, j);
 				}
 			}
 			else {
 				map[i][0].setRoad(true);
-				setRoadImg(i, 0);
+				//setRoadImg(i, 0);
 				map[i][SIZE-1].setRoad(true);
-				setRoadImg(i, SIZE-1);
+				//setRoadImg(i, SIZE-1);
 			}
 		}
 		
 		// 몬스터 경로 설정
-		map[0][0].setDirection(Monster.DOWN);
-		map[SIZE-1][0].setDirection(Monster.RIGHT);
-		map[SIZE-1][SIZE-1].setDirection(Monster.UP);
-		map[0][SIZE-1].setDirection(Monster.LEFT);
+		for(int i=0; i<SIZE; i++) {
+			map[i][0].setDirection(Monster.DOWN);
+			map[i][SIZE-1].setDirection(Monster.UP);
+		}
+		for(int i=1; i<SIZE; i++) {
+			map[0][i].setDirection(Monster.LEFT);
+			map[SIZE-1][SIZE-1-i].setDirection(Monster.RIGHT);
+		}
 	}
 }
 
