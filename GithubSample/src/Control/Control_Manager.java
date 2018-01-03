@@ -82,14 +82,13 @@ public class Control_Manager {
 	}
 	
 	public void addListener() {
+		// 메인 패널
 		ui.getMainPanel().getSingleLabel().addMouseListener(new SingleLabelActionListener());
 		ui.getMainPanel().getMultiLabel().addMouseListener(new MultiLabelActionListener());
 		ui.getMainPanel().getExitLabel().addMouseListener(new ExitLabelActionListener());
-		// 싱글
+		// 싱글 패널
 		ui.getSinglePanel().getMapLabel().addMouseListener(new MapLabelListener());
 		ui.getSinglePanel().getMapLabel().addMouseMotionListener(new MapLabelListener());
-		
-		// 싱글 버튼
 		ui.getSinglePanel().getTower0Btn().addActionListener(new Tower0BtnListener());
 		ui.getSinglePanel().getTower1Btn().addActionListener(new Tower1BtnListener());
 		ui.getSinglePanel().getTower2Btn().addActionListener(new Tower2BtnListener());
@@ -97,7 +96,27 @@ public class Control_Manager {
 		ui.getSinglePanel().getTower4Btn().addActionListener(new Tower4BtnListener());
 		ui.getSinglePanel().getTower5Btn().addActionListener(new Tower5BtnListener());
 		
-		// 멀티
+		// 호스트 클라이언스 선택 패널
+		ui.getSelectPanel().getHostLabel().addMouseListener(new SelectHostBtnMouseListener());
+		ui.getSelectPanel().getClientLabel().addMouseListener(new SelectClientBtnMouseListener());
+		ui.getSelectPanel().getCancelLabel().addMouseListener(new SelectCancelBtnMouseListener());
+		
+		// 호스트 패널
+		ui.getHostPanel().getHostLabel().addMouseListener(new HostHostBtnMouseListener());
+		ui.getHostPanel().getCancelLabel().addMouseListener(new HostCancelBtnMouseListener());
+		
+		// 클라이언트 패널
+		ui.getClientPanel().getJoinLabel().addMouseListener(new ClientJoinBtnMouseListener());
+		ui.getClientPanel().getCancelLabel().addMouseListener(new ClientCancelBtnMouseListener());
+		
+		// 매칭 패널
+		ui.getMatchPanel().getCancelLabel().addMouseListener(new MatchCancelBtnMouseListener());
+		
+		// 싱글 플레이 결과 패널
+		
+		// 멀티 패널
+		
+		// 순위 패널
 		
 	}
 	

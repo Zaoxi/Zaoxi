@@ -67,4 +67,16 @@ public class ViewManager extends JFrame{
 	public HostClientSelectPanel getSelectPanel() {
 		return selectPanel;
 	}
+	public HostPanel getHostPanel() {
+		return hostPanel;
+	}
+	public ClientPanel getClientPanel() {
+		return clientPanel;
+	}
+	public MatchPanel getMatchPanel() {
+		return matchPanel;
+	}
+	public SingleResultPanel getSingleResultPanel() {
+		return singleResultPanel;
+	}
 }

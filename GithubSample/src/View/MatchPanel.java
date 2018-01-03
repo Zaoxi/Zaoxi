@@ -23,21 +23,25 @@ public class MatchPanel extends JPanel{
 		JLabel cancel = new JLabel("Cancel");
 		
 		// 컴포넌트 조정
-		background.setLayout(new GridLayout(2, 1, 100, 0));
+		background.setLayout(new BorderLayout());
 		matchLabel.setFont(new Font("Name", Font.BOLD, 100));
 		matchLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		cancel.setFont(new Font("Name", Font.BOLD, 30));
 		cancel.setHorizontalAlignment(SwingConstants.CENTER);
 		
 		cancelBtn.setLayout(new CardLayout());
+		cancelBtn.setSize(MainPanel.BTN_WIDTH, MainPanel.BTN_HEIGHT);
 		cancelBtn.add(cancel);
-		background.add(matchLabel);
-		background.add(cancelBtn);
+		background.add(matchLabel, BorderLayout.CENTER);
+		background.add(cancelBtn, BorderLayout.SOUTH);
 		add(background);
 		
 		setVisible(true);
 	}
 	
+	public JLabel getMatchiLabel() {
+		return matchLabel;
+	}
 	public JLabel getCancelLabel() {
 		return cancelBtn;
 	}

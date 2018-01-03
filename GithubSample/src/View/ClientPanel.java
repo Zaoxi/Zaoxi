@@ -77,7 +77,7 @@ public class ClientPanel extends JPanel{
 	public JTextField getPortField() {
 		return portField;
 	}
-	public JLabel getJointLabel() {
+	public JLabel getJoinLabel() {
 		return joinBtn;
 	}
 	public JLabel getCancelLabel() {
