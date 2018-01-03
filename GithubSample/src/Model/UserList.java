@@ -1,6 +1,7 @@
 package Model;
+import java.util.*;
 
-public class UserList {
+public class UserList implements Comparable<UserList> {
 	private String userName;
 	private int userScore;
 	
@@ -21,5 +22,14 @@ public class UserList {
 	}
 	public int getScore() {
 		return userScore;
+	}
+
+	@Override
+	public int compareTo(UserList user) {
+		if(userScore > user.getScore())
+			return 1;
+		else if(userScore < user.getScore())
+			return -1;
+		return 0;
 	}
 }

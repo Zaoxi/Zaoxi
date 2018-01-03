@@ -5,10 +5,10 @@
 
 package Control;
 
-import java.awt.event.*;
 import javax.swing.*;
 import java.util.*;
-import View.ViewManager;
+import View.*;
+import Model.*;
 
 public class Control_Manager {
 	private static Control_Manager instance = null;
@@ -86,6 +86,7 @@ public class Control_Manager {
 		ui.getMainPanel().getSingleLabel().addMouseListener(new SingleLabelActionListener());
 		ui.getMainPanel().getMultiLabel().addMouseListener(new MultiLabelActionListener());
 		ui.getMainPanel().getExitLabel().addMouseListener(new ExitLabelActionListener());
+		ui.getMainPanel().getRankLabel().addMouseListener(new RankLabelActionListener());
 		// 싱글 패널
 		ui.getSinglePanel().getMapLabel().addMouseListener(new MapLabelListener());
 		ui.getSinglePanel().getMapLabel().addMouseMotionListener(new MapLabelListener());
@@ -119,7 +120,7 @@ public class Control_Manager {
 		// 멀티 패널
 		
 		// 순위 패널
-		
+		ui.getRankPanel().getMenuLabel().addMouseListener(new RankPanelMenuMouseListener());
 	}
 	
 	public static Control_Manager getInstance(ViewManager v) {
@@ -205,6 +206,9 @@ public class Control_Manager {
 						MapLabelListener.select = MapLabelListener.NONE;
 						ui.getSinglePanel().getMapLabel().setIcon(MAP_SINGLE);
 						
+						// 몬스터 삭제를 위한 점수 임시 변수에 저장
+						int tempScore = getScore();
+						
 						while(!monsterList.isEmpty()) {
 							monsterList.get(monsterList.size() - 1).setMonsterFalse();
 							monsterList.remove(monsterList.size() - 1);
@@ -213,6 +217,8 @@ public class Control_Manager {
 							towerList.get(towerList.size() - 1).setTowerFalse();
 							towerList.remove(towerList.size() - 1);
 						}
+						
+						setScore(tempScore);
 						
 						if(STAGE1 <= gameFlag && gameFlag <= STAGE10) {
 							gameFlag = STAGE2;
@@ -238,6 +244,9 @@ public class Control_Manager {
 						MapLabelListener.select = MapLabelListener.NONE;
 						ui.getSinglePanel().getMapLabel().setIcon(MAP_SINGLE);
 						
+						// 몬스터 삭제를 위한 점수 임시 변수에 저장
+						int tempScore = getScore();
+						
 						while(!monsterList.isEmpty()) {
 							monsterList.get(monsterList.size() - 1).setMonsterFalse();
 							monsterList.remove(monsterList.size() - 1);
@@ -246,6 +255,7 @@ public class Control_Manager {
 							towerList.get(towerList.size() - 1).setTowerFalse();
 							towerList.remove(towerList.size() - 1);
 						}
+						setScore(tempScore);
 						
 						if(STAGE1 <= gameFlag && gameFlag <= STAGE10) {
 							// 게임 끝
@@ -274,6 +284,9 @@ public class Control_Manager {
 						MapLabelListener.select = MapLabelListener.NONE;
 						ui.getSinglePanel().getMapLabel().setIcon(MAP_SINGLE);
 						
+						// 몬스터 삭제를 위한 점수 임시 변수에 저장
+						int tempScore = getScore();
+						
 						while(!monsterList.isEmpty()) {
 							monsterList.get(monsterList.size() - 1).setMonsterFalse();
 							monsterList.remove(monsterList.size() - 1);
@@ -282,6 +295,8 @@ public class Control_Manager {
 							towerList.get(towerList.size() - 1).setTowerFalse();
 							towerList.remove(towerList.size() - 1);
 						}
+						
+						setScore(tempScore);
 						
 						if(STAGE1 <= gameFlag && gameFlag <= STAGE10) {
 							// 게임 끝
@@ -311,6 +326,9 @@ public class Control_Manager {
 						MapLabelListener.select = MapLabelListener.NONE;
 						ui.getSinglePanel().getMapLabel().setIcon(MAP_SINGLE);
 						
+						// 몬스터 삭제를 위한 점수 임시 변수에 저장
+						int tempScore = getScore();
+						
 						while(!monsterList.isEmpty()) {
 							monsterList.get(monsterList.size() - 1).setMonsterFalse();
 							monsterList.remove(monsterList.size() - 1);
@@ -319,6 +337,8 @@ public class Control_Manager {
 							towerList.get(towerList.size() - 1).setTowerFalse();
 							towerList.remove(towerList.size() - 1);
 						}
+						
+						setScore(tempScore);
 						
 						if(STAGE1 <= gameFlag && gameFlag <= STAGE10) {
 							// 게임 끝
@@ -348,6 +368,9 @@ public class Control_Manager {
 						MapLabelListener.select = MapLabelListener.NONE;
 						ui.getSinglePanel().getMapLabel().setIcon(MAP_SINGLE);
 						
+						// 몬스터 삭제를 위한 점수 임시 변수에 저장
+						int tempScore = getScore();
+						
 						while(!monsterList.isEmpty()) {
 							monsterList.get(monsterList.size() - 1).setMonsterFalse();
 							monsterList.remove(monsterList.size() - 1);
@@ -356,6 +379,8 @@ public class Control_Manager {
 							towerList.get(towerList.size() - 1).setTowerFalse();
 							towerList.remove(towerList.size() - 1);
 						}
+						
+						setScore(tempScore);
 						
 						if(STAGE1 <= gameFlag && gameFlag <= STAGE10) {
 							// 게임 끝
@@ -384,6 +409,9 @@ public class Control_Manager {
 						MapLabelListener.select = MapLabelListener.NONE;
 						ui.getSinglePanel().getMapLabel().setIcon(MAP_SINGLE);
 						
+						// 몬스터 삭제를 위한 점수 임시 변수에 저장
+						int tempScore = getScore();
+						
 						while(!monsterList.isEmpty()) {
 							monsterList.get(monsterList.size() - 1).setMonsterFalse();
 							monsterList.remove(monsterList.size() - 1);
@@ -392,6 +420,8 @@ public class Control_Manager {
 							towerList.get(towerList.size() - 1).setTowerFalse();
 							towerList.remove(towerList.size() - 1);
 						}
+						
+						setScore(tempScore);
 						
 						if(STAGE1 <= gameFlag && gameFlag <= STAGE10) {
 							// 게임 끝
@@ -421,6 +451,9 @@ public class Control_Manager {
 						MapLabelListener.select = MapLabelListener.NONE;
 						ui.getSinglePanel().getMapLabel().setIcon(MAP_SINGLE);
 						
+						// 몬스터 삭제를 위한 점수 임시 변수에 저장
+						int tempScore = getScore();
+						
 						while(!monsterList.isEmpty()) {
 							monsterList.get(monsterList.size() - 1).setMonsterFalse();
 							monsterList.remove(monsterList.size() - 1);
@@ -429,6 +462,8 @@ public class Control_Manager {
 							towerList.get(towerList.size() - 1).setTowerFalse();
 							towerList.remove(towerList.size() - 1);
 						}
+						
+						setScore(tempScore);
 						
 						if(STAGE1 <= gameFlag && gameFlag <= STAGE10) {
 							// 게임 끝
@@ -458,6 +493,9 @@ public class Control_Manager {
 						MapLabelListener.select = MapLabelListener.NONE;
 						ui.getSinglePanel().getMapLabel().setIcon(MAP_SINGLE);
 						
+						// 몬스터 삭제를 위한 점수 임시 변수에 저장
+						int tempScore = getScore();
+						
 						while(!monsterList.isEmpty()) {
 							monsterList.get(monsterList.size() - 1).setMonsterFalse();
 							monsterList.remove(monsterList.size() - 1);
@@ -466,6 +504,8 @@ public class Control_Manager {
 							towerList.get(towerList.size() - 1).setTowerFalse();
 							towerList.remove(towerList.size() - 1);
 						}
+						
+						setScore(tempScore);
 						
 						if(STAGE1 <= gameFlag && gameFlag <= STAGE10) {
 							// 게임 끝
@@ -495,6 +535,9 @@ public class Control_Manager {
 						MapLabelListener.select = MapLabelListener.NONE;
 						ui.getSinglePanel().getMapLabel().setIcon(MAP_SINGLE);
 						
+						// 몬스터 삭제를 위한 점수 임시 변수에 저장
+						int tempScore = getScore();
+						
 						while(!monsterList.isEmpty()) {
 							monsterList.get(monsterList.size() - 1).setMonsterFalse();
 							monsterList.remove(monsterList.size() - 1);
@@ -503,6 +546,8 @@ public class Control_Manager {
 							towerList.get(towerList.size() - 1).setTowerFalse();
 							towerList.remove(towerList.size() - 1);
 						}
+						
+						setScore(tempScore);
 						
 						if(STAGE1 <= gameFlag && gameFlag <= STAGE10) {
 							// 게임 끝
@@ -532,6 +577,9 @@ public class Control_Manager {
 						MapLabelListener.select = MapLabelListener.NONE;
 						ui.getSinglePanel().getMapLabel().setIcon(MAP_SINGLE);
 						
+						// 몬스터 삭제를 위한 점수 임시 변수에 저장
+						int tempScore = getScore();
+						
 						while(!monsterList.isEmpty()) {
 							monsterList.get(monsterList.size() - 1).setMonsterFalse();
 							monsterList.remove(monsterList.size() - 1);
@@ -540,6 +588,8 @@ public class Control_Manager {
 							towerList.get(towerList.size() - 1).setTowerFalse();
 							towerList.remove(towerList.size() - 1);
 						}
+						
+						setScore(tempScore);
 						
 						if(STAGE1 <= gameFlag && gameFlag <= STAGE10) {
 							// 게임 끝
@@ -550,17 +600,23 @@ public class Control_Manager {
 					
 					// Single_lose
 					if(gameFlag == SINGLE_LOSE && stateFlag) {
-						
-						//ui.getSinglePanel().getResultLabel().setVisible(true);
-						
-						// 테스트용
 						gameFlag = MAIN;
 						ui.getCard().show(ui.getContentPane(), "single_result");
+						// DB로 부터 유저 리스트 갱신
+						RankManager rankManager = new RankManager();
+						ArrayList<UserList> userList = rankManager.getUserList();
+						rankManager.closeDB();
+						// 유저 리스트 점수 기준으로 오름차순 정렬
+						Collections.sort(userList);
 						
-						/*
-						 * 점수를 기반으로 DB로부터 추출한 유저 리스트를 대상으로 
-						 * 몇등인지 계산하는 메소드를 호출하는 부분
-						 */
+						// 정렬한 리스트를 대상으로 현재 점수의 등수를 계산
+						int rank = 1;
+						
+						while(!userList.isEmpty() && rank <= userList.size() && userList.get(rank - 1).getScore() > getScore()) {
+							rank++;
+						}
+						// 싱글 결과 패널에 순위 출력
+						ui.getSingleResultPanel().getRankLabel().setText(rank + "등");
 					}
 					
 					// Multi

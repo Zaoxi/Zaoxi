@@ -12,6 +12,7 @@ public class ViewManager extends JFrame{
 	private ClientPanel clientPanel;
 	private MatchPanel matchPanel;
 	private SingleResultPanel singleResultPanel;
+	private RankPanel rankPanel;
 	private CardLayout card;
 	final public static int WIDTH = 1000;
 	final public static int HEIGHT = 640;
@@ -36,6 +37,7 @@ public class ViewManager extends JFrame{
 		clientPanel = new ClientPanel();
 		matchPanel = new MatchPanel();
 		singleResultPanel = new SingleResultPanel();
+		rankPanel = new RankPanel();
 		
 		c.add("main", mainPanel);
 		c.add("single", singlePanel);
@@ -45,6 +47,7 @@ public class ViewManager extends JFrame{
 		c.add("client", clientPanel);
 		c.add("match", matchPanel);
 		c.add("single_result", singleResultPanel);
+		c.add("rank", rankPanel);
 		
 		card.show(c, "main");
 		
@@ -78,5 +81,8 @@ public class ViewManager extends JFrame{
 	}
 	public SingleResultPanel getSingleResultPanel() {
 		return singleResultPanel;
+	}
+	public RankPanel getRankPanel() {
+		return rankPanel;
 	}
 }

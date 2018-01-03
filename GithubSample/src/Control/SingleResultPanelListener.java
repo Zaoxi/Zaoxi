@@ -1,10 +1,11 @@
 package Control;
 
 import javax.swing.*;
-
-import View.ViewManager;
-
 import java.awt.event.*;
+import java.sql.SQLException;
+
+import View.*;
+import Model.*;
 
 class SingleResultRegistBtnMouseListener extends MouseAdapter {
 	private Control_Manager control;
@@ -31,11 +32,28 @@ class SingleResultRegistBtnMouseListener extends MouseAdapter {
 	
 	// 패널 전환 이벤트
 	public void mouseClicked(MouseEvent e) {
-		ui.getCard().show(ui.getContentPane(), "main");
+		JTextField nameField = ui.getSingleResultPanel().getNameField();
 		
+		if(nameField.getText().equals("")) {
+			nameField.setText("User" + (int)(Math.random()*10000));
+			return;
+		}
+		
+		// DB 연결
+		RankManager rankManager = new RankManager();
+		try {
+			rankManager.registUser(nameField.getText(), control.getScore());
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+			new ErrorDialog("DB Connection Error!");
+			return;
+		}
+		rankManager.closeDB();
 		/*
 		 * DB 관련 추가 코딩 필요한 부분
 		 */
+		ui.getCard().show(ui.getContentPane(), "main");
 	}
 }
 
