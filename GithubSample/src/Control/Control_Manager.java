@@ -113,6 +113,8 @@ public class Control_Manager {
 		ui.getMatchPanel().getCancelLabel().addMouseListener(new MatchCancelBtnMouseListener());
 		
 		// 싱글 플레이 결과 패널
+		ui.getSingleResultPanel().getRegistLabel().addMouseListener(new SingleResultRegistBtnMouseListener());
+		ui.getSingleResultPanel().getCancelLabel().addMouseListener(new SingleResultCancelBtnMouseListener());
 		
 		// 멀티 패널
 		
@@ -152,6 +154,7 @@ public class Control_Manager {
 	public void setScore(int _score) {
 		score = _score;
 		ui.getSinglePanel().getScoreField().setText(""+score);
+		ui.getSingleResultPanel().getScoreLabel().setText("" + score);
 	}
 	public void setMoney(int _money) {
 		money = _money;
@@ -553,6 +556,11 @@ public class Control_Manager {
 						// 테스트용
 						gameFlag = MAIN;
 						ui.getCard().show(ui.getContentPane(), "single_result");
+						
+						/*
+						 * 점수를 기반으로 DB로부터 추출한 유저 리스트를 대상으로 
+						 * 몇등인지 계산하는 메소드를 호출하는 부분
+						 */
 					}
 					
 					// Multi
