@@ -29,6 +29,7 @@ public class SinglePanel extends JPanel {
 	public SinglePanel() {
 		setSize(1000, 640);
 		setLayout(new BorderLayout());
+		setBackground(Color.GRAY);
 		
 		mapLabel = new JLabel(mapImg);
 		tower0 = new JButton(tower0Img);
@@ -38,16 +39,23 @@ public class SinglePanel extends JPanel {
 		tower4 = new JButton(tower4Img);
 		tower5 = new JButton(tower5Img);
 		scoreLabel = new JLabel("Score: ");
-		scoreLabel.setFont(new Font("Score: ", Font.BOLD, 20));
+		scoreLabel.setFont(new Font("Score: ", Font.BOLD, 30));
+		scoreLabel.setForeground(Color.LIGHT_GRAY);
 		moneyLabel = new JLabel("Money: ");
-		moneyLabel.setFont(new Font("Money: ", Font.BOLD, 20));
+		moneyLabel.setFont(new Font("Money: ", Font.BOLD, 30));
+		moneyLabel.setForeground(Color.LIGHT_GRAY);
 		scoreField = new JTextField(5);
 		scoreField.setEditable(false);
+		scoreField.setFont(new Font("", Font.BOLD, 30));
+		scoreField.setBackground(Color.LIGHT_GRAY);
 		moneyField = new JTextField(5);
 		moneyField.setEditable(false);
+		moneyField.setFont(new Font("", Font.BOLD, 30));
+		moneyField.setBackground(Color.LIGHT_GRAY);
 		towerPanel = new JPanel();
 		towerPanel.setSize(360, 640);
 		towerPanel.setLayout(new GridLayout(5, 2, 10, 10));
+		towerPanel.setBackground(Color.GRAY);
 		mapLabel.setLayout(null);
 		
 		tower0.setText("100");
@@ -63,6 +71,14 @@ public class SinglePanel extends JPanel {
 		tower3.setFont(new Font("400", Font.ITALIC, 20));
 		tower4.setFont(new Font("500", Font.ITALIC, 20));
 		tower5.setFont(new Font("600", Font.ITALIC, 20));
+		
+		tower0.setBackground(Color.LIGHT_GRAY);
+		tower1.setBackground(Color.LIGHT_GRAY);
+		tower2.setBackground(Color.LIGHT_GRAY);
+		tower3.setBackground(Color.LIGHT_GRAY);
+		tower4.setBackground(Color.LIGHT_GRAY);
+		tower5.setBackground(Color.LIGHT_GRAY);
+		
 		
 		towerPanel.add(scoreLabel);
 		towerPanel.add(scoreField);
