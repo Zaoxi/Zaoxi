@@ -1,3 +1,8 @@
+// This game was produced by Ahn & Joe Team.
+// Tower Defense 0.5 Beta.
+// This project is for everyone.
+// When you use this code, you have to evidence the source.
+
 package Control;
 
 import java.awt.event.*;
@@ -7,6 +12,7 @@ import View.ViewManager;
 
 public class Control_Manager {
 	private static Control_Manager instance = null;
+	final private ImageIcon MAP_SINGLE = new ImageIcon("Image/Map/map_background.png");
 	
 	private ViewManager ui;
 	// 맵을 저장하는 배열
@@ -40,11 +46,10 @@ public class Control_Manager {
 	final public static int STAGE8 = 8;
 	final public static int STAGE9 = 9;
 	final public static int STAGE10 = 10;
-	final public static int SINGLE_WIN = 11;
-	final public static int SINGLE_LOSE = 12;
-	final public static int MULTI = 13;
-	final public static int MULTI_WIN = 14;
-	final public static int MULTI_LOSE = 15;
+	final public static int SINGLE_LOSE = 11;
+	final public static int MULTI = 12;
+	final public static int MULTI_WIN = 13;
+	final public static int MULTI_LOSE = 14;
 	
 	final public static int SUM_STAGE = 10;
 	
@@ -176,6 +181,7 @@ public class Control_Manager {
 						ui.getSinglePanel().getMapLabel().removeAll();
 						ui.getSinglePanel().getMapLabel().addMouseMotionListener(new MapLabelListener());
 						MapLabelListener.select = MapLabelListener.NONE;
+						ui.getSinglePanel().getMapLabel().setIcon(MAP_SINGLE);
 						
 						while(!monsterList.isEmpty()) {
 							monsterList.get(monsterList.size() - 1).setMonsterFalse();
@@ -208,6 +214,7 @@ public class Control_Manager {
 						ui.getSinglePanel().getMapLabel().removeAll();
 						ui.getSinglePanel().getMapLabel().addMouseMotionListener(new MapLabelListener());
 						MapLabelListener.select = MapLabelListener.NONE;
+						ui.getSinglePanel().getMapLabel().setIcon(MAP_SINGLE);
 						
 						while(!monsterList.isEmpty()) {
 							monsterList.get(monsterList.size() - 1).setMonsterFalse();
@@ -243,6 +250,7 @@ public class Control_Manager {
 						ui.getSinglePanel().getMapLabel().removeAll();
 						ui.getSinglePanel().getMapLabel().addMouseMotionListener(new MapLabelListener());
 						MapLabelListener.select = MapLabelListener.NONE;
+						ui.getSinglePanel().getMapLabel().setIcon(MAP_SINGLE);
 						
 						while(!monsterList.isEmpty()) {
 							monsterList.get(monsterList.size() - 1).setMonsterFalse();
@@ -279,6 +287,7 @@ public class Control_Manager {
 						ui.getSinglePanel().getMapLabel().removeAll();
 						ui.getSinglePanel().getMapLabel().addMouseMotionListener(new MapLabelListener());
 						MapLabelListener.select = MapLabelListener.NONE;
+						ui.getSinglePanel().getMapLabel().setIcon(MAP_SINGLE);
 						
 						while(!monsterList.isEmpty()) {
 							monsterList.get(monsterList.size() - 1).setMonsterFalse();
@@ -315,6 +324,7 @@ public class Control_Manager {
 						ui.getSinglePanel().getMapLabel().removeAll();
 						ui.getSinglePanel().getMapLabel().addMouseMotionListener(new MapLabelListener());
 						MapLabelListener.select = MapLabelListener.NONE;
+						ui.getSinglePanel().getMapLabel().setIcon(MAP_SINGLE);
 						
 						while(!monsterList.isEmpty()) {
 							monsterList.get(monsterList.size() - 1).setMonsterFalse();
@@ -350,6 +360,7 @@ public class Control_Manager {
 						ui.getSinglePanel().getMapLabel().removeAll();
 						ui.getSinglePanel().getMapLabel().addMouseMotionListener(new MapLabelListener());
 						MapLabelListener.select = MapLabelListener.NONE;
+						ui.getSinglePanel().getMapLabel().setIcon(MAP_SINGLE);
 						
 						while(!monsterList.isEmpty()) {
 							monsterList.get(monsterList.size() - 1).setMonsterFalse();
@@ -386,6 +397,7 @@ public class Control_Manager {
 						ui.getSinglePanel().getMapLabel().removeAll();
 						ui.getSinglePanel().getMapLabel().addMouseMotionListener(new MapLabelListener());
 						MapLabelListener.select = MapLabelListener.NONE;
+						ui.getSinglePanel().getMapLabel().setIcon(MAP_SINGLE);
 						
 						while(!monsterList.isEmpty()) {
 							monsterList.get(monsterList.size() - 1).setMonsterFalse();
@@ -422,6 +434,7 @@ public class Control_Manager {
 						ui.getSinglePanel().getMapLabel().removeAll();
 						ui.getSinglePanel().getMapLabel().addMouseMotionListener(new MapLabelListener());
 						MapLabelListener.select = MapLabelListener.NONE;
+						ui.getSinglePanel().getMapLabel().setIcon(MAP_SINGLE);
 						
 						while(!monsterList.isEmpty()) {
 							monsterList.get(monsterList.size() - 1).setMonsterFalse();
@@ -458,6 +471,7 @@ public class Control_Manager {
 						ui.getSinglePanel().getMapLabel().removeAll();
 						ui.getSinglePanel().getMapLabel().addMouseMotionListener(new MapLabelListener());
 						MapLabelListener.select = MapLabelListener.NONE;
+						ui.getSinglePanel().getMapLabel().setIcon(MAP_SINGLE);
 						
 						while(!monsterList.isEmpty()) {
 							monsterList.get(monsterList.size() - 1).setMonsterFalse();
@@ -494,6 +508,7 @@ public class Control_Manager {
 						ui.getSinglePanel().getMapLabel().removeAll();
 						ui.getSinglePanel().getMapLabel().addMouseMotionListener(new MapLabelListener());
 						MapLabelListener.select = MapLabelListener.NONE;
+						ui.getSinglePanel().getMapLabel().setIcon(MAP_SINGLE);
 						
 						while(!monsterList.isEmpty()) {
 							monsterList.get(monsterList.size() - 1).setMonsterFalse();
@@ -507,7 +522,7 @@ public class Control_Manager {
 						if(STAGE1 <= gameFlag && gameFlag <= STAGE10) {
 							// 게임 끝
 							
-							gameFlag = SINGLE_WIN;
+							gameFlag = SINGLE_LOSE;
 						}
 					}
 					
@@ -518,17 +533,7 @@ public class Control_Manager {
 						
 						// 테스트용
 						gameFlag = MAIN;
-						ui.getSinglePanel().setVisible(false);
-						ui.getMainPanel().setVisible(true);
-					}
-					// Single_win
-					if(gameFlag == SINGLE_WIN && stateFlag) {
-						
-						
-						// 테스트용
-						gameFlag = MAIN;
-						ui.getSinglePanel().setVisible(false);
-						ui.getMainPanel().setVisible(true);
+						ui.getCard().show(ui.getContentPane(), "single_result");
 					}
 					
 					// Multi

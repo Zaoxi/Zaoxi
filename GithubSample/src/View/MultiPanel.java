@@ -47,8 +47,11 @@ public class MultiPanel extends JPanel {
 	final ImageIcon monster8Img = new ImageIcon("Image/Monster/monster8_00.png");
 	final ImageIcon monster9Img = new ImageIcon("Image/Monster/monster9_00.png");
 	
+	final static int WIDTH = 1360;
+	final static int HEIGHT = 640;
+	
 	public MultiPanel() {
-		setSize(1360, 640);
+		setSize(WIDTH, HEIGHT);
 		setLayout(new BorderLayout());
 		
 		mapLabel = new JLabel(mapImg);

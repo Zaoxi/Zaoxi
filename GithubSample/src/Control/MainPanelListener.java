@@ -53,9 +53,7 @@ class MultiLabelActionListener extends MouseAdapter {
 	}
 	public void mouseClicked(MouseEvent e) {
 		Container c = ui.getContentPane();
-		ui.getCard().show(c, "multi");
-		
-		control.setGameFlag(Control_Manager.MULTI);
+		ui.getCard().show(c, "select");
 	}
 }
 // 나가기 버튼 리스너

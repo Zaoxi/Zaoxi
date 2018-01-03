@@ -6,8 +6,8 @@ public class MainPanel extends JPanel {
    final ImageIcon backImg = new ImageIcon("Image/Label/main_background.png");
    final ImageIcon btnImg = new ImageIcon("Image/Label/button.png");
    
-   final int BTN_WIDTH = 200;
-   final int BTN_HEIGHT = 70;
+   final public static int BTN_WIDTH = 200;
+   final public static int BTN_HEIGHT = 70;
    
    private JLabel backGround;
    private JLabel singleLabel;
