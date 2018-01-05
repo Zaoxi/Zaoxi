@@ -1,9 +1,5 @@
 package Control;
-import java.io.*;
 import java.util.ArrayList;
-
-import View.ViewManager;
-
 import javax.swing.*;
 
 
@@ -124,11 +120,7 @@ abstract class Monster {
 	}
 	// 몬스터가 도착 지점에 도달하였는지 판단
 	public boolean isArrivedEnd() {
-		Point end = map.getEndPosition();
-		// 도착지점에 들어갔다면 true
-		if(end.getX() == mapPos.getX() && end.getY() == mapPos.getY())
-			return true;
-		return false;
+		return map.getEndPosition(mapPos);
 	}
 	
 	public void setMonsterFalse() { } // 몬스터 스레드를 정지하는 함수

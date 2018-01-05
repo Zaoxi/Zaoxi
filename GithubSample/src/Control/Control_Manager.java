@@ -621,7 +621,13 @@ public class Control_Manager {
 					
 					// Multi
 					if(gameFlag == MULTI && stateFlag) {
-						setMoney(2000);
+						setMoney(500);
+						
+						/*
+						 * 멀티플레이 스테이지 생성
+						 */
+						
+						
 						
 						ui.getSinglePanel().getMapLabel().removeAll();
 						ui.getSinglePanel().getMapLabel().addMouseListener(new MapLabelListener());
@@ -635,6 +641,24 @@ public class Control_Manager {
 							towerList.remove(i);
 						}
 					}
+				}
+			}
+		}
+		
+		// MultiPlay Thread 
+		class MultiStage extends Thread {
+			private CheckGameState stateThread;
+			
+			public MultiStage(CheckGameState t) {
+				stateThread = t;
+			}
+			
+			public void run() {
+				synchronized(this) {
+					JLabel mapLabel = ui.getMultiPanel().getMapLabel();
+					map = new MapMulti(mapLabel);
+					
+					
 				}
 			}
 		}
