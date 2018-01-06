@@ -29,7 +29,7 @@ public class MultiPanel extends JPanel {
 	private JButton monster8;
 	private JButton monster9;
 	
-	final ImageIcon mapImg = new ImageIcon("Image/Map/map_background.png");
+	final ImageIcon mapImg = new ImageIcon("Image/Map/multi_background.png");
 	final ImageIcon tower0Img = new ImageIcon("Image/Tower/tower0.png");
 	final ImageIcon tower1Img = new ImageIcon("Image/Tower/tower1.png");
 	final ImageIcon tower2Img = new ImageIcon("Image/Tower/tower2.png");
@@ -90,16 +90,16 @@ public class MultiPanel extends JPanel {
 		tower3.setText("400");
 		tower4.setText("500");
 		tower5.setText("600");
-		monster0.setText("10");
-		monster1.setText("20");
-		monster2.setText("30");
-		monster3.setText("40");
-		monster4.setText("50");
-		monster5.setText("60");
-		monster6.setText("70");
-		monster7.setText("80");
-		monster8.setText("90");
-		monster9.setText("100");
+		monster0.setText("20");
+		monster1.setText("40");
+		monster2.setText("60");
+		monster3.setText("80");
+		monster4.setText("100");
+		monster5.setText("120");
+		monster6.setText("140");
+		monster7.setText("200");
+		monster8.setText("200");
+		monster9.setText("200");
 		
 		tower0.setFont(new Font("100", Font.ITALIC, 20));
 		tower1.setFont(new Font("200", Font.ITALIC, 20));
@@ -173,5 +173,34 @@ public class MultiPanel extends JPanel {
 	public JButton getTower5Btn() {
 		return tower5;
 	}
-	
+	public JButton getMonster0Btn() {
+		return monster0;
+	}
+	public JButton getMonster1Btn() {
+		return monster1;
+	}
+	public JButton getMonster2Btn() {
+		return monster2;
+	}
+	public JButton getMonster3Btn() {
+		return monster3;
+	}
+	public JButton getMonster4Btn() {
+		return monster4;
+	}
+	public JButton getMonster5Btn() {
+		return monster5;
+	}
+	public JButton getMonster6Btn() {
+		return monster6;
+	}
+	public JButton getMonster7Btn() {
+		return monster7;
+	}
+	public JButton getMonster8Btn() {
+		return monster8;
+	}
+	public JButton getMonster9Btn() {
+		return monster9;
+	}
 }

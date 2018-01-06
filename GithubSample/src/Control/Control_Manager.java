@@ -33,6 +33,10 @@ public class Control_Manager {
 	volatile private int score = 0;
 	// 자원
 	volatile private int money = 0;
+	// 호스트 클래스
+	private MultiHost host = null;
+	private ClientSocket client = null;
+	
 	
 	// 게임의 상태를 구분하는 상수
 	final public static int MAIN = 0;
@@ -74,6 +78,18 @@ public class Control_Manager {
 	}
 	public void setStateFlag(boolean set) {
 		stateFlag = set;
+	}
+	public void setHost(MultiHost _host) {
+		host = _host;
+	}
+	public MultiHost getHost() {
+		return host;
+	}
+	public void setClient(ClientSocket _client) {
+		client = _client;
+	}
+	public ClientSocket getClient() {
+		return client;
 	}
 	
 	public static void main(String[] args) {
@@ -118,6 +134,28 @@ public class Control_Manager {
 		ui.getSingleResultPanel().getCancelLabel().addMouseListener(new SingleResultCancelBtnMouseListener());
 		
 		// 멀티 패널
+		ui.getMultiPanel().getMapLabel().addMouseListener(new MultiMapLabelListener());
+		ui.getMultiPanel().getMapLabel().addMouseMotionListener(new MultiMapLabelListener());
+		ui.getMultiPanel().getTower0Btn().addActionListener(new MultiTower0BtnListener());
+		ui.getMultiPanel().getTower1Btn().addActionListener(new MultiTower1BtnListener());
+		ui.getMultiPanel().getTower2Btn().addActionListener(new MultiTower2BtnListener());
+		ui.getMultiPanel().getTower3Btn().addActionListener(new MultiTower3BtnListener());
+		ui.getMultiPanel().getTower4Btn().addActionListener(new MultiTower4BtnListener());
+		ui.getMultiPanel().getTower5Btn().addActionListener(new MultiTower5BtnListener());
+		ui.getMultiPanel().getMonster0Btn().addActionListener(new MultiMonster0BtnListener());
+		ui.getMultiPanel().getMonster1Btn().addActionListener(new MultiMonster1BtnListener());
+		ui.getMultiPanel().getMonster2Btn().addActionListener(new MultiMonster2BtnListener());
+		ui.getMultiPanel().getMonster3Btn().addActionListener(new MultiMonster3BtnListener());
+		ui.getMultiPanel().getMonster4Btn().addActionListener(new MultiMonster4BtnListener());
+		ui.getMultiPanel().getMonster5Btn().addActionListener(new MultiMonster5BtnListener());
+		ui.getMultiPanel().getMonster6Btn().addActionListener(new MultiMonster6BtnListener());
+		ui.getMultiPanel().getMonster7Btn().addActionListener(new MultiMonster7BtnListener());
+		ui.getMultiPanel().getMonster8Btn().addActionListener(new MultiMonster8BtnListener());
+		ui.getMultiPanel().getMonster9Btn().addActionListener(new MultiMonster9BtnListener());
+		
+		// 멀티 승리 패널
+		ui.getWinPanel().getMenuLabel().addMouseListener(new MultiWinMenuMouseListener());
+		ui.getLosePanel().getMenuLabel().addMouseListener(new MultiLoseMenuMouseListener());
 		
 		// 순위 패널
 		ui.getRankPanel().getMenuLabel().addMouseListener(new RankPanelMenuMouseListener());
@@ -156,10 +194,12 @@ public class Control_Manager {
 		score = _score;
 		ui.getSinglePanel().getScoreField().setText(""+score);
 		ui.getSingleResultPanel().getScoreLabel().setText("" + score);
+		ui.getMultiPanel().getScoreField().setText(""+score);
 	}
 	public void setMoney(int _money) {
 		money = _money;
 		ui.getSinglePanel().getMoneyField().setText("" + money);
+		ui.getMultiPanel().getMoneyField().setText("" + money);
 	}
 	
 	public ViewManager getUI() {
@@ -599,7 +639,7 @@ public class Control_Manager {
 					}
 					
 					// Single_lose
-					if(gameFlag == SINGLE_LOSE && stateFlag) {
+					if(gameFlag == SINGLE_LOSE && host == null && client == null && stateFlag) {
 						gameFlag = MAIN;
 						ui.getCard().show(ui.getContentPane(), "single_result");
 						// DB로 부터 유저 리스트 갱신
@@ -619,27 +659,78 @@ public class Control_Manager {
 						ui.getSingleResultPanel().getRankLabel().setText(rank + "등");
 					}
 					
+					if(gameFlag == SINGLE_LOSE && (host != null || client != null) && stateFlag) {
+						ServerWriter.getInstance(null).send(new GsonInfo(0, 0, GsonInfo.LOSE));
+						ui.setSize(ViewManager.WIDTH, ViewManager.HEIGHT + 40);
+						gameFlag = MULTI_LOSE;
+					}
+					
 					// Multi
 					if(gameFlag == MULTI && stateFlag) {
-						setMoney(500);
+						// 멀티플레이 시 ui의 사이즈를 1360x680으로 변환
+						ui.setSize(ViewManager.WIDTH + 360, ViewManager.HEIGHT + 40);
+						ui.getCard().show(ui.getContentPane(), "multi");
+						setMoney(500); setScore(0);
 						
-						/*
-						 * 멀티플레이 스테이지 생성
-						 */
+						MultiStage multiStage = new MultiStage(this);
+						multiStage.start();
 						
-						
-						
-						ui.getSinglePanel().getMapLabel().removeAll();
-						ui.getSinglePanel().getMapLabel().addMouseListener(new MapLabelListener());
-						ui.getSinglePanel().getMapLabel().addMouseListener(new MapLabelListener());
-						for(int i=0; i<monsterList.size(); i++) {
-							monsterList.get(i).setMonsterFalse();
-							monsterList.remove(i);
+						synchronized(multiStage) {
+							try {
+								multiStage.wait();
+							} catch (InterruptedException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
 						}
-						for(int i=0; i<towerList.size(); i++) {
-							towerList.get(i).setTowerFalse();
-							towerList.remove(i);
+						
+						ui.setSize(ViewManager.WIDTH, ViewManager.HEIGHT + 40);
+						ui.getMultiPanel().getMapLabel().removeAll();
+						ui.getMultiPanel().getMapLabel().addMouseMotionListener(new MultiMapLabelListener());
+						
+						int tempScore = getScore();
+						
+						while(!monsterList.isEmpty()) {
+							monsterList.get(monsterList.size() - 1).setMonsterFalse();
+							monsterList.remove(monsterList.size() - 1);
 						}
+						while(!towerList.isEmpty()) {
+							towerList.get(towerList.size() - 1).setTowerFalse();
+							towerList.remove(towerList.size() - 1);
+						}
+						
+						setScore(tempScore);
+					}
+					
+					if(gameFlag == MULTI_LOSE && stateFlag) {
+						ui.setSize(ViewManager.WIDTH, ViewManager.HEIGHT + 40);
+						ui.getCard().show(ui.getContentPane(), "multi_lose");
+						
+						if(host != null) {
+							host.closeHost();
+							host = null;
+						}
+						else if(client != null) {
+							client.closeClient();
+							client = null;
+						}
+						
+						gameFlag = MAIN;
+					}
+					if(gameFlag == MULTI_WIN && stateFlag) {
+						ui.setSize(ViewManager.WIDTH, ViewManager.HEIGHT + 40);
+						ui.getCard().show(ui.getContentPane(), "multi_win");
+						
+						if(host != null) {
+							host.closeHost();
+							host = null;
+						}
+						else if(client != null) {
+							client.closeClient();
+							client = null;
+						}
+						
+						gameFlag = MAIN;
 					}
 				}
 			}
@@ -657,8 +748,152 @@ public class Control_Manager {
 				synchronized(this) {
 					JLabel mapLabel = ui.getMultiPanel().getMapLabel();
 					map = new MapMulti(mapLabel);
+					Point[] startPos = new Point[4];
+					startPos[0] = new Point(1, 0);
+					startPos[1] = new Point(3, 0);
+					startPos[2] = new Point(4, 0);
+					startPos[3] = new Point(6, 0);
+					// 행렬 좌표를 실제 좌표로 전환
+					for(int i=0; i<startPos.length; i++) {
+						int x = startPos[i].getX();
+						int y = startPos[i].getY();
+						startPos[i].setX(y*Point.WIDTH);
+						startPos[i].setY(x*Point.HEIGHT);
+					}
+					int monsterStage = 0;
+					int countMonster = 0;
+					int sumCount = 0;
+					Thread monsterThread;
+					try {
+						Thread.sleep(3000);
+						while(gameFlag == MULTI && stateFlag) {
+							sumCount++;
+							if(sumCount == 200) {
+								sumCount = 0;
+							int i = (int)(Math.random()*4);
+							
+							
+							if(monsterStage == 0) {
+								countMonster++;
+									Monster0 monster0 = new Monster0(startPos[i], map, mapLabel);
+									monsterList.add(monster0);
+									monsterThread = new Thread(monster0);
+									monsterThread.start();
+								
+								if(countMonster == 10) {
+									monsterStage = 1;
+									countMonster = 0;
+								}
+							}
+							else if(monsterStage == 1) {
+								countMonster++;
+									Monster1 monster1 = new Monster1(startPos[i], map, mapLabel);
+									monsterList.add(monster1);
+									monsterThread = new Thread(monster1);
+									monsterThread.start();
+								
+								if(countMonster == 10) {
+									monsterStage = 2;
+									countMonster = 0;
+								}
+							}
+							else if(monsterStage == 2) {
+								countMonster++;
+									Monster2 monster2 = new Monster2(startPos[i], map, mapLabel);
+									monsterList.add(monster2);
+									monsterThread = new Thread(monster2);
+									monsterThread.start();
+								
+								if(countMonster == 10) {
+									monsterStage = 3;
+									countMonster = 0;
+								}
+							}
+							else if(monsterStage == 3) {
+								countMonster++;
+									Monster3 monster3 = new Monster3(startPos[i], map, mapLabel);
+									monsterList.add(monster3);
+									monsterThread = new Thread(monster3);
+									monsterThread.start();
+								
+								if(countMonster == 10) {
+									monsterStage = 4;
+									countMonster = 0;
+								}
+							}
+							else if(monsterStage == 4) {
+								countMonster++;
+									Monster4 monster4 = new Monster4(startPos[i], map, mapLabel);
+									monsterList.add(monster4);
+									monsterThread = new Thread(monster4);
+									monsterThread.start();
+								if(countMonster == 10) {
+									monsterStage = 5;
+									countMonster = 0;
+								}
+							}
+							else if(monsterStage == 5) {
+								countMonster++;
+									Monster5 monster5 = new Monster5(startPos[i], map, mapLabel);
+									monsterList.add(monster5);
+									monsterThread = new Thread(monster5);
+									monsterThread.start();
+								if(countMonster == 10) {
+									monsterStage = 6;
+									countMonster = 0;
+								}
+							}
+							else if(monsterStage == 6) {
+								countMonster++;
+									Monster6 monster6 = new Monster6(startPos[i], map, mapLabel);
+									monsterList.add(monster6);
+									monsterThread = new Thread(monster6);
+									monsterThread.start();
+								
+								if(countMonster == 10) {
+									monsterStage = 7;
+									countMonster = 0;
+								}
+							}
+							else if(monsterStage == 7) {
+								countMonster++;
+									Monster7 monster7 = new Monster7(startPos[i], map, mapLabel);
+									monsterList.add(monster7);
+									monsterThread = new Thread(monster7);
+									monsterThread.start();
+								
+								if(countMonster == 10) {
+									monsterStage = 8;
+									countMonster = 0;
+								}
+							}
+							else if(monsterStage == 8) {
+								countMonster++;
+									Monster8 monster8 = new Monster8(startPos[i], map, mapLabel);
+									monsterList.add(monster8);
+									monsterThread = new Thread(monster8);
+									monsterThread.start();
+								
+								if(countMonster == 10) {
+									monsterStage = 9;
+									countMonster = 0;
+								}
+							}
+							else if(monsterStage == 9) {
+									Monster9 monster9 = new Monster9(startPos[i], map, mapLabel);
+									monsterList.add(monster9);
+									monsterThread = new Thread(monster9);
+									monsterThread.start();
+							}
+						}
+							sleep(100);
+						}
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 					
-					
+					notify();
 				}
 			}
 		}

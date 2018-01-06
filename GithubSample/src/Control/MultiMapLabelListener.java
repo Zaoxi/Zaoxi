@@ -43,7 +43,7 @@ public class MultiMapLabelListener extends MouseAdapter {
 	public MultiMapLabelListener() {
 		control = Control_Manager.getInstance(null);
 //		if(control.getGameFlag() >= Control_Manager.STAGE1 && Control_Manager.STAGE10 >= control.getGameFlag())
-			mapLabel = control.getUI().getSinglePanel().getMapLabel();
+			mapLabel = control.getUI().getMultiPanel().getMapLabel();
 //		else if(control.getGameFlag() == Control_Manager.MULTI) 
 //			mapLabel = control.getUI().getMultiPanel().getMapLabel();
 		
@@ -73,7 +73,8 @@ public class MultiMapLabelListener extends MouseAdapter {
 	public void mouseClicked(MouseEvent e) {
 		map = control.getMapArray();
 		Point pos = new Point(e.getY()/Point.HEIGHT, e.getX()/Point.WIDTH);
-		
+		System.out.println("(" + pos.getX() + ", " + pos.getY() + ")");
+		System.out.println("select = " + select);
 		if(select == NONE) {	// 아무것도 선택되지 않았을때, 맵 레이블 상의 타워를 선택하는 경우만 존재
 			if(map.getMap()[pos.getX()][pos.getY()].isTower()) {
 				ArrayList<Tower> towerList = control.getTowerList();
@@ -157,6 +158,260 @@ public class MultiMapLabelListener extends MouseAdapter {
 				}
 				
 			}
+			select = NONE;
+			MultiTowerListener.selectFlag = false;
+		}
+		else if(map.getMap()[pos.getX()][pos.getY()].isRoad() && select >= MONSTER0 && select <= MONSTER9) {
+			if(select == MONSTER0) {	// 맵 레이블 상에서 몬스터를 클릭 후 원하는 길에 클릭하였을 경우
+				if(control.getMoney() >= Monster0.COST) {
+					control.setMoney(control.getMoney() - Monster0.COST);
+					ServerWriter sw = ServerWriter.getInstance(null);
+					GsonInfo info;
+					if(pos.getX() == GsonInfo.FIRST) {
+						info = new GsonInfo(GsonInfo.FIRST, GsonInfo.MONSTER0, GsonInfo.MONSTER);
+						sw.send(info);
+					}
+					else if(pos.getX() == GsonInfo.SECOND) {
+						info = new GsonInfo(GsonInfo.SECOND, GsonInfo.MONSTER0, GsonInfo.MONSTER);
+						sw.send(info);
+					}
+					else if(pos.getX() == GsonInfo.THIRD) {
+						info = new GsonInfo(GsonInfo.THIRD, GsonInfo.MONSTER0, GsonInfo.MONSTER);
+						sw.send(info);
+					}
+					else if(pos.getX() == GsonInfo.FOURTH) {
+						info = new GsonInfo(GsonInfo.FOURTH, GsonInfo.MONSTER0, GsonInfo.MONSTER);
+						sw.send(info);
+					}
+				}
+				select = NONE;
+				MultiTowerListener.selectFlag = false;
+			}
+			else if(select == MONSTER1) {
+				if(control.getMoney() >= Monster1.COST) {
+					control.setMoney(control.getMoney() - Monster1.COST);
+					ServerWriter sw = ServerWriter.getInstance(null);
+					GsonInfo info;
+					if(pos.getX() == GsonInfo.FIRST) {
+						info = new GsonInfo(GsonInfo.FIRST, GsonInfo.MONSTER1, GsonInfo.MONSTER);
+						sw.send(info);
+					}
+					else if(pos.getX() == GsonInfo.SECOND) {
+						info = new GsonInfo(GsonInfo.SECOND, GsonInfo.MONSTER1, GsonInfo.MONSTER);
+						sw.send(info);
+					}
+					else if(pos.getX() == GsonInfo.THIRD) {
+						info = new GsonInfo(GsonInfo.THIRD, GsonInfo.MONSTER1, GsonInfo.MONSTER);
+						sw.send(info);
+					}
+					else if(pos.getX() == GsonInfo.FOURTH) {
+						info = new GsonInfo(GsonInfo.FOURTH, GsonInfo.MONSTER1, GsonInfo.MONSTER);
+						sw.send(info);
+					}
+				}
+				select = NONE;
+				MultiTowerListener.selectFlag = false;
+			}
+			else if(select == MONSTER2) {
+				if(control.getMoney() >= Monster2.COST) {
+					control.setMoney(control.getMoney() - Monster2.COST);
+					ServerWriter sw = ServerWriter.getInstance(null);
+					GsonInfo info;
+					if(pos.getX() == GsonInfo.FIRST) {
+						info = new GsonInfo(GsonInfo.FIRST, GsonInfo.MONSTER2, GsonInfo.MONSTER);
+						sw.send(info);
+					}
+					else if(pos.getX() == GsonInfo.SECOND) {
+						info = new GsonInfo(GsonInfo.SECOND, GsonInfo.MONSTER2, GsonInfo.MONSTER);
+						sw.send(info);
+					}
+					else if(pos.getX() == GsonInfo.THIRD) {
+						info = new GsonInfo(GsonInfo.THIRD, GsonInfo.MONSTER2, GsonInfo.MONSTER);
+						sw.send(info);
+					}
+					else if(pos.getX() == GsonInfo.FOURTH) {
+						info = new GsonInfo(GsonInfo.FOURTH, GsonInfo.MONSTER2, GsonInfo.MONSTER);
+						sw.send(info);
+					}
+				}
+				select = NONE;
+				MultiTowerListener.selectFlag = false;
+			}
+			else if(select == MONSTER3) {
+				if(control.getMoney() >= Monster3.COST) {
+					control.setMoney(control.getMoney() - Monster3.COST);
+					ServerWriter sw = ServerWriter.getInstance(null);
+					GsonInfo info;
+					if(pos.getX() == GsonInfo.FIRST) {
+						info = new GsonInfo(GsonInfo.FIRST, GsonInfo.MONSTER3, GsonInfo.MONSTER);
+						sw.send(info);
+					}
+					else if(pos.getX() == GsonInfo.SECOND) {
+						info = new GsonInfo(GsonInfo.SECOND, GsonInfo.MONSTER3, GsonInfo.MONSTER);
+						sw.send(info);
+					}
+					else if(pos.getX() == GsonInfo.THIRD) {
+						info = new GsonInfo(GsonInfo.THIRD, GsonInfo.MONSTER3, GsonInfo.MONSTER);
+						sw.send(info);
+					}
+					else if(pos.getX() == GsonInfo.FOURTH) {
+						info = new GsonInfo(GsonInfo.FOURTH, GsonInfo.MONSTER3, GsonInfo.MONSTER);
+						sw.send(info);
+					}
+				}
+				select = NONE;
+				MultiTowerListener.selectFlag = false;
+			}
+			else if(select == MONSTER4) {
+				if(control.getMoney() >= Monster4.COST) {
+					control.setMoney(control.getMoney() - Monster4.COST);
+					ServerWriter sw = ServerWriter.getInstance(null);
+					GsonInfo info;
+					if(pos.getX() == GsonInfo.FIRST) {
+						info = new GsonInfo(GsonInfo.FIRST, GsonInfo.MONSTER4, GsonInfo.MONSTER);
+						sw.send(info);
+					}
+					else if(pos.getX() == GsonInfo.SECOND) {
+						info = new GsonInfo(GsonInfo.SECOND, GsonInfo.MONSTER4, GsonInfo.MONSTER);
+						sw.send(info);
+					}
+					else if(pos.getX() == GsonInfo.THIRD) {
+						info = new GsonInfo(GsonInfo.THIRD, GsonInfo.MONSTER4, GsonInfo.MONSTER);
+						sw.send(info);
+					}
+					else if(pos.getX() == GsonInfo.FOURTH) {
+						info = new GsonInfo(GsonInfo.FOURTH, GsonInfo.MONSTER4, GsonInfo.MONSTER);
+						sw.send(info);
+					}
+				}
+				select = NONE;
+				MultiTowerListener.selectFlag = false;
+			}
+			else if(select == MONSTER5) {
+				if(control.getMoney() >= Monster5.COST) {
+					control.setMoney(control.getMoney() - Monster5.COST);
+					ServerWriter sw = ServerWriter.getInstance(null);
+					GsonInfo info;
+					if(pos.getX() == GsonInfo.FIRST) {
+						info = new GsonInfo(GsonInfo.FIRST, GsonInfo.MONSTER5, GsonInfo.MONSTER);
+						sw.send(info);
+					}
+					else if(pos.getX() == GsonInfo.SECOND) {
+						info = new GsonInfo(GsonInfo.SECOND, GsonInfo.MONSTER5, GsonInfo.MONSTER);
+						sw.send(info);
+					}
+					else if(pos.getX() == GsonInfo.THIRD) {
+						info = new GsonInfo(GsonInfo.THIRD, GsonInfo.MONSTER5, GsonInfo.MONSTER);
+						sw.send(info);
+					}
+					else if(pos.getX() == GsonInfo.FOURTH) {
+						info = new GsonInfo(GsonInfo.FOURTH, GsonInfo.MONSTER5, GsonInfo.MONSTER);
+						sw.send(info);
+					}
+				}
+				select = NONE;
+				MultiTowerListener.selectFlag = false;
+			}
+			else if(select == MONSTER6) {
+				if(control.getMoney() >= Monster6.COST) {
+					control.setMoney(control.getMoney() - Monster6.COST);
+					ServerWriter sw = ServerWriter.getInstance(null);
+					GsonInfo info;
+					if(pos.getX() == GsonInfo.FIRST) {
+						info = new GsonInfo(GsonInfo.FIRST, GsonInfo.MONSTER6, GsonInfo.MONSTER);
+						sw.send(info);
+					}
+					else if(pos.getX() == GsonInfo.SECOND) {
+						info = new GsonInfo(GsonInfo.SECOND, GsonInfo.MONSTER6, GsonInfo.MONSTER);
+						sw.send(info);
+					}
+					else if(pos.getX() == GsonInfo.THIRD) {
+						info = new GsonInfo(GsonInfo.THIRD, GsonInfo.MONSTER6, GsonInfo.MONSTER);
+						sw.send(info);
+					}
+					else if(pos.getX() == GsonInfo.FOURTH) {
+						info = new GsonInfo(GsonInfo.FOURTH, GsonInfo.MONSTER6, GsonInfo.MONSTER);
+						sw.send(info);
+					}
+				}
+				select = NONE;
+				MultiTowerListener.selectFlag = false;
+			}
+			else if(select == MONSTER7) {
+				if(control.getMoney() >= Monster7.COST) {
+					control.setMoney(control.getMoney() - Monster7.COST);
+					ServerWriter sw = ServerWriter.getInstance(null);
+					GsonInfo info;
+					if(pos.getX() == GsonInfo.FIRST) {
+						info = new GsonInfo(GsonInfo.FIRST, GsonInfo.MONSTER7, GsonInfo.MONSTER);
+						sw.send(info);
+					}
+					else if(pos.getX() == GsonInfo.SECOND) {
+						info = new GsonInfo(GsonInfo.SECOND, GsonInfo.MONSTER7, GsonInfo.MONSTER);
+						sw.send(info);
+					}
+					else if(pos.getX() == GsonInfo.THIRD) {
+						info = new GsonInfo(GsonInfo.THIRD, GsonInfo.MONSTER7, GsonInfo.MONSTER);
+						sw.send(info);
+					}
+					else if(pos.getX() == GsonInfo.FOURTH) {
+						info = new GsonInfo(GsonInfo.FOURTH, GsonInfo.MONSTER7, GsonInfo.MONSTER);
+						sw.send(info);
+					}
+				}
+				select = NONE;
+				MultiTowerListener.selectFlag = false;
+			}
+			else if(select == MONSTER8) {
+				if(control.getMoney() >= Monster8.COST) {
+					control.setMoney(control.getMoney() - Monster8.COST);
+					ServerWriter sw = ServerWriter.getInstance(null);
+					GsonInfo info;
+					if(pos.getX() == GsonInfo.FIRST) {
+						info = new GsonInfo(GsonInfo.FIRST, GsonInfo.MONSTER8, GsonInfo.MONSTER);
+						sw.send(info);
+					}
+					else if(pos.getX() == GsonInfo.SECOND) {
+						info = new GsonInfo(GsonInfo.SECOND, GsonInfo.MONSTER8, GsonInfo.MONSTER);
+						sw.send(info);
+					}
+					else if(pos.getX() == GsonInfo.THIRD) {
+						info = new GsonInfo(GsonInfo.THIRD, GsonInfo.MONSTER8, GsonInfo.MONSTER);
+						sw.send(info);
+					}
+					else if(pos.getX() == GsonInfo.FOURTH) {
+						info = new GsonInfo(GsonInfo.FOURTH, GsonInfo.MONSTER8, GsonInfo.MONSTER);
+						sw.send(info);
+					}
+				}
+				select = NONE;
+				MultiTowerListener.selectFlag = false;
+			}
+			else if(select == MONSTER9) {
+				if(control.getMoney() >= Monster9.COST) {
+					control.setMoney(control.getMoney() - Monster9.COST);
+					ServerWriter sw = ServerWriter.getInstance(null);
+					GsonInfo info;
+					if(pos.getX() == GsonInfo.FIRST) {
+						info = new GsonInfo(GsonInfo.FIRST, GsonInfo.MONSTER9, GsonInfo.MONSTER);
+						sw.send(info);
+					}
+					else if(pos.getX() == GsonInfo.SECOND) {
+						info = new GsonInfo(GsonInfo.SECOND, GsonInfo.MONSTER9, GsonInfo.MONSTER);
+						sw.send(info);
+					}
+					else if(pos.getX() == GsonInfo.THIRD) {
+						info = new GsonInfo(GsonInfo.THIRD, GsonInfo.MONSTER9, GsonInfo.MONSTER);
+						sw.send(info);
+					}
+					else if(pos.getX() == GsonInfo.FOURTH) {
+						info = new GsonInfo(GsonInfo.FOURTH, GsonInfo.MONSTER9, GsonInfo.MONSTER);
+						sw.send(info);
+					}
+				}
+				select = NONE;
+				MultiTowerListener.selectFlag = false;
+			}
 		}
 		else if(select == SELECT) {	// 맵 레이블 상의 타워를 선택했을 경우
 			if(pos.getX() == prevTower.getMapPosition().getX() && pos.getY() == prevTower.getMapPosition().getY()) { // 타워를 다시 클릭했을 경우
@@ -168,251 +423,9 @@ public class MultiMapLabelListener extends MouseAdapter {
 					System.out.println("(" + pos.getX() + ", " + pos.getY() + ")");
 				}
 			}
+			select = NONE;
+			MultiTowerListener.selectFlag = false;
 		}
-		else if(select == MONSTER0) {
-			if(control.getMoney() >= Monster0.COST) {
-				control.setMoney(control.getMoney() - Monster0.COST);
-				ServerWriter sw = ServerWriter.getInstance(null);
-				MapMulti multiMap = (MapMulti)map;
-				GsonInfo info;
-				if(pos.getX() == GsonInfo.FIRST) {
-					info = new GsonInfo(GsonInfo.FIRST, GsonInfo.MONSTER0, GsonInfo.MONSTER);
-					sw.send(info);
-				}
-				else if(pos.getX() == GsonInfo.SECOND) {
-					info = new GsonInfo(GsonInfo.SECOND, GsonInfo.MONSTER0, GsonInfo.MONSTER);
-					sw.send(info);
-				}
-				else if(pos.getX() == GsonInfo.THIRD) {
-					info = new GsonInfo(GsonInfo.THIRD, GsonInfo.MONSTER0, GsonInfo.MONSTER);
-					sw.send(info);
-				}
-				else if(pos.getX() == GsonInfo.FOURTH) {
-					info = new GsonInfo(GsonInfo.FOURTH, GsonInfo.MONSTER0, GsonInfo.MONSTER);
-					sw.send(info);
-				}
-			}
-		}
-		else if(select == MONSTER1) {
-			if(control.getMoney() >= Monster1.COST) {
-				control.setMoney(control.getMoney() - Monster1.COST);
-				ServerWriter sw = ServerWriter.getInstance(null);
-				MapMulti multiMap = (MapMulti)map;
-				GsonInfo info;
-				if(pos.getX() == GsonInfo.FIRST) {
-					info = new GsonInfo(GsonInfo.FIRST, GsonInfo.MONSTER1, GsonInfo.MONSTER);
-					sw.send(info);
-				}
-				else if(pos.getX() == GsonInfo.SECOND) {
-					info = new GsonInfo(GsonInfo.SECOND, GsonInfo.MONSTER1, GsonInfo.MONSTER);
-					sw.send(info);
-				}
-				else if(pos.getX() == GsonInfo.THIRD) {
-					info = new GsonInfo(GsonInfo.THIRD, GsonInfo.MONSTER1, GsonInfo.MONSTER);
-					sw.send(info);
-				}
-				else if(pos.getX() == GsonInfo.FOURTH) {
-					info = new GsonInfo(GsonInfo.FOURTH, GsonInfo.MONSTER1, GsonInfo.MONSTER);
-					sw.send(info);
-				}
-			}
-		}
-		else if(select == MONSTER2) {
-			if(control.getMoney() >= Monster2.COST) {
-				control.setMoney(control.getMoney() - Monster2.COST);
-				ServerWriter sw = ServerWriter.getInstance(null);
-				MapMulti multiMap = (MapMulti)map;
-				GsonInfo info;
-				if(pos.getX() == GsonInfo.FIRST) {
-					info = new GsonInfo(GsonInfo.FIRST, GsonInfo.MONSTER2, GsonInfo.MONSTER);
-					sw.send(info);
-				}
-				else if(pos.getX() == GsonInfo.SECOND) {
-					info = new GsonInfo(GsonInfo.SECOND, GsonInfo.MONSTER2, GsonInfo.MONSTER);
-					sw.send(info);
-				}
-				else if(pos.getX() == GsonInfo.THIRD) {
-					info = new GsonInfo(GsonInfo.THIRD, GsonInfo.MONSTER2, GsonInfo.MONSTER);
-					sw.send(info);
-				}
-				else if(pos.getX() == GsonInfo.FOURTH) {
-					info = new GsonInfo(GsonInfo.FOURTH, GsonInfo.MONSTER2, GsonInfo.MONSTER);
-					sw.send(info);
-				}
-			}
-		}
-		else if(select == MONSTER3) {
-			if(control.getMoney() >= Monster3.COST) {
-				control.setMoney(control.getMoney() - Monster3.COST);
-				ServerWriter sw = ServerWriter.getInstance(null);
-				MapMulti multiMap = (MapMulti)map;
-				GsonInfo info;
-				if(pos.getX() == GsonInfo.FIRST) {
-					info = new GsonInfo(GsonInfo.FIRST, GsonInfo.MONSTER3, GsonInfo.MONSTER);
-					sw.send(info);
-				}
-				else if(pos.getX() == GsonInfo.SECOND) {
-					info = new GsonInfo(GsonInfo.SECOND, GsonInfo.MONSTER3, GsonInfo.MONSTER);
-					sw.send(info);
-				}
-				else if(pos.getX() == GsonInfo.THIRD) {
-					info = new GsonInfo(GsonInfo.THIRD, GsonInfo.MONSTER3, GsonInfo.MONSTER);
-					sw.send(info);
-				}
-				else if(pos.getX() == GsonInfo.FOURTH) {
-					info = new GsonInfo(GsonInfo.FOURTH, GsonInfo.MONSTER3, GsonInfo.MONSTER);
-					sw.send(info);
-				}
-			}
-		}
-		else if(select == MONSTER4) {
-			if(control.getMoney() >= Monster4.COST) {
-				control.setMoney(control.getMoney() - Monster4.COST);
-				ServerWriter sw = ServerWriter.getInstance(null);
-				MapMulti multiMap = (MapMulti)map;
-				GsonInfo info;
-				if(pos.getX() == GsonInfo.FIRST) {
-					info = new GsonInfo(GsonInfo.FIRST, GsonInfo.MONSTER4, GsonInfo.MONSTER);
-					sw.send(info);
-				}
-				else if(pos.getX() == GsonInfo.SECOND) {
-					info = new GsonInfo(GsonInfo.SECOND, GsonInfo.MONSTER4, GsonInfo.MONSTER);
-					sw.send(info);
-				}
-				else if(pos.getX() == GsonInfo.THIRD) {
-					info = new GsonInfo(GsonInfo.THIRD, GsonInfo.MONSTER4, GsonInfo.MONSTER);
-					sw.send(info);
-				}
-				else if(pos.getX() == GsonInfo.FOURTH) {
-					info = new GsonInfo(GsonInfo.FOURTH, GsonInfo.MONSTER4, GsonInfo.MONSTER);
-					sw.send(info);
-				}
-			}
-		}
-		else if(select == MONSTER5) {
-			if(control.getMoney() >= Monster5.COST) {
-				control.setMoney(control.getMoney() - Monster5.COST);
-				ServerWriter sw = ServerWriter.getInstance(null);
-				MapMulti multiMap = (MapMulti)map;
-				GsonInfo info;
-				if(pos.getX() == GsonInfo.FIRST) {
-					info = new GsonInfo(GsonInfo.FIRST, GsonInfo.MONSTER5, GsonInfo.MONSTER);
-					sw.send(info);
-				}
-				else if(pos.getX() == GsonInfo.SECOND) {
-					info = new GsonInfo(GsonInfo.SECOND, GsonInfo.MONSTER5, GsonInfo.MONSTER);
-					sw.send(info);
-				}
-				else if(pos.getX() == GsonInfo.THIRD) {
-					info = new GsonInfo(GsonInfo.THIRD, GsonInfo.MONSTER5, GsonInfo.MONSTER);
-					sw.send(info);
-				}
-				else if(pos.getX() == GsonInfo.FOURTH) {
-					info = new GsonInfo(GsonInfo.FOURTH, GsonInfo.MONSTER5, GsonInfo.MONSTER);
-					sw.send(info);
-				}
-			}
-		}
-		else if(select == MONSTER6) {
-			if(control.getMoney() >= Monster6.COST) {
-				control.setMoney(control.getMoney() - Monster6.COST);
-				ServerWriter sw = ServerWriter.getInstance(null);
-				MapMulti multiMap = (MapMulti)map;
-				GsonInfo info;
-				if(pos.getX() == GsonInfo.FIRST) {
-					info = new GsonInfo(GsonInfo.FIRST, GsonInfo.MONSTER6, GsonInfo.MONSTER);
-					sw.send(info);
-				}
-				else if(pos.getX() == GsonInfo.SECOND) {
-					info = new GsonInfo(GsonInfo.SECOND, GsonInfo.MONSTER6, GsonInfo.MONSTER);
-					sw.send(info);
-				}
-				else if(pos.getX() == GsonInfo.THIRD) {
-					info = new GsonInfo(GsonInfo.THIRD, GsonInfo.MONSTER6, GsonInfo.MONSTER);
-					sw.send(info);
-				}
-				else if(pos.getX() == GsonInfo.FOURTH) {
-					info = new GsonInfo(GsonInfo.FOURTH, GsonInfo.MONSTER6, GsonInfo.MONSTER);
-					sw.send(info);
-				}
-			}
-		}
-		else if(select == MONSTER7) {
-			if(control.getMoney() >= Monster7.COST) {
-				control.setMoney(control.getMoney() - Monster7.COST);
-				ServerWriter sw = ServerWriter.getInstance(null);
-				MapMulti multiMap = (MapMulti)map;
-				GsonInfo info;
-				if(pos.getX() == GsonInfo.FIRST) {
-					info = new GsonInfo(GsonInfo.FIRST, GsonInfo.MONSTER7, GsonInfo.MONSTER);
-					sw.send(info);
-				}
-				else if(pos.getX() == GsonInfo.SECOND) {
-					info = new GsonInfo(GsonInfo.SECOND, GsonInfo.MONSTER7, GsonInfo.MONSTER);
-					sw.send(info);
-				}
-				else if(pos.getX() == GsonInfo.THIRD) {
-					info = new GsonInfo(GsonInfo.THIRD, GsonInfo.MONSTER7, GsonInfo.MONSTER);
-					sw.send(info);
-				}
-				else if(pos.getX() == GsonInfo.FOURTH) {
-					info = new GsonInfo(GsonInfo.FOURTH, GsonInfo.MONSTER7, GsonInfo.MONSTER);
-					sw.send(info);
-				}
-			}
-		}
-		else if(select == MONSTER8) {
-			if(control.getMoney() >= Monster8.COST) {
-				control.setMoney(control.getMoney() - Monster8.COST);
-				ServerWriter sw = ServerWriter.getInstance(null);
-				MapMulti multiMap = (MapMulti)map;
-				GsonInfo info;
-				if(pos.getX() == GsonInfo.FIRST) {
-					info = new GsonInfo(GsonInfo.FIRST, GsonInfo.MONSTER8, GsonInfo.MONSTER);
-					sw.send(info);
-				}
-				else if(pos.getX() == GsonInfo.SECOND) {
-					info = new GsonInfo(GsonInfo.SECOND, GsonInfo.MONSTER8, GsonInfo.MONSTER);
-					sw.send(info);
-				}
-				else if(pos.getX() == GsonInfo.THIRD) {
-					info = new GsonInfo(GsonInfo.THIRD, GsonInfo.MONSTER8, GsonInfo.MONSTER);
-					sw.send(info);
-				}
-				else if(pos.getX() == GsonInfo.FOURTH) {
-					info = new GsonInfo(GsonInfo.FOURTH, GsonInfo.MONSTER8, GsonInfo.MONSTER);
-					sw.send(info);
-				}
-			}
-		}
-		else if(select == MONSTER9) {
-			if(control.getMoney() >= Monster9.COST) {
-				control.setMoney(control.getMoney() - Monster9.COST);
-				ServerWriter sw = ServerWriter.getInstance(null);
-				MapMulti multiMap = (MapMulti)map;
-				GsonInfo info;
-				if(pos.getX() == GsonInfo.FIRST) {
-					info = new GsonInfo(GsonInfo.FIRST, GsonInfo.MONSTER9, GsonInfo.MONSTER);
-					sw.send(info);
-				}
-				else if(pos.getX() == GsonInfo.SECOND) {
-					info = new GsonInfo(GsonInfo.SECOND, GsonInfo.MONSTER9, GsonInfo.MONSTER);
-					sw.send(info);
-				}
-				else if(pos.getX() == GsonInfo.THIRD) {
-					info = new GsonInfo(GsonInfo.THIRD, GsonInfo.MONSTER9, GsonInfo.MONSTER);
-					sw.send(info);
-				}
-				else if(pos.getX() == GsonInfo.FOURTH) {
-					info = new GsonInfo(GsonInfo.FOURTH, GsonInfo.MONSTER9, GsonInfo.MONSTER);
-					sw.send(info);
-				}
-			}
-		}
-		
-		
-		select = NONE;
-		TowerListener.selectFlag = false;
 	}
 	
 }

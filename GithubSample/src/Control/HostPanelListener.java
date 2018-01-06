@@ -3,6 +3,8 @@ package Control;
 import javax.swing.*;
 import View.ViewManager;
 import java.awt.event.*;
+import java.io.IOException;
+import View.*;
 
 class HostHostBtnMouseListener extends MouseAdapter {
 	private Control_Manager control;
@@ -32,6 +34,15 @@ class HostHostBtnMouseListener extends MouseAdapter {
 		ui.getCard().show(ui.getContentPane(), "match");
 		MatchingLabelThread animation = new MatchingLabelThread();
 		animation.start();
+		
+		try {
+			control.setHost(MultiHost.getInstance());
+			control.getHost().start();
+		} catch (NumberFormatException | IOException e1) {
+			// TODO Auto-generated catch block
+			new ErrorDialog("서버 생성 에러!");
+			e1.printStackTrace();
+		}
 		/*
 		 * 서버 관련 추가 코딩 필요한 부분
 		 */

@@ -3,6 +3,8 @@ package Control;
 import javax.swing.*;
 import View.ViewManager;
 import java.awt.event.*;
+import java.io.IOException;
+import View.*;
 
 class ClientJoinBtnMouseListener extends MouseAdapter {
 	private Control_Manager control;
@@ -32,10 +34,18 @@ class ClientJoinBtnMouseListener extends MouseAdapter {
 		ui.getCard().show(ui.getContentPane(), "match");
 		MatchingLabelThread animation = new MatchingLabelThread();
 		animation.start();
-		/*
-		 * 서버 관련 추가 코딩 필요한 부분
-		 */
 		
+		try {
+			control.setClient(ClientSocket.getInstance());
+			
+			control.getClient().start();
+			
+			control.setGameFlag(Control_Manager.MULTI);
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			new ErrorDialog("Connection Error");
+			e1.printStackTrace();
+		}
 	}
 }
 
@@ -64,10 +74,7 @@ class ClientCancelBtnMouseListener extends MouseAdapter {
 	
 	// 패널 전환 이벤트
 	public void mouseClicked(MouseEvent e) {
-		ui.getCard().show(ui.getContentPane(), "match");
-		/*
-		 * 서버 관련 추가 코딩 필요한 부분
-		 */
+		ui.getCard().show(ui.getContentPane(), "main");
 		
 	}
 }

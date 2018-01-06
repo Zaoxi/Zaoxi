@@ -132,6 +132,7 @@ class Monster0 extends Monster implements Runnable {
 	final public static int NUM = 0;
 	final public static int HP = 20;
 	final public static int MONEY = 20;
+	final public static int COST = 20;
 	
 	private Control_Manager control;
 	
@@ -142,6 +143,7 @@ class Monster0 extends Monster implements Runnable {
 		
 		// TODO Auto-generated constructor stub
 		// 몬스터의 초기 위치와 방향 지정
+		//System.out.println(mapPos.getX() + ", " + mapPos.getY() + ", " + map.getMap()[mapPos.getX()][mapPos.getY()].getDirection()*2);
 		monster = new JLabel(imgDir[NUM][map.getMap()[mapPos.getX()][mapPos.getY()].getDirection()*2]);
 		control = Control_Manager.getInstance(null);
 		control.getMonsterList().add(this);
@@ -201,6 +203,7 @@ class Monster1 extends Monster implements Runnable {
 	final public static int MONSTER1_SPEED = 2;
 	final public static int NUM = 1;
 	final public static int HP = 40;
+	final public static int COST = 40;
 	private boolean monsterFlag = true;
 	private Control_Manager control;
 	
@@ -273,6 +276,7 @@ class Monster2 extends Monster implements Runnable {
 	private boolean monsterFlag = true;
 	private Control_Manager control;
 	final public static int MONEY = 80;
+	final public static int COST = 80;
 	
 	public Monster2(Point real, Map _map, JLabel map_label) {
 		super(NUM, HP, MONSTER2_SPEED, real, _map, map_label);
@@ -338,6 +342,7 @@ class Monster3 extends Monster implements Runnable {
 	private boolean monsterFlag = true;
 	private Control_Manager control;
 	final public static int MONEY = 100;
+	final public static int COST = 100;
 	
 	public Monster3(Point real, Map _map, JLabel map_label) {
 		super(NUM, HP, MONSTER3_SPEED, real, _map, map_label);
@@ -404,6 +409,7 @@ class Monster4 extends Monster implements Runnable {
 	private boolean monsterFlag = true;
 	private Control_Manager control;
 	final public static int MONEY = 130;
+	final public static int COST = 130;
 	
 	public Monster4(Point real, Map _map, JLabel map_label) {
 		super(NUM, HP, MONSTER4_SPEED, real, _map, map_label);
@@ -470,6 +476,7 @@ class Monster5 extends Monster implements Runnable {
 	private boolean monsterFlag = true;
 	private Control_Manager control;
 	final public static int MONEY = 150;
+	final public static int COST = 150;
 	
 	public Monster5(Point real, Map _map, JLabel map_label) {
 		super(NUM, HP, MONSTER5_SPEED, real, _map, map_label);
@@ -536,6 +543,7 @@ class Monster6 extends Monster implements Runnable {
 	private boolean monsterFlag = true;
 	private Control_Manager control;
 	final public static int MONEY = 200;
+	final public static int COST = 200;
 	
 	public Monster6(Point real, Map _map, JLabel map_label) {
 		super(NUM, HP, MONSTER6_SPEED, real, _map, map_label);
@@ -602,6 +610,7 @@ class Monster7 extends Monster implements Runnable {
 	private boolean monsterFlag = true;
 	private Control_Manager control;
 	final public static int MONEY = 200;
+	final public static int COST = 200;
 	
 	public Monster7(Point real, Map _map, JLabel map_label) {
 		super(NUM, HP, MONSTER7_SPEED, real, _map, map_label);
@@ -668,6 +677,7 @@ class Monster8 extends Monster implements Runnable {
 	private boolean monsterFlag = true;
 	private Control_Manager control;
 	final public static int MONEY = 200;
+	final public static int COST = 200;
 	
 	public Monster8(Point real, Map _map, JLabel map_label) {
 		super(NUM, HP, MONSTER8_SPEED, real, _map, map_label);
@@ -735,6 +745,7 @@ class Monster9 extends Monster implements Runnable {
 	private boolean monsterFlag = true;
 	private Control_Manager control;
 	final public static int MONEY = 200;
+	final public static int COST = 200;
 	
 	public Monster9(Point real, Map _map, JLabel map_label) {
 		super(NUM, HP, MONSTER9_SPEED, real, _map, map_label);

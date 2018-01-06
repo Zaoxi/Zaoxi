@@ -2,7 +2,7 @@ package Control;
 
 // 멀티 플레이시 소켓통신을 실시 할 Gson 정보 클래스
 public class GsonInfo {
-	// 멀티 플레이 맵 상에서 라인 정보(맨 위 : 1, 맨 아래 : 4)
+	// 멀티 플레이 맵 상에서 라인 정보(맨 위 : 1, 맨 아래 : 6)
 	private int line;
 	// 멀티플레이 몬스터 정보
 	private int monsterNum;

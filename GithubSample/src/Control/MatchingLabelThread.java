@@ -67,9 +67,15 @@ class MatchCancelBtnMouseListener extends MouseAdapter {
 	public void mouseClicked(MouseEvent e) {
 		ui.getCard().show(ui.getContentPane(), "main");
 		MatchingLabelThread.disableMatching();
-		/*
-		 * 서버 관련 추가 코딩 필요한 부분
-		 */
 		
+		// host 모드나 client모드가 열려있으면 닫는다.
+		if(control.getHost() != null) {
+			control.getHost().closeHost();
+			control.setHost(null);
+		}
+		else if(control.getClient() != null) {
+			control.getClient().closeClient();
+			control.setClient(null);
+		}
 	}
 }

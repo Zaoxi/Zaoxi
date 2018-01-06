@@ -5,87 +5,73 @@ import java.io.*;
 import View.*;
 import com.google.gson.*;
 
-// Host로 멀티플레이 서버 생성시 만들어지는 클래스
-public class MultiHost extends Thread {
-	private static MultiHost instance = null;
-	// 출력과 입력 스트림
-	private ServerSocket server;
+// 클라이언트의 소켓 클래스
+public class ClientSocket extends Thread{
+	private static ClientSocket instance = null;
 	private Socket socket;
-	private PrintWriter pr;
+	private String ip;
+	private int port;
+	private PrintWriter pw;
 	private BufferedReader br;
+	private ServerWriter sw = null;
 	
 	private Control_Manager control;
 	private ViewManager ui;
-	private ServerWriter sw = null;
-	private MapMulti map;
-	
 	private Gson gson;
-	private boolean serverFlag = true;
 	
-	// 싱글톤 패턴의 객체 생성
-	private MultiHost() throws NumberFormatException, IOException {
+	private boolean clientFlag = true;
+	// 소켓 생성 후 연결
+	private ClientSocket() throws UnknownHostException, IOException{
 		instance = this;
-		serverFlag = true;
+		gson = new Gson();
 		control = Control_Manager.getInstance(null);
 		ui = control.getUI();
-		gson = new Gson();
-		sw = null;
-		br = null;
-		// 서버 생성
-		server = new ServerSocket(Integer.parseInt(ui.getHostPanel().getPortField().getText()));
 		
+		ip = ui.getClientPanel().getIPField().getText();
+		port = Integer.parseInt(ui.getClientPanel().getPortField().getText());
+		
+		socket = new Socket(ip, port);
+		
+		pw = new PrintWriter(new OutputStreamWriter(socket.getOutputStream()));
+		br = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+		
+		sw = ServerWriter.getInstance(pw);
+		
+		control.setGameFlag(Control_Manager.MULTI);
 	}
-	
-	public static MultiHost getInstance() throws NumberFormatException, IOException {
-		if(instance == null) new MultiHost();
+	// 싱글톤 패턴의 클래스
+	public static ClientSocket getInstance() throws UnknownHostException, IOException {
+		if(instance == null) new ClientSocket();
 		return instance;
 	}
 	
-	// 서버 종료
-	public void closeHost() {
-		instance = null;
-		serverFlag = false;
-		control.setHost(null);
+	// 소켓을 닫는 메소드
+	public void closeClient() {
+		clientFlag = false;
 		try {
-			//socket.close();
-			server.close();
-			if(sw != null) {
-				sw.close();
-				sw = null;
-			}
-			if(br != null) {
-				br.close();
-				br = null;
-			}
+			br.close();
+			sw.close();
+			socket.close();
+			instance = null;
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
 	}
 	
-	// 서버의 지속적인 수신
 	public void run() {
+		// 레이블 애니메이션 중지
+		MatchingLabelThread.disableMatching();
+		
 		try {
-			socket = server.accept();
-			// 서버로 accept 신호가 들어오면 멀티 플레이 시작
-			control.setGameFlag(Control_Manager.MULTI);
-			
-			// 레이블 애니메이션 중지
-			MatchingLabelThread.disableMatching();
-			// 입력 출력 스트림 생성
-			pr = new PrintWriter(new OutputStreamWriter(socket.getOutputStream()));
-			br = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-			
-			// 출력 스레드 생성
-			sw = ServerWriter.getInstance(pr);
-			while(serverFlag) {
-				System.out.println("host");
+			while(clientFlag) {
+				System.out.println("client");
 				String json = br.readLine();
-
 				GsonInfo info = gson.fromJson(json, GsonInfo.class);
 				
 				Point start;
-				map = (MapMulti)control.getMapArray();
+				MapMulti map = (MapMulti)control.getMapArray();	
 				if(info.getType().equals(GsonInfo.MONSTER)) {
 					if(info.getLine() == GsonInfo.FIRST) {
 						start = map.getFirstStart();
@@ -173,23 +159,25 @@ public class MultiHost extends Thread {
 				}
 				else if(info.getType().equals(GsonInfo.LOSE)) {
 					control.setGameFlag(Control_Manager.MULTI_WIN);
-					closeHost();
+					closeClient();
 				}
 			}
 		} catch(SocketException e) {
 			control.setGameFlag(Control_Manager.MULTI_WIN);
-			closeHost();
+			closeClient();
 			e.printStackTrace();
 		}catch (IOException e) {
 			new ErrorDialog("Connection Error");
-			
-			control.setHost(null);
-			closeHost();
+		
+			control.setClient(null);
+			closeClient();
 			control.setGameFlag(Control_Manager.MAIN);
-			
+		
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 			
 	}
 }
+
+

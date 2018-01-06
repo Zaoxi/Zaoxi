@@ -151,13 +151,13 @@ class MapMulti extends Map {
 		// ¸Ê ¼³Á¤
 		for(int i=0; i<SIZE; i++) {
 			map[1][i].setRoad(true);
-			map[1][i].setDirection(Monster.LEFT);
+			map[1][i].setDirection(Monster.RIGHT);
 			map[3][i].setRoad(true);
-			map[3][i].setDirection(Monster.LEFT);
+			map[3][i].setDirection(Monster.RIGHT);
 			map[4][i].setRoad(true);
-			map[4][i].setDirection(Monster.LEFT);
+			map[4][i].setDirection(Monster.RIGHT);
 			map[6][i].setRoad(true);
-			map[6][i].setDirection(Monster.LEFT);
+			map[6][i].setDirection(Monster.RIGHT);
 		}
 		
 	}
