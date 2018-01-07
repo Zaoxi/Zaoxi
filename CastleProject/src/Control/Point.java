@@ -1,5 +1,7 @@
 package Control;
 
+// 2017-12-23 안종희 구현 제작
+// 좌표계의 규정을 정한 클래스
 public class Point {
 	private int x, y;
 	// 640 x 640을 80 x 80으로 총 64개로 나눈다.

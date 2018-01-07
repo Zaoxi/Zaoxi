@@ -106,8 +106,10 @@ class Map {
 		return start;
 	}
 	// end 지점을 반환하는 함수
-	public Point getEndPosition() {
-		return end;
+	public boolean getEndPosition(Point mapPos) {
+		if(end.getX() == mapPos.getX() && end.getY() == mapPos.getY())
+			return true;
+		return false;
 	}
 	
 	// 배열 위치를 지정하면 길 이미지를 삽입해주는 함수
@@ -118,6 +120,73 @@ class Map {
 	}
 }
 
+// 멀티플레이 맵
+class MapMulti extends Map {
+	final private int START_NUM = 4;
+	final private int END_NUM = 4;
+	
+	private Point[] startMulti = new Point[START_NUM]; 
+	private Point[] endMulti = new Point[END_NUM];
+	
+	public MapMulti(JLabel map_label) {
+		super(map_label);
+		
+		map[1][0].setStart(true);
+		map[3][0].setStart(true);
+		map[4][0].setStart(true);
+		map[6][0].setStart(true);
+		startMulti[0] = new Point(1, 0);
+		startMulti[1] = new Point(3, 0);
+		startMulti[2] = new Point(4, 0);
+		startMulti[3] = new Point(6, 0);
+		
+		map[1][7].setEnd(true);
+		map[3][7].setEnd(true);
+		map[4][7].setEnd(true);
+		map[6][7].setEnd(true);
+		endMulti[0] = new Point(1, 7);
+		endMulti[1] = new Point(3, 7);
+		endMulti[2] = new Point(4, 7);
+		endMulti[3] = new Point(6, 7);
+		
+		// 맵 설정
+		for(int i=0; i<SIZE; i++) {
+			map[1][i].setRoad(true);
+			map[1][i].setDirection(Monster.RIGHT);
+			map[3][i].setRoad(true);
+			map[3][i].setDirection(Monster.RIGHT);
+			map[4][i].setRoad(true);
+			map[4][i].setDirection(Monster.RIGHT);
+			map[6][i].setRoad(true);
+			map[6][i].setDirection(Monster.RIGHT);
+		}
+		
+	}
+	
+	public Point getFirstStart() {
+		return startMulti[0];
+	}
+	public Point getSecondStart() {
+		return startMulti[1];
+	}
+	public Point getThirdStart() {
+		return startMulti[2];
+	}
+	public Point getFourthStart() {
+		return startMulti[3];
+	}
+	
+	@Override
+	public boolean getEndPosition(Point mapPos) {
+		for(int i=0; i<END_NUM; i++) {
+			if(endMulti[i].getX() == mapPos.getX() && endMulti[i].getY() == mapPos.getY())
+				return true;
+		}
+		return false;
+	}
+}
+
+// 싱글 플레이 맵
 class MapArray1 extends Map {
 	public MapArray1(JLabel map_label) {
 		super(map_label);

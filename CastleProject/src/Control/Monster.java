@@ -1,12 +1,8 @@
 package Control;
-import java.io.*;
 import java.util.ArrayList;
-
-import View.ViewManager;
-
 import javax.swing.*;
 
-
+// 모든 몬스터의 기반이 되는 클래스
 abstract class Monster {
 	protected int hp; 		// 몬스터의 체력
 	protected int speed;		// 몬스터의 속도
@@ -124,11 +120,7 @@ abstract class Monster {
 	}
 	// 몬스터가 도착 지점에 도달하였는지 판단
 	public boolean isArrivedEnd() {
-		Point end = map.getEndPosition();
-		// 도착지점에 들어갔다면 true
-		if(Point.getEnterPerfectly(centerPos, end))
-			return true;
-		return false;
+		return map.getEndPosition(mapPos);
 	}
 	
 	public void setMonsterFalse() { } // 몬스터 스레드를 정지하는 함수
@@ -140,6 +132,7 @@ class Monster0 extends Monster implements Runnable {
 	final public static int NUM = 0;
 	final public static int HP = 20;
 	final public static int MONEY = 20;
+	final public static int COST = 20;
 	
 	private Control_Manager control;
 	
@@ -150,6 +143,7 @@ class Monster0 extends Monster implements Runnable {
 		
 		// TODO Auto-generated constructor stub
 		// 몬스터의 초기 위치와 방향 지정
+		//System.out.println(mapPos.getX() + ", " + mapPos.getY() + ", " + map.getMap()[mapPos.getX()][mapPos.getY()].getDirection()*2);
 		monster = new JLabel(imgDir[NUM][map.getMap()[mapPos.getX()][mapPos.getY()].getDirection()*2]);
 		control = Control_Manager.getInstance(null);
 		control.getMonsterList().add(this);
@@ -168,7 +162,6 @@ class Monster0 extends Monster implements Runnable {
 			
 			monster.setBounds(realPos.getX(), realPos.getY(), Point.WIDTH, Point.HEIGHT);
 			if(isArrivedEnd()) {
-				System.out.println("end");
 				control.setGameFlag(Control_Manager.SINGLE_LOSE);
 			}
 			
@@ -209,7 +202,8 @@ class Monster1 extends Monster implements Runnable {
 	// Monster1의 스피드
 	final public static int MONSTER1_SPEED = 2;
 	final public static int NUM = 1;
-	final public static int HP = 40;
+	final public static int HP = 25;
+	final public static int COST = 50;
 	private boolean monsterFlag = true;
 	private Control_Manager control;
 	
@@ -237,6 +231,10 @@ class Monster1 extends Monster implements Runnable {
 			ActiveMonster();
 			
 			monster.setBounds(realPos.getX(), realPos.getY(), Point.WIDTH, Point.HEIGHT);
+			
+			if(isArrivedEnd()) {
+				control.setGameFlag(Control_Manager.SINGLE_LOSE);
+			}
 			
 			try {
 				Thread.sleep(MONSTER_FPS);
@@ -274,10 +272,11 @@ class Monster2 extends Monster implements Runnable {
 	// Monster2의 스피드
 	final public static int MONSTER2_SPEED = 2;
 	final public static int NUM = 2;
-	final public static int HP = 60;
+	final public static int HP = 50;
 	private boolean monsterFlag = true;
 	private Control_Manager control;
 	final public static int MONEY = 80;
+	final public static int COST = 100;
 	
 	public Monster2(Point real, Map _map, JLabel map_label) {
 		super(NUM, HP, MONSTER2_SPEED, real, _map, map_label);
@@ -299,6 +298,10 @@ class Monster2 extends Monster implements Runnable {
 			ActiveMonster();
 			
 			monster.setBounds(realPos.getX(), realPos.getY(), Point.WIDTH, Point.HEIGHT);
+			
+			if(isArrivedEnd()) {
+				control.setGameFlag(Control_Manager.SINGLE_LOSE);
+			}
 			
 			try {
 				Thread.sleep(MONSTER_FPS);
@@ -339,6 +342,7 @@ class Monster3 extends Monster implements Runnable {
 	private boolean monsterFlag = true;
 	private Control_Manager control;
 	final public static int MONEY = 100;
+	final public static int COST = 200;
 	
 	public Monster3(Point real, Map _map, JLabel map_label) {
 		super(NUM, HP, MONSTER3_SPEED, real, _map, map_label);
@@ -360,6 +364,11 @@ class Monster3 extends Monster implements Runnable {
 			ActiveMonster();
 			
 			monster.setBounds(realPos.getX(), realPos.getY(), Point.WIDTH, Point.HEIGHT);
+			
+			if(isArrivedEnd()) {
+				control.setGameFlag(Control_Manager.SINGLE_LOSE);
+			}
+			
 			try {
 				Thread.sleep(MONSTER_FPS);
 			} catch (InterruptedException e) {
@@ -394,12 +403,13 @@ class Monster3 extends Monster implements Runnable {
 
 class Monster4 extends Monster implements Runnable {
 	// Monster4의 스피드
-	public static int MONSTER4_SPEED = 3;
+	public static int MONSTER4_SPEED = 2;
 	public static int NUM = 4;
 	final public static int HP = 100;
 	private boolean monsterFlag = true;
 	private Control_Manager control;
-	final public static int MONEY = 130;
+	final public static int MONEY = 120;
+	final public static int COST = 300;
 	
 	public Monster4(Point real, Map _map, JLabel map_label) {
 		super(NUM, HP, MONSTER4_SPEED, real, _map, map_label);
@@ -421,6 +431,11 @@ class Monster4 extends Monster implements Runnable {
 			ActiveMonster();
 			
 			monster.setBounds(realPos.getX(), realPos.getY(), Point.WIDTH, Point.HEIGHT);
+			
+			if(isArrivedEnd()) {
+				control.setGameFlag(Control_Manager.SINGLE_LOSE);
+			}
+			
 			try {
 				Thread.sleep(MONSTER_FPS);
 			} catch (InterruptedException e) {
@@ -455,12 +470,13 @@ class Monster4 extends Monster implements Runnable {
 
 class Monster5 extends Monster implements Runnable {
 	// Monster5의 스피드
-	public static int MONSTER5_SPEED = 3;
+	public static int MONSTER5_SPEED = 2;
 	public static int NUM = 5;
 	final public static int HP = 120;
 	private boolean monsterFlag = true;
 	private Control_Manager control;
 	final public static int MONEY = 150;
+	final public static int COST = 500;
 	
 	public Monster5(Point real, Map _map, JLabel map_label) {
 		super(NUM, HP, MONSTER5_SPEED, real, _map, map_label);
@@ -482,6 +498,11 @@ class Monster5 extends Monster implements Runnable {
 			ActiveMonster();
 			
 			monster.setBounds(realPos.getX(), realPos.getY(), Point.WIDTH, Point.HEIGHT);
+			
+			if(isArrivedEnd()) {
+				control.setGameFlag(Control_Manager.SINGLE_LOSE);
+			}
+			
 			try {
 				Thread.sleep(MONSTER_FPS);
 			} catch (InterruptedException e) {
@@ -518,10 +539,11 @@ class Monster6 extends Monster implements Runnable {
 	// Monster6의 스피드
 	public static int MONSTER6_SPEED = 3;
 	public static int NUM = 6;
-	final public static int HP = 140;
+	final public static int HP = 100;
 	private boolean monsterFlag = true;
 	private Control_Manager control;
 	final public static int MONEY = 200;
+	final public static int COST = 2000;
 	
 	public Monster6(Point real, Map _map, JLabel map_label) {
 		super(NUM, HP, MONSTER6_SPEED, real, _map, map_label);
@@ -543,6 +565,11 @@ class Monster6 extends Monster implements Runnable {
 			ActiveMonster();
 			
 			monster.setBounds(realPos.getX(), realPos.getY(), Point.WIDTH, Point.HEIGHT);
+			
+			if(isArrivedEnd()) {
+				control.setGameFlag(Control_Manager.SINGLE_LOSE);
+			}
+			
 			try {
 				Thread.sleep(MONSTER_FPS);
 			} catch (InterruptedException e) {
@@ -579,10 +606,11 @@ class Monster7 extends Monster implements Runnable {
 	// Monster2의 스피드
 	public static int MONSTER7_SPEED = 3;
 	public static int NUM = 7;
-	final public static int HP = 160;
+	final public static int HP = 120;
 	private boolean monsterFlag = true;
 	private Control_Manager control;
-	final public static int MONEY = 200;
+	final public static int MONEY = 220;
+	final public static int COST = 3000;
 	
 	public Monster7(Point real, Map _map, JLabel map_label) {
 		super(NUM, HP, MONSTER7_SPEED, real, _map, map_label);
@@ -604,6 +632,11 @@ class Monster7 extends Monster implements Runnable {
 			ActiveMonster();
 			
 			monster.setBounds(realPos.getX(), realPos.getY(), Point.WIDTH, Point.HEIGHT);
+			
+			if(isArrivedEnd()) {
+				control.setGameFlag(Control_Manager.SINGLE_LOSE);
+			}
+			
 			try {
 				Thread.sleep(MONSTER_FPS);
 			} catch (InterruptedException e) {
@@ -638,12 +671,13 @@ class Monster7 extends Monster implements Runnable {
 
 class Monster8 extends Monster implements Runnable {
 	// Monster8의 스피드
-	public static int MONSTER8_SPEED = 5;
+	public static int MONSTER8_SPEED = 3;
 	public static int NUM = 8;
-	final public static int HP = 180;
+	final public static int HP = 140;
 	private boolean monsterFlag = true;
 	private Control_Manager control;
-	final public static int MONEY = 200;
+	final public static int MONEY = 240;
+	final public static int COST = 4000;
 	
 	public Monster8(Point real, Map _map, JLabel map_label) {
 		super(NUM, HP, MONSTER8_SPEED, real, _map, map_label);
@@ -665,6 +699,11 @@ class Monster8 extends Monster implements Runnable {
 			ActiveMonster();
 			
 			monster.setBounds(realPos.getX(), realPos.getY(), Point.WIDTH, Point.HEIGHT);
+			
+			if(isArrivedEnd()) {
+				control.setGameFlag(Control_Manager.SINGLE_LOSE);
+			}
+			
 			try {
 				Thread.sleep(MONSTER_FPS);
 			} catch (InterruptedException e) {
@@ -700,12 +739,13 @@ class Monster8 extends Monster implements Runnable {
 
 class Monster9 extends Monster implements Runnable {
 	// Monster9의 스피드
-	public static int MONSTER9_SPEED = 5;
+	public static int MONSTER9_SPEED = 4;
 	public static int NUM = 9;
-	final public static int HP = 200;
+	final public static int HP = 100;
 	private boolean monsterFlag = true;
 	private Control_Manager control;
-	final public static int MONEY = 200;
+	final public static int MONEY = 500;
+	final public static int COST = 8000;
 	
 	public Monster9(Point real, Map _map, JLabel map_label) {
 		super(NUM, HP, MONSTER9_SPEED, real, _map, map_label);
@@ -727,6 +767,11 @@ class Monster9 extends Monster implements Runnable {
 			ActiveMonster();
 			
 			monster.setBounds(realPos.getX(), realPos.getY(), Point.WIDTH, Point.HEIGHT);
+			
+			if(isArrivedEnd()) {
+				control.setGameFlag(Control_Manager.SINGLE_LOSE);
+			}
+			
 			try {
 				Thread.sleep(MONSTER_FPS);
 			} catch (InterruptedException e) {

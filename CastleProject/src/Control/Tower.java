@@ -2,7 +2,7 @@ package Control;
 import javax.swing.*;
 
 
-
+// 모든 타워의 공통적인 정보를 가지는 부모 클래스
 public class Tower {
 	// 타워의 이미지 레이블
 	protected JLabel tower;
@@ -64,7 +64,7 @@ public class Tower {
 
 class Tower0 extends Tower implements Runnable {
 	// 발사 속도
-	final public static int FIRE_SPEED = 800;
+	final public static int FIRE_SPEED = 400;
 	// 비용
 	final public static int COST = 100;
 	private Bullet0 bullet;
@@ -103,8 +103,8 @@ class Tower0 extends Tower implements Runnable {
 
 class Tower1 extends Tower implements Runnable {
 	// 발사 속도
-	final public static int FIRE_SPEED = 800;
-	final public static int COST = 200;
+	final public static int FIRE_SPEED = 600;
+	final public static int COST = 300;
 	private Bullet1 bullet;
 	private boolean towerFlag = true;
 	private ImageIcon TOWER1 = new ImageIcon("Image/Tower/tower1.png");
@@ -138,8 +138,8 @@ class Tower1 extends Tower implements Runnable {
 }
 class Tower2 extends Tower implements Runnable {
 	// 발사 속도
-	final public static int FIRE_SPEED = 800;
-	final public static int COST = 300;
+	final public static int FIRE_SPEED = 600;
+	final public static int COST = 500;
 	private Bullet2 bullet;
 	private boolean towerFlag = true;
 	private ImageIcon TOWER2 = new ImageIcon("Image/Tower/tower2.png");
@@ -175,7 +175,7 @@ class Tower2 extends Tower implements Runnable {
 class Tower3 extends Tower implements Runnable {
 	// 발사 속도
 	final public static int FIRE_SPEED = 800;
-	final public static int COST = 400;
+	final public static int COST = 800;
 	private Bullet3 bullet;
 	private boolean towerFlag = true;
 	private ImageIcon TOWER3 = new ImageIcon("Image/Tower/tower3.png");
@@ -211,7 +211,7 @@ class Tower3 extends Tower implements Runnable {
 class Tower4 extends Tower implements Runnable {
 	// 발사 속도
 	final public static int FIRE_SPEED = 800;
-	final public static int COST = 500;
+	final public static int COST = 1300;
 	private Bullet4 bullet;
 	private boolean towerFlag = true;
 	private ImageIcon TOWER4 = new ImageIcon("Image/Tower/tower4.png");
@@ -246,8 +246,8 @@ class Tower4 extends Tower implements Runnable {
 
 class Tower5 extends Tower implements Runnable {
 	// 발사 속도
-	final public static int FIRE_SPEED = 800;
-	final public static int COST = 600;
+	final public static int FIRE_SPEED = 400;
+	final public static int COST = 2000;
 	private Bullet5 bullet;
 	private boolean towerFlag = true;
 	private ImageIcon TOWER5 = new ImageIcon("Image/Tower/tower5.png");

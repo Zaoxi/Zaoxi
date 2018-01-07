@@ -212,15 +212,15 @@ public class Control_Manager {
 	// 게임의 상태를 지속적으로 체크하면서 게임 상태를 전환시키는 스레드
 		class CheckGameState extends Thread {
 			final public static int STAGE1_NUM_MONSTER = 10;
-			final public static int STAGE2_NUM_MONSTER = 10;
-			final public static int STAGE3_NUM_MONSTER = 10;
-			final public static int STAGE4_NUM_MONSTER = 10;
-			final public static int STAGE5_NUM_MONSTER = 10;
-			final public static int STAGE6_NUM_MONSTER = 10;
-			final public static int STAGE7_NUM_MONSTER = 10;
-			final public static int STAGE8_NUM_MONSTER = 10;
-			final public static int STAGE9_NUM_MONSTER = 10;
-			final public static int STAGE10_NUM_MONSTER = 10;
+			final public static int STAGE2_NUM_MONSTER = 20;
+			final public static int STAGE3_NUM_MONSTER = 30;
+			final public static int STAGE4_NUM_MONSTER = 40;
+			final public static int STAGE5_NUM_MONSTER = 50;
+			final public static int STAGE6_NUM_MONSTER = 50;
+			final public static int STAGE7_NUM_MONSTER = 50;
+			final public static int STAGE8_NUM_MONSTER = 50;
+			final public static int STAGE9_NUM_MONSTER = 50;
+			final public static int STAGE10_NUM_MONSTER = 50;
 			
 			public void run() {
 				while(stateFlag) {
@@ -971,10 +971,11 @@ public class Control_Manager {
 						Thread monsterThread0 = new Thread(monster0);
 						monsterThread0.start();
 						sleep(1500);
-						
+					}
+					for(int i=0; i<CheckGameState.STAGE2_NUM_MONSTER; i++) {
 						if(getGameFlag() == SINGLE_LOSE) // 게임이 끝날 경우
 							break;
-						
+						// 약 1.5초 마다 몬스터를 소환
 						Monster1 monster1 = new Monster1(startPos, map, mapLabel);
 						Thread monsterThread1 = new Thread(monster1);
 						monsterThread1.start();
@@ -1014,24 +1015,28 @@ public class Control_Manager {
 				startPos.setY(startPos.getY()*Point.HEIGHT);
 				try {
 					Thread.sleep(3000);	// 처음 3초간 대기
-					for(int i=0; i<CheckGameState.STAGE1_NUM_MONSTER; i++) {
+					for(int i=0; i<CheckGameState.STAGE3_NUM_MONSTER; i++) {
 						if(getGameFlag() == SINGLE_LOSE) // 게임이 끝날 경우
 							break;
 						// 약 1.5초 마다 몬스터를 소환
 						Monster0 monster0 = new Monster0(startPos, map, mapLabel);
-						Monster1 monster1 = new Monster1(startPos, map, mapLabel);
-						Monster2 monster2 = new Monster2(startPos, map, mapLabel);
 						Thread monsterThread0 = new Thread(monster0);
-						Thread monsterThread1 = new Thread(monster1);
-						Thread monsterThread2 = new Thread(monster2);
 						monsterThread0.start();
 						sleep(1500);
+					}
+					for(int i=0; i<CheckGameState.STAGE3_NUM_MONSTER; i++) {
 						if(getGameFlag() == SINGLE_LOSE) // 게임이 끝날 경우
 							break;
+						Monster1 monster1 = new Monster1(startPos, map, mapLabel);
+						Thread monsterThread1 = new Thread(monster1);
 						monsterThread1.start();
 						sleep(1500);
+					}
+					for(int i=0; i<CheckGameState.STAGE3_NUM_MONSTER; i++) {
 						if(getGameFlag() == SINGLE_LOSE) // 게임이 끝날 경우
 							break;
+						Monster2 monster2 = new Monster2(startPos, map, mapLabel);
+						Thread monsterThread2 = new Thread(monster2);
 						monsterThread2.start();
 						sleep(1500);
 					}
@@ -1068,30 +1073,36 @@ public class Control_Manager {
 				startPos.setY(startPos.getY()*Point.HEIGHT);
 				try {
 					Thread.sleep(3000);	// 처음 3초간 대기
-					for(int i=0; i<CheckGameState.STAGE1_NUM_MONSTER; i++) {
+					for(int i=0; i<CheckGameState.STAGE4_NUM_MONSTER; i++) {
 						if(getGameFlag() == SINGLE_LOSE) // 게임이 끝날 경우
 							break;
 						// 약 1.5초 마다 몬스터를 소환
 						Monster0 monster0 = new Monster0(startPos, map, mapLabel);
-						Monster1 monster1 = new Monster1(startPos, map, mapLabel);
-						Monster2 monster2 = new Monster2(startPos, map, mapLabel);
-						Monster3 monster3 = new Monster3(startPos, map, mapLabel);
 						Thread monsterThread0 = new Thread(monster0);
-						Thread monsterThread1 = new Thread(monster1);
-						Thread monsterThread2 = new Thread(monster2);
-						Thread monsterThread3 = new Thread(monster3);
 						monsterThread0.start();
 						sleep(1500);
+					}
+					for(int i=0; i<CheckGameState.STAGE4_NUM_MONSTER; i++) {
 						if(getGameFlag() == SINGLE_LOSE) // 게임이 끝날 경우
 							break;
+						Monster1 monster1 = new Monster1(startPos, map, mapLabel);
+						Thread monsterThread1 = new Thread(monster1);
 						monsterThread1.start();
 						sleep(1500);
+					}
+					for(int i=0; i<CheckGameState.STAGE4_NUM_MONSTER; i++) {
 						if(getGameFlag() == SINGLE_LOSE) // 게임이 끝날 경우
 							break;
+						Monster2 monster2 = new Monster2(startPos, map, mapLabel);
+						Thread monsterThread2 = new Thread(monster2);
 						monsterThread2.start();
 						sleep(1500);
+					}
+					for(int i=0; i<CheckGameState.STAGE4_NUM_MONSTER; i++) {
 						if(getGameFlag() == SINGLE_LOSE) // 게임이 끝날 경우
 							break;
+						Monster3 monster3 = new Monster3(startPos, map, mapLabel);
+						Thread monsterThread3 = new Thread(monster3);
 						monsterThread3.start();
 						sleep(1500);
 					}
@@ -1128,36 +1139,48 @@ public class Control_Manager {
 				startPos.setY(startPos.getY()*Point.HEIGHT);
 				try {
 					Thread.sleep(3000);	// 처음 3초간 대기
-					for(int i=0; i<CheckGameState.STAGE1_NUM_MONSTER; i++) {
+					for(int i=0; i<CheckGameState.STAGE5_NUM_MONSTER; i++) {
 						if(getGameFlag() == SINGLE_LOSE) // 게임이 끝날 경우
 							break;
 						// 약 1.5초 마다 몬스터를 소환
 						Monster0 monster0 = new Monster0(startPos, map, mapLabel);
-						Monster1 monster1 = new Monster1(startPos, map, mapLabel);
-						Monster2 monster2 = new Monster2(startPos, map, mapLabel);
-						Monster3 monster3 = new Monster3(startPos, map, mapLabel);
-						Monster4 monster4 = new Monster4(startPos, map, mapLabel);
 						Thread monsterThread0 = new Thread(monster0);
-						Thread monsterThread1 = new Thread(monster1);
-						Thread monsterThread2 = new Thread(monster2);
-						Thread monsterThread3 = new Thread(monster3);
-						Thread monsterThread4 = new Thread(monster4);
 						monsterThread0.start();
 						sleep(1500);
+					}
+					for(int i=0; i<CheckGameState.STAGE5_NUM_MONSTER; i++) {
 						if(getGameFlag() == SINGLE_LOSE) // 게임이 끝날 경우
 							break;
+						// 약 1.5초 마다 몬스터를 소환
+						Monster1 monster1 = new Monster1(startPos, map, mapLabel);
+						Thread monsterThread1 = new Thread(monster1);
 						monsterThread1.start();
 						sleep(1500);
+					}
+					for(int i=0; i<CheckGameState.STAGE5_NUM_MONSTER; i++) {
 						if(getGameFlag() == SINGLE_LOSE) // 게임이 끝날 경우
 							break;
+						// 약 1.5초 마다 몬스터를 소환
+						Monster2 monster2 = new Monster2(startPos, map, mapLabel);
+						Thread monsterThread2 = new Thread(monster2);
 						monsterThread2.start();
 						sleep(1500);
+					}
+					for(int i=0; i<CheckGameState.STAGE5_NUM_MONSTER; i++) {
 						if(getGameFlag() == SINGLE_LOSE) // 게임이 끝날 경우
 							break;
+						// 약 1.5초 마다 몬스터를 소환
+						Monster3 monster3 = new Monster3(startPos, map, mapLabel);
+						Thread monsterThread3 = new Thread(monster3);
 						monsterThread3.start();
 						sleep(1500);
+					}
+					for(int i=0; i<CheckGameState.STAGE5_NUM_MONSTER; i++) {
 						if(getGameFlag() == SINGLE_LOSE) // 게임이 끝날 경우
 							break;
+						// 약 1.5초 마다 몬스터를 소환
+						Monster4 monster4 = new Monster4(startPos, map, mapLabel);
+						Thread monsterThread4 = new Thread(monster4);
 						monsterThread4.start();
 						sleep(1500);
 					}
@@ -1194,42 +1217,52 @@ public class Control_Manager {
 				startPos.setY(startPos.getY()*Point.HEIGHT);
 				try {
 					Thread.sleep(3000);	// 처음 3초간 대기
-					for(int i=0; i<CheckGameState.STAGE1_NUM_MONSTER; i++) {
+					for(int i=0; i<CheckGameState.STAGE6_NUM_MONSTER; i++) {
 						if(getGameFlag() == SINGLE_LOSE) // 게임이 끝날 경우
 							break;
 						// 약 1.5초 마다 몬스터를 소환
 						Monster0 monster0 = new Monster0(startPos, map, mapLabel);
-						Monster1 monster1 = new Monster1(startPos, map, mapLabel);
-						Monster2 monster2 = new Monster2(startPos, map, mapLabel);
-						Monster3 monster3 = new Monster3(startPos, map, mapLabel);
-						Monster4 monster4 = new Monster4(startPos, map, mapLabel);
-						Monster5 monster5 = new Monster5(startPos, map, mapLabel);
 						Thread monsterThread0 = new Thread(monster0);
-						Thread monsterThread1 = new Thread(monster1);
-						Thread monsterThread2 = new Thread(monster2);
-						Thread monsterThread3 = new Thread(monster3);
-						Thread monsterThread4 = new Thread(monster4);
-						Thread monsterThread5 = new Thread(monster5);
 						monsterThread0.start();
 						sleep(1500);
+					}
+					for(int i=0; i<CheckGameState.STAGE6_NUM_MONSTER; i++) {
 						if(getGameFlag() == SINGLE_LOSE) // 게임이 끝날 경우
 							break;
+						Monster1 monster1 = new Monster1(startPos, map, mapLabel);
+						Thread monsterThread1 = new Thread(monster1);
 						monsterThread1.start();
 						sleep(1500);
+					}
+					for(int i=0; i<CheckGameState.STAGE6_NUM_MONSTER; i++) {
 						if(getGameFlag() == SINGLE_LOSE) // 게임이 끝날 경우
 							break;
+						Monster2 monster2 = new Monster2(startPos, map, mapLabel);
+						Thread monsterThread2 = new Thread(monster2);
 						monsterThread2.start();
 						sleep(1500);
+					}
+					for(int i=0; i<CheckGameState.STAGE6_NUM_MONSTER; i++) {
 						if(getGameFlag() == SINGLE_LOSE) // 게임이 끝날 경우
 							break;
+						Monster3 monster3 = new Monster3(startPos, map, mapLabel);
+						Thread monsterThread3 = new Thread(monster3);
 						monsterThread3.start();
 						sleep(1500);
+					}
+					for(int i=0; i<CheckGameState.STAGE6_NUM_MONSTER; i++) {
 						if(getGameFlag() == SINGLE_LOSE) // 게임이 끝날 경우
 							break;
+						Monster4 monster4 = new Monster4(startPos, map, mapLabel);
+						Thread monsterThread4 = new Thread(monster4);
 						monsterThread4.start();
 						sleep(1500);
+					}
+					for(int i=0; i<CheckGameState.STAGE6_NUM_MONSTER; i++) {
 						if(getGameFlag() == SINGLE_LOSE) // 게임이 끝날 경우
 							break;
+						Monster5 monster5 = new Monster5(startPos, map, mapLabel);
+						Thread monsterThread5 = new Thread(monster5);
 						monsterThread5.start();
 						sleep(1500);
 					}
@@ -1266,48 +1299,60 @@ public class Control_Manager {
 				startPos.setY(startPos.getY()*Point.HEIGHT);
 				try {
 					Thread.sleep(3000);	// 처음 3초간 대기
-					for(int i=0; i<CheckGameState.STAGE1_NUM_MONSTER; i++) {
+					for(int i=0; i<CheckGameState.STAGE7_NUM_MONSTER; i++) {
 						if(getGameFlag() == SINGLE_LOSE) // 게임이 끝날 경우
 							break;
 						// 약 1.5초 마다 몬스터를 소환
 						Monster0 monster0 = new Monster0(startPos, map, mapLabel);
-						Monster1 monster1 = new Monster1(startPos, map, mapLabel);
-						Monster2 monster2 = new Monster2(startPos, map, mapLabel);
-						Monster3 monster3 = new Monster3(startPos, map, mapLabel);
-						Monster4 monster4 = new Monster4(startPos, map, mapLabel);
-						Monster5 monster5 = new Monster5(startPos, map, mapLabel);
-						Monster6 monster6 = new Monster6(startPos, map, mapLabel);
 						Thread monsterThread0 = new Thread(monster0);
-						Thread monsterThread1 = new Thread(monster1);
-						Thread monsterThread2 = new Thread(monster2);
-						Thread monsterThread3 = new Thread(monster3);
-						Thread monsterThread4 = new Thread(monster4);
-						Thread monsterThread5 = new Thread(monster5);
-						Thread monsterThread6 = new Thread(monster6);
 						monsterThread0.start();
 						sleep(1500);
+					}
+					for(int i=0; i<CheckGameState.STAGE7_NUM_MONSTER; i++) {
 						if(getGameFlag() == SINGLE_LOSE) // 게임이 끝날 경우
 							break;
+						Monster1 monster1 = new Monster1(startPos, map, mapLabel);
+						Thread monsterThread1 = new Thread(monster1);
 						monsterThread1.start();
 						sleep(1500);
+					}
+					for(int i=0; i<CheckGameState.STAGE7_NUM_MONSTER; i++) {
 						if(getGameFlag() == SINGLE_LOSE) // 게임이 끝날 경우
 							break;
+						Monster2 monster2 = new Monster2(startPos, map, mapLabel);
+						Thread monsterThread2 = new Thread(monster2);
 						monsterThread2.start();
 						sleep(1500);
+					}
+					for(int i=0; i<CheckGameState.STAGE7_NUM_MONSTER; i++) {
 						if(getGameFlag() == SINGLE_LOSE) // 게임이 끝날 경우
 							break;
+						Monster3 monster3 = new Monster3(startPos, map, mapLabel);
+						Thread monsterThread3 = new Thread(monster3);
 						monsterThread3.start();
 						sleep(1500);
+					}
+					for(int i=0; i<CheckGameState.STAGE7_NUM_MONSTER; i++) {
 						if(getGameFlag() == SINGLE_LOSE) // 게임이 끝날 경우
 							break;
+						Monster4 monster4 = new Monster4(startPos, map, mapLabel);
+						Thread monsterThread4 = new Thread(monster4);
 						monsterThread4.start();
 						sleep(1500);
+					}
+					for(int i=0; i<CheckGameState.STAGE7_NUM_MONSTER; i++) {
 						if(getGameFlag() == SINGLE_LOSE) // 게임이 끝날 경우
 							break;
+						Monster5 monster5 = new Monster5(startPos, map, mapLabel);
+						Thread monsterThread5 = new Thread(monster5);
 						monsterThread5.start();
 						sleep(1500);
+					}
+					for(int i=0; i<CheckGameState.STAGE7_NUM_MONSTER; i++) {
 						if(getGameFlag() == SINGLE_LOSE) // 게임이 끝날 경우
 							break;
+						Monster6 monster6 = new Monster6(startPos, map, mapLabel);
+						Thread monsterThread6 = new Thread(monster6);
 						monsterThread6.start();
 						sleep(1500);
 					}
@@ -1344,54 +1389,68 @@ public class Control_Manager {
 				startPos.setY(startPos.getY()*Point.HEIGHT);
 				try {
 					Thread.sleep(3000);	// 처음 3초간 대기
-					for(int i=0; i<CheckGameState.STAGE1_NUM_MONSTER; i++) {
+					for(int i=0; i<CheckGameState.STAGE8_NUM_MONSTER; i++) {
 						if(getGameFlag() == SINGLE_LOSE) // 게임이 끝날 경우
 							break;
 						// 약 1.5초 마다 몬스터를 소환
 						Monster0 monster0 = new Monster0(startPos, map, mapLabel);
-						Monster1 monster1 = new Monster1(startPos, map, mapLabel);
-						Monster2 monster2 = new Monster2(startPos, map, mapLabel);
-						Monster3 monster3 = new Monster3(startPos, map, mapLabel);
-						Monster4 monster4 = new Monster4(startPos, map, mapLabel);
-						Monster5 monster5 = new Monster5(startPos, map, mapLabel);
-						Monster6 monster6 = new Monster6(startPos, map, mapLabel);
-						Monster7 monster7 = new Monster7(startPos, map, mapLabel);
 						Thread monsterThread0 = new Thread(monster0);
-						Thread monsterThread1 = new Thread(monster1);
-						Thread monsterThread2 = new Thread(monster2);
-						Thread monsterThread3 = new Thread(monster3);
-						Thread monsterThread4 = new Thread(monster4);
-						Thread monsterThread5 = new Thread(monster5);
-						Thread monsterThread6 = new Thread(monster6);
-						Thread monsterThread7 = new Thread(monster7);
 						monsterThread0.start();
 						sleep(1500);
+					}
+					for(int i=0; i<CheckGameState.STAGE8_NUM_MONSTER; i++) {
 						if(getGameFlag() == SINGLE_LOSE) // 게임이 끝날 경우
 							break;
+						Monster1 monster1 = new Monster1(startPos, map, mapLabel);
+						Thread monsterThread1 = new Thread(monster1);
 						monsterThread1.start();
 						sleep(1500);
+					}
+					for(int i=0; i<CheckGameState.STAGE8_NUM_MONSTER; i++) {
 						if(getGameFlag() == SINGLE_LOSE) // 게임이 끝날 경우
 							break;
+						Monster2 monster2 = new Monster2(startPos, map, mapLabel);
+						Thread monsterThread2 = new Thread(monster2);
 						monsterThread2.start();
 						sleep(1500);
+					}
+					for(int i=0; i<CheckGameState.STAGE8_NUM_MONSTER; i++) {
 						if(getGameFlag() == SINGLE_LOSE) // 게임이 끝날 경우
 							break;
+						Monster3 monster3 = new Monster3(startPos, map, mapLabel);
+						Thread monsterThread3 = new Thread(monster3);
 						monsterThread3.start();
 						sleep(1500);
+					}
+					for(int i=0; i<CheckGameState.STAGE8_NUM_MONSTER; i++) {
 						if(getGameFlag() == SINGLE_LOSE) // 게임이 끝날 경우
 							break;
+						Monster4 monster4 = new Monster4(startPos, map, mapLabel);
+						Thread monsterThread4 = new Thread(monster4);
 						monsterThread4.start();
 						sleep(1500);
+					}
+					for(int i=0; i<CheckGameState.STAGE8_NUM_MONSTER; i++) {
 						if(getGameFlag() == SINGLE_LOSE) // 게임이 끝날 경우
 							break;
+						Monster5 monster5 = new Monster5(startPos, map, mapLabel);
+						Thread monsterThread5 = new Thread(monster5);
 						monsterThread5.start();
 						sleep(1500);
+					}
+					for(int i=0; i<CheckGameState.STAGE8_NUM_MONSTER; i++) {
 						if(getGameFlag() == SINGLE_LOSE) // 게임이 끝날 경우
 							break;
+						Monster6 monster6 = new Monster6(startPos, map, mapLabel);
+						Thread monsterThread6 = new Thread(monster6);
 						monsterThread6.start();
 						sleep(1500);
+					}
+					for(int i=0; i<CheckGameState.STAGE8_NUM_MONSTER; i++) {
 						if(getGameFlag() == SINGLE_LOSE) // 게임이 끝날 경우
 							break;
+						Monster7 monster7 = new Monster7(startPos, map, mapLabel);
+						Thread monsterThread7 = new Thread(monster7);
 						monsterThread7.start();
 						sleep(1500);
 					}
@@ -1428,60 +1487,76 @@ public class Control_Manager {
 				startPos.setY(startPos.getY()*Point.HEIGHT);
 				try {
 					Thread.sleep(3000);	// 처음 3초간 대기
-					for(int i=0; i<CheckGameState.STAGE1_NUM_MONSTER; i++) {
+					for(int i=0; i<CheckGameState.STAGE9_NUM_MONSTER; i++) {
 						if(getGameFlag() == SINGLE_LOSE) // 게임이 끝날 경우
 							break;
 						// 약 1.5초 마다 몬스터를 소환
 						Monster0 monster0 = new Monster0(startPos, map, mapLabel);
-						Monster1 monster1 = new Monster1(startPos, map, mapLabel);
-						Monster2 monster2 = new Monster2(startPos, map, mapLabel);
-						Monster3 monster3 = new Monster3(startPos, map, mapLabel);
-						Monster4 monster4 = new Monster4(startPos, map, mapLabel);
-						Monster5 monster5 = new Monster5(startPos, map, mapLabel);
-						Monster6 monster6 = new Monster6(startPos, map, mapLabel);
-						Monster7 monster7 = new Monster7(startPos, map, mapLabel);
-						Monster8 monster8 = new Monster8(startPos, map, mapLabel);
 						Thread monsterThread0 = new Thread(monster0);
-						Thread monsterThread1 = new Thread(monster1);
-						Thread monsterThread2 = new Thread(monster2);
-						Thread monsterThread3 = new Thread(monster3);
-						Thread monsterThread4 = new Thread(monster4);
-						Thread monsterThread5 = new Thread(monster5);
-						Thread monsterThread6 = new Thread(monster6);
-						Thread monsterThread7 = new Thread(monster7);
-						Thread monsterThread8 = new Thread(monster8);
 						monsterThread0.start();
 						sleep(1500);
+					}
+					for(int i=0; i<CheckGameState.STAGE9_NUM_MONSTER; i++) {
 						if(getGameFlag() == SINGLE_LOSE) // 게임이 끝날 경우
 							break;
+						Monster1 monster1 = new Monster1(startPos, map, mapLabel);
+						Thread monsterThread1 = new Thread(monster1);
 						monsterThread1.start();
 						sleep(1500);
+					}
+					for(int i=0; i<CheckGameState.STAGE9_NUM_MONSTER; i++) {
 						if(getGameFlag() == SINGLE_LOSE) // 게임이 끝날 경우
 							break;
+						Monster2 monster2 = new Monster2(startPos, map, mapLabel);
+						Thread monsterThread2 = new Thread(monster2);
 						monsterThread2.start();
 						sleep(1500);
+					}
+					for(int i=0; i<CheckGameState.STAGE9_NUM_MONSTER; i++) {
 						if(getGameFlag() == SINGLE_LOSE) // 게임이 끝날 경우
 							break;
+						Monster3 monster3 = new Monster3(startPos, map, mapLabel);
+						Thread monsterThread3 = new Thread(monster3);
 						monsterThread3.start();
 						sleep(1500);
+					}
+					for(int i=0; i<CheckGameState.STAGE9_NUM_MONSTER; i++) {
 						if(getGameFlag() == SINGLE_LOSE) // 게임이 끝날 경우
 							break;
+						Monster4 monster4 = new Monster4(startPos, map, mapLabel);
+						Thread monsterThread4 = new Thread(monster4);
 						monsterThread4.start();
 						sleep(1500);
+					}
+					for(int i=0; i<CheckGameState.STAGE9_NUM_MONSTER; i++) {
 						if(getGameFlag() == SINGLE_LOSE) // 게임이 끝날 경우
 							break;
+						Monster5 monster5 = new Monster5(startPos, map, mapLabel);
+						Thread monsterThread5 = new Thread(monster5);
 						monsterThread5.start();
 						sleep(1500);
+					}
+					for(int i=0; i<CheckGameState.STAGE9_NUM_MONSTER; i++) {
 						if(getGameFlag() == SINGLE_LOSE) // 게임이 끝날 경우
 							break;
+						Monster6 monster6 = new Monster6(startPos, map, mapLabel);
+						Thread monsterThread6 = new Thread(monster6);
 						monsterThread6.start();
 						sleep(1500);
+					}
+					for(int i=0; i<CheckGameState.STAGE9_NUM_MONSTER; i++) {
 						if(getGameFlag() == SINGLE_LOSE) // 게임이 끝날 경우
 							break;
+						Monster7 monster7 = new Monster7(startPos, map, mapLabel);
+						Thread monsterThread7 = new Thread(monster7);
 						monsterThread7.start();
 						sleep(1500);
+					}
+					for(int i=0; i<CheckGameState.STAGE9_NUM_MONSTER; i++) {
 						if(getGameFlag() == SINGLE_LOSE) // 게임이 끝날 경우
 							break;
+						Monster8 monster8 = new Monster8(startPos, map, mapLabel);
+						Thread monsterThread8 = new Thread(monster8);
 						monsterThread8.start();
 						sleep(1500);
 					}
@@ -1518,67 +1593,86 @@ public class Control_Manager {
 				startPos.setY(startPos.getY()*Point.HEIGHT);
 				try {
 					Thread.sleep(3000);	// 처음 3초간 대기
-					for(int i=0; i<CheckGameState.STAGE1_NUM_MONSTER; i++) {
+					for(int i=0; i<CheckGameState.STAGE10_NUM_MONSTER; i++) {
 						if(getGameFlag() == SINGLE_LOSE) // 게임이 끝날 경우
 							break;
 						// 약 1.5초 마다 몬스터를 소환
 						Monster0 monster0 = new Monster0(startPos, map, mapLabel);
-						Monster1 monster1 = new Monster1(startPos, map, mapLabel);
-						Monster2 monster2 = new Monster2(startPos, map, mapLabel);
-						Monster3 monster3 = new Monster3(startPos, map, mapLabel);
-						Monster4 monster4 = new Monster4(startPos, map, mapLabel);
-						Monster5 monster5 = new Monster5(startPos, map, mapLabel);
-						Monster6 monster6 = new Monster6(startPos, map, mapLabel);
-						Monster7 monster7 = new Monster7(startPos, map, mapLabel);
-						Monster8 monster8 = new Monster8(startPos, map, mapLabel);
-						Monster9 monster9 = new Monster9(startPos, map, mapLabel);
 						Thread monsterThread0 = new Thread(monster0);
-						Thread monsterThread1 = new Thread(monster1);
-						Thread monsterThread2 = new Thread(monster2);
-						Thread monsterThread3 = new Thread(monster3);
-						Thread monsterThread4 = new Thread(monster4);
-						Thread monsterThread5 = new Thread(monster5);
-						Thread monsterThread6 = new Thread(monster6);
-						Thread monsterThread7 = new Thread(monster7);
-						Thread monsterThread8 = new Thread(monster8);
-						Thread monsterThread9 = new Thread(monster9);
 						monsterThread0.start();
 						sleep(1500);
+					}
+					for(int i=0; i<CheckGameState.STAGE10_NUM_MONSTER; i++) {
 						if(getGameFlag() == SINGLE_LOSE) // 게임이 끝날 경우
 							break;
+						Monster1 monster1 = new Monster1(startPos, map, mapLabel);
+						Thread monsterThread1 = new Thread(monster1);
 						monsterThread1.start();
 						sleep(1500);
+					}
+					for(int i=0; i<CheckGameState.STAGE10_NUM_MONSTER; i++) {
 						if(getGameFlag() == SINGLE_LOSE) // 게임이 끝날 경우
 							break;
+						Monster2 monster2 = new Monster2(startPos, map, mapLabel);
+						Thread monsterThread2 = new Thread(monster2);
 						monsterThread2.start();
 						sleep(1500);
+					}
+					for(int i=0; i<CheckGameState.STAGE10_NUM_MONSTER; i++) {
 						if(getGameFlag() == SINGLE_LOSE) // 게임이 끝날 경우
 							break;
+						Monster3 monster3 = new Monster3(startPos, map, mapLabel);
+						Thread monsterThread3 = new Thread(monster3);
 						monsterThread3.start();
 						sleep(1500);
+					}
+					for(int i=0; i<CheckGameState.STAGE10_NUM_MONSTER; i++) {
 						if(getGameFlag() == SINGLE_LOSE) // 게임이 끝날 경우
 							break;
+						Monster4 monster4 = new Monster4(startPos, map, mapLabel);
+						Thread monsterThread4 = new Thread(monster4);
 						monsterThread4.start();
 						sleep(1500);
+					}
+					for(int i=0; i<CheckGameState.STAGE10_NUM_MONSTER; i++) {
 						if(getGameFlag() == SINGLE_LOSE) // 게임이 끝날 경우
 							break;
+						Monster5 monster5 = new Monster5(startPos, map, mapLabel);
+						Thread monsterThread5 = new Thread(monster5);
 						monsterThread5.start();
 						sleep(1500);
+					}
+					for(int i=0; i<CheckGameState.STAGE10_NUM_MONSTER; i++) {
 						if(getGameFlag() == SINGLE_LOSE) // 게임이 끝날 경우
 							break;
+						Monster6 monster6 = new Monster6(startPos, map, mapLabel);
+						Thread monsterThread6 = new Thread(monster6);
 						monsterThread6.start();
 						sleep(1500);
+					}
+					for(int i=0; i<CheckGameState.STAGE10_NUM_MONSTER; i++) {
 						if(getGameFlag() == SINGLE_LOSE) // 게임이 끝날 경우
 							break;
+						Monster7 monster7 = new Monster7(startPos, map, mapLabel);
+						Thread monsterThread7 = new Thread(monster7);
 						monsterThread7.start();
 						sleep(1500);
+					}
+					for(int i=0; i<CheckGameState.STAGE10_NUM_MONSTER; i++) {
 						if(getGameFlag() == SINGLE_LOSE) // 게임이 끝날 경우
 							break;
+						Monster8 monster8 = new Monster8(startPos, map, mapLabel);
+						Thread monsterThread8 = new Thread(monster8);
 						monsterThread8.start();
 						sleep(1500);
+					}
+					for(int i=0; i<CheckGameState.STAGE10_NUM_MONSTER; i++) {
 						if(getGameFlag() == SINGLE_LOSE) // 게임이 끝날 경우
 							break;
+						Monster9 monster9 = new Monster9(startPos, map, mapLabel);
+						Thread monsterThread9 = new Thread(monster9);
 						monsterThread9.start();
+						sleep(1500);
 					}
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
