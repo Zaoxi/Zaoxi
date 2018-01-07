@@ -3,6 +3,10 @@ package View;
 import javax.swing.*;
 import java.awt.*;
 
+// 2018-01-04 조희재 구현
+//2018-01-06 안종희 개선 - 각종 폰트 이미지 추가
+// HostClientSelect 패널에서 Host버튼 클릭시 출력
+// Port 번호와 유저 이름을 입력하는 패널
 public class HostPanel extends JPanel {
 	private JLabel background;
 	private JLabel nameLabel;
@@ -14,6 +18,8 @@ public class HostPanel extends JPanel {
 	
 	final private ImageIcon BACKGROUND = new ImageIcon("Image/Label/common_background.png");
 	final private ImageIcon BUTTON = new ImageIcon("Image/Label/button.png");
+	final private ImageIcon NAME = new ImageIcon("Image/Label/Namebig.png");
+	final private ImageIcon PORT = new ImageIcon("Image/Label/Portbig.png");
 	
 	public HostPanel() {
 		setSize(ViewManager.WIDTH, ViewManager.HEIGHT);
@@ -21,8 +27,8 @@ public class HostPanel extends JPanel {
 		
 		// 컴포넌트 생성
 		background = new JLabel(BACKGROUND);
-		nameLabel = new JLabel("Name : ");
-		portLabel = new JLabel("Port : ");
+		nameLabel = new JLabel(NAME);
+		portLabel = new JLabel(PORT);
 		nameField = new JTextField("User" + (int)(Math.random()*10000));
 		portField = new JTextField("8888");
 		hostBtn = new JLabel(BUTTON);
@@ -42,7 +48,9 @@ public class HostPanel extends JPanel {
 		cancel.setFont(new Font("Cancel", Font.BOLD, 30));
 		cancel.setHorizontalAlignment(SwingConstants.CENTER);
 		nameField.setFont(new Font("", Font.BOLD, 30));
+		nameField.setBackground(Color.LIGHT_GRAY);
 		portField.setFont(new Font("", Font.BOLD, 30));
+		portField.setBackground(Color.LIGHT_GRAY);
 		
 		hostBtn.setLayout(new CardLayout());
 		hostBtn.setSize(MainPanel.BTN_WIDTH, MainPanel.BTN_HEIGHT);

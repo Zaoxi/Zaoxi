@@ -3,6 +3,8 @@ package View;
 import javax.swing.*;
 import java.awt.*;
 
+//2018-01-04 조희재 구현
+// 매칭 대기 화면
 public class MatchPanel extends JPanel{
 	private JLabel background;
 	private JLabel matchLabel;

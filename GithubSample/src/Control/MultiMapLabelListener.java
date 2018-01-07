@@ -7,7 +7,7 @@ import Control.Map;
 import java.awt.event.*;
 import java.util.*;
 
-
+// 멀티플레이 맵 레이블에 대한 리스너
 public class MultiMapLabelListener extends MouseAdapter {
 	final private ImageIcon focusImg = new ImageIcon("Image/Map/map_focus.png");
 	private JLabel focusLabel;

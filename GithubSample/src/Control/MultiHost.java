@@ -86,7 +86,13 @@ public class MultiHost extends Thread {
 				
 				Point start;
 				map = (MapMulti)control.getMapArray();
-				if(info.getType().equals(GsonInfo.MONSTER)) {
+				
+				// 수신한 데이터를 처리
+				if(info.getType().equals(GsonInfo.LOSE)) {
+					control.setGameFlag(Control_Manager.MULTI_WIN);
+					closeHost();
+				}
+				else if(info.getType().equals(GsonInfo.MONSTER)) {
 					if(info.getLine() == GsonInfo.FIRST) {
 						start = map.getFirstStart();
 					}
@@ -170,10 +176,6 @@ public class MultiHost extends Thread {
 						monsterThread.start();
 						break;
 					}
-				}
-				else if(info.getType().equals(GsonInfo.LOSE)) {
-					control.setGameFlag(Control_Manager.MULTI_WIN);
-					closeHost();
 				}
 			}
 		} catch(SocketException e) {

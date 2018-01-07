@@ -5,6 +5,7 @@ package View;
 import javax.swing.*;
 import java.awt.*;
 
+// 2018-01-04 조희재 구현
 // 멀티 플레이시 Host로 서버를 열것인지, Client로 서버에 접속할 것인지 선택하는 인터페이스
 public class HostClientSelectPanel extends JPanel{
 	private JLabel background;

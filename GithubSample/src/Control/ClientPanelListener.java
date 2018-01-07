@@ -6,6 +6,7 @@ import java.awt.event.*;
 import java.io.IOException;
 import View.*;
 
+// 클라이언트 패널에서 Join버튼 리스너
 class ClientJoinBtnMouseListener extends MouseAdapter {
 	private Control_Manager control;
 	private ViewManager ui;
@@ -49,6 +50,7 @@ class ClientJoinBtnMouseListener extends MouseAdapter {
 	}
 }
 
+// 클라이언트 패널에서 취소 버튼 리스너
 class ClientCancelBtnMouseListener extends MouseAdapter {
 	private Control_Manager control;
 	private ViewManager ui;

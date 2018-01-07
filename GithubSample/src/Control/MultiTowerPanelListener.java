@@ -1,6 +1,7 @@
 package Control;
 import java.awt.event.*;
 
+// 멀티플레이에서 타워 버튼에 대한 리스너
 class MultiTowerListener {
 	protected static boolean selectFlag = false;
 }

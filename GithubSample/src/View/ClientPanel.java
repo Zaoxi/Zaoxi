@@ -3,6 +3,10 @@ package View;
 import java.awt.*;
 import javax.swing.*;
 
+// 2018-01-04 조희재 구현
+// 2018-01-06 안종희 개선 - 각종 폰트 이미지 추가
+// HostClientSelectPanel에서 Client선택시 출력
+// 상대방의 IP, Port번호를 입력한다.
 public class ClientPanel extends JPanel{
 	private JLabel background;
 	private JLabel nameLabel;
@@ -16,6 +20,10 @@ public class ClientPanel extends JPanel{
 	
 	final private ImageIcon BACKGROUND = new ImageIcon("Image/Label/common_background.png");
 	final private ImageIcon BTN = new ImageIcon("Image/Label/button.png");
+	final private ImageIcon NAME = new ImageIcon("Image/Label/Namebig.png");
+	final private ImageIcon PORT = new ImageIcon("Image/Label/Portbig.png");
+	final private ImageIcon IP = new ImageIcon("Image/Label/IP.png");
+	
 	
 	public ClientPanel() {
 		setSize(ViewManager.WIDTH, ViewManager.HEIGHT);
@@ -23,11 +31,11 @@ public class ClientPanel extends JPanel{
 		
 		// 컴포넌트 생성
 		background = new JLabel(BACKGROUND);
-		nameLabel = new JLabel("Name : ");
+		nameLabel = new JLabel(NAME);
 		nameField = new JTextField("User" + (int)(Math.random()*10000));
-		ipLabel = new JLabel("IP : ");
+		ipLabel = new JLabel(IP);
 		ipField = new JTextField("127.0.0.1");
-		portLabel = new JLabel("Port : ");
+		portLabel = new JLabel(PORT);
 		portField = new JTextField("8888");
 		joinBtn = new JLabel(BTN);
 		cancelBtn = new JLabel(BTN);
@@ -48,8 +56,11 @@ public class ClientPanel extends JPanel{
 		cancel.setFont(new Font("Name", Font.BOLD, 30));
 		cancel.setHorizontalAlignment(SwingConstants.CENTER);
 		nameField.setFont(new Font("Name", Font.BOLD, 30));
+		nameField.setBackground(Color.LIGHT_GRAY);
 		ipField.setFont(new Font("Name", Font.BOLD, 30));
+		ipField.setBackground(Color.LIGHT_GRAY);
 		portField.setFont(new Font("Name", Font.BOLD, 30));
+		portField.setBackground(Color.LIGHT_GRAY);
 		joinBtn.setLayout(new CardLayout());
 		cancelBtn.setLayout(new CardLayout());
 		

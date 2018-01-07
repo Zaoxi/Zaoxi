@@ -4,6 +4,7 @@ import javax.swing.*;
 import View.ViewManager;
 import java.awt.event.*;
 
+// 멀티플레이 승리화면 menu버튼 리스너
 class MultiWinMenuMouseListener extends MouseAdapter {
 	private Control_Manager control;
 	private ViewManager ui;

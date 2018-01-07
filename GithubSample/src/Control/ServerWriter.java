@@ -3,6 +3,7 @@ package Control;
 import com.google.gson.*;
 import java.io.*;
 
+// 클라이언트나 호스트로 데이터를 송신하는 클래스
 public class ServerWriter {
 	private static ServerWriter instance = null;
 	

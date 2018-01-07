@@ -3,6 +3,7 @@ package View;
 import java.awt.*;
 import javax.swing.*;
 
+// 2018-01-05 조희재 구현
 // 유저들의 랭킹을 보여주는 패널, 1~10위 까지만 표시
 public class RankPanel extends JPanel {
 	private JLabel background;

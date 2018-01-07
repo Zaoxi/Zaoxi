@@ -5,7 +5,7 @@ import javax.swing.*;
 
 import View.ViewManager;
 
-
+// 랭킹 패널 menu버튼 리스너
 class RankPanelMenuMouseListener extends MouseAdapter{
 	private Control_Manager control;
 	private ViewManager ui;

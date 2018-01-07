@@ -6,6 +6,7 @@ import java.awt.event.*;
 import java.io.IOException;
 import View.*;
 
+// Host패널에서 Host버튼 리스너
 class HostHostBtnMouseListener extends MouseAdapter {
 	private Control_Manager control;
 	private ViewManager ui;
@@ -50,6 +51,7 @@ class HostHostBtnMouseListener extends MouseAdapter {
 	}
 }
 
+// Host 패널에서 Cancel 버튼 리스너
 class HostCancelBtnMouseListener extends MouseAdapter {
 	private Control_Manager control;
 	private ViewManager ui;

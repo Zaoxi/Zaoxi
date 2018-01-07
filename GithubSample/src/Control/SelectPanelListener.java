@@ -3,6 +3,7 @@ import java.awt.event.*;
 import javax.swing.*;
 import View.ViewManager;
 
+// 호스트, 클라이언트 선택 패널에 대한 리스너
 class SelectHostBtnMouseListener extends MouseAdapter {
 	private Control_Manager control;
 	private ViewManager ui;

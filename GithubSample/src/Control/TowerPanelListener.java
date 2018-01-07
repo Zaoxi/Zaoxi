@@ -1,6 +1,7 @@
 package Control;
 import java.awt.event.*;
 
+// 싱글플레이 타워 버튼 리스너 클래스
 class TowerListener {
 	protected static boolean selectFlag = false;
 }

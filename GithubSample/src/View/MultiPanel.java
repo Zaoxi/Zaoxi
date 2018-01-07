@@ -1,7 +1,10 @@
 package View;
 import java.awt.*;
 import javax.swing.*;
-
+import Control.*;
+// Multiplay가 진행되는 패널
+// 2017-12-27 안종희 구현
+// 2018-01-06 안종희 개선 - 각종 폰트 이미지 추가
 public class MultiPanel extends JPanel {
 	private JLabel mapLabel;
 	private JButton tower0;
@@ -47,12 +50,17 @@ public class MultiPanel extends JPanel {
 	final ImageIcon monster8Img = new ImageIcon("Image/Monster/monster8_00.png");
 	final ImageIcon monster9Img = new ImageIcon("Image/Monster/monster9_00.png");
 	
+	final private ImageIcon SCORE = new ImageIcon("Image/Label/score.png");
+	final private ImageIcon MONEY = new ImageIcon("Image/Label/Money.png");
+	
+	
 	final static int WIDTH = 1360;
 	final static int HEIGHT = 640;
 	
 	public MultiPanel() {
 		setSize(WIDTH, HEIGHT);
 		setLayout(new BorderLayout());
+		setBackground(Color.gray);
 		
 		mapLabel = new JLabel(mapImg);
 		tower0 = new JButton(tower0Img);
@@ -72,52 +80,73 @@ public class MultiPanel extends JPanel {
 		monster8 = new JButton(monster8Img);
 		monster9 = new JButton(monster9Img);
 		
-		scoreLabel = new JLabel("Score: ");
-		scoreLabel.setFont(new Font("Score: ", Font.BOLD, 20));
-		moneyLabel = new JLabel("Money: ");
-		moneyLabel.setFont(new Font("Money: ", Font.BOLD, 20));
+		scoreLabel = new JLabel(SCORE);
+		scoreLabel.setFont(new Font("Score: ", Font.BOLD, 30));
+		moneyLabel = new JLabel(MONEY);
+		moneyLabel.setFont(new Font("Money: ", Font.BOLD, 30));
 		scoreField = new JTextField(5);
 		scoreField.setEditable(false);
+		scoreField.setBackground(Color.LIGHT_GRAY);
+		scoreField.setFont(new Font("Money: ", Font.BOLD, 30));
 		moneyField = new JTextField(5);
 		moneyField.setEditable(false);
+		moneyField.setBackground(Color.LIGHT_GRAY);
+		moneyField.setFont(new Font("Money: ", Font.BOLD, 30));
 		towerPanel = new JPanel();
 		towerPanel.setSize(360, 640);
 		towerPanel.setLayout(new GridLayout(5, 4, 10, 10));
+		towerPanel.setBackground(Color.gray);
 		
 		tower0.setText("100");
-		tower1.setText("200");
-		tower2.setText("300");
-		tower3.setText("400");
-		tower4.setText("500");
-		tower5.setText("600");
+		tower1.setText("300");
+		tower2.setText("500");
+		tower3.setText("800");
+		tower4.setText("1300");
+		tower5.setText("2000");
 		monster0.setText("20");
-		monster1.setText("40");
-		monster2.setText("60");
-		monster3.setText("80");
-		monster4.setText("100");
-		monster5.setText("120");
-		monster6.setText("140");
-		monster7.setText("200");
-		monster8.setText("200");
-		monster9.setText("200");
+		monster1.setText("50");
+		monster2.setText("100");
+		monster3.setText("200");
+		monster4.setText("300");
+		monster5.setText("500");
+		monster6.setText("2000");
+		monster7.setText("3000");
+		monster8.setText("400");
+		monster9.setText("8000");
 		
 		tower0.setFont(new Font("100", Font.ITALIC, 20));
+		tower0.setBackground(Color.LIGHT_GRAY);
 		tower1.setFont(new Font("200", Font.ITALIC, 20));
+		tower1.setBackground(Color.LIGHT_GRAY);
 		tower2.setFont(new Font("300", Font.ITALIC, 20));
+		tower2.setBackground(Color.LIGHT_GRAY);
 		tower3.setFont(new Font("400", Font.ITALIC, 20));
+		tower3.setBackground(Color.LIGHT_GRAY);
 		tower4.setFont(new Font("500", Font.ITALIC, 20));
+		tower4.setBackground(Color.LIGHT_GRAY);
 		tower5.setFont(new Font("600", Font.ITALIC, 20));
+		tower5.setBackground(Color.LIGHT_GRAY);
 		
 		monster0.setFont(new Font("10", Font.ITALIC, 20));
+		monster0.setBackground(Color.LIGHT_GRAY);
 		monster1.setFont(new Font("20", Font.ITALIC, 20));
+		monster1.setBackground(Color.LIGHT_GRAY);
 		monster2.setFont(new Font("30", Font.ITALIC, 20));
+		monster2.setBackground(Color.LIGHT_GRAY);
 		monster3.setFont(new Font("40", Font.ITALIC, 20));
+		monster3.setBackground(Color.LIGHT_GRAY);
 		monster4.setFont(new Font("50", Font.ITALIC, 20));
+		monster4.setBackground(Color.LIGHT_GRAY);
 		monster5.setFont(new Font("60", Font.ITALIC, 20));
+		monster5.setBackground(Color.LIGHT_GRAY);
 		monster6.setFont(new Font("70", Font.ITALIC, 20));
+		monster6.setBackground(Color.LIGHT_GRAY);
 		monster7.setFont(new Font("80", Font.ITALIC, 20));
+		monster7.setBackground(Color.LIGHT_GRAY);
 		monster8.setFont(new Font("90", Font.ITALIC, 20));
+		monster8.setBackground(Color.LIGHT_GRAY);
 		monster9.setFont(new Font("100", Font.ITALIC, 20));
+		monster9.setBackground(Color.LIGHT_GRAY);
 		
 		towerPanel.add(scoreLabel);
 		towerPanel.add(scoreField);

@@ -3,6 +3,10 @@ import javax.swing.*;
 import Control.Control_Manager;
 import java.awt.*;
 
+// View 파트를 관리하는 ViewManager 클래스 
+// 2017-12-27 안종희 구현
+// 2018-01-04 조희재 개선 - 클라이언트, 호스트, 선택, 랭킹 패널 추가
+// 2018-01-06 안종희 개선 - 각종 폰트 이미지 추가
 public class ViewManager extends JFrame{
 	private MainPanel mainPanel;
 	private SinglePanel singlePanel;

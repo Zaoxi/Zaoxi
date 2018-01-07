@@ -120,6 +120,7 @@ class Map {
 	}
 }
 
+// ∏÷∆º«√∑π¿Ã ∏ 
 class MapMulti extends Map {
 	final private int START_NUM = 4;
 	final private int END_NUM = 4;
@@ -185,6 +186,7 @@ class MapMulti extends Map {
 	}
 }
 
+// ΩÃ±€ «√∑π¿Ã ∏ 
 class MapArray1 extends Map {
 	public MapArray1(JLabel map_label) {
 		super(map_label);

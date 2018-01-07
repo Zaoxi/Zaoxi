@@ -2,7 +2,10 @@ package View;
 import java.awt.*;
 import javax.swing.*;
 
-public class SinglePanel extends JPanel {//2018/1/3 안종희UI제작
+// SinglePlay가 진행되는 패널
+// 2017-12-27 안종희 구현
+// 2018-01-06 안종희 개선 - 각종 폰트 이미지 추가
+public class SinglePanel extends JPanel {//2018-01-03 안종희 제작
    private JLabel mapLabel;
    private JButton tower0;
    private JButton tower1;
@@ -25,9 +28,15 @@ public class SinglePanel extends JPanel {//2018/1/3 안종희UI제작
    final ImageIcon tower3Img = new ImageIcon("Image/Tower/tower3.png");
    final ImageIcon tower4Img = new ImageIcon("Image/Tower/tower4.png");
    final ImageIcon tower5Img = new ImageIcon("Image/Tower/tower5.png");
+   final ImageIcon towertitleImg = new ImageIcon("Image/Label/TOWER.png");
+   final ImageIcon scoreImg = new ImageIcon("Image/Label/score.png");
+   final ImageIcon moneyImg = new ImageIcon("Image/Label/money.png");
    
    public SinglePanel() {
       setSize(1000, 640);
+      
+      //mapLabel과 towerpanel 배치를 위한 레이아웃
+      
       setLayout(new BorderLayout());
       setBackground(Color.GRAY);
       
@@ -38,32 +47,32 @@ public class SinglePanel extends JPanel {//2018/1/3 안종희UI제작
       tower3 = new JButton(tower3Img);
       tower4 = new JButton(tower4Img);
       tower5 = new JButton(tower5Img);
-      scoreLabel = new JLabel("Score: ");
+      scoreLabel = new JLabel(scoreImg);
       scoreLabel.setFont(new Font("Score: ", Font.BOLD, 30));
       scoreLabel.setForeground(Color.BLACK);
-      moneyLabel = new JLabel("Money: ");
+      moneyLabel = new JLabel(moneyImg);
       moneyLabel.setFont(new Font("Money: ", Font.BOLD, 30));
       moneyLabel.setForeground(Color.BLACK);
       scoreField = new JTextField(5);
       scoreField.setEditable(false);
-      scoreField.setFont(new Font("", Font.BOLD, 30));
+      scoreField.setFont(new Font("", Font.BOLD, 35));
       scoreField.setBackground(Color.LIGHT_GRAY);
       moneyField = new JTextField(5);
       moneyField.setEditable(false);
-      moneyField.setFont(new Font("", Font.BOLD, 30));
+      moneyField.setFont(new Font("", Font.BOLD, 35));
       moneyField.setBackground(Color.LIGHT_GRAY);
       towerPanel = new JPanel();
       towerPanel.setSize(360, 640);
-      towerPanel.setLayout(new GridLayout(5, 2, 10, 10));
       towerPanel.setBackground(Color.GRAY);
       mapLabel.setLayout(null);
       
+      //타워 버튼을 설명할 텍스트
       tower0.setText("100");
-      tower1.setText("200");
-      tower2.setText("300");
-      tower3.setText("400");
-      tower4.setText("500");
-      tower5.setText("600");
+      tower1.setText("300");
+      tower2.setText("500");
+      tower3.setText("800");
+      tower4.setText("1300");
+      tower5.setText("2000");
       
       tower0.setFont(new Font("100", Font.ITALIC, 20));
       tower1.setFont(new Font("200", Font.ITALIC, 20));
@@ -79,20 +88,24 @@ public class SinglePanel extends JPanel {//2018/1/3 안종희UI제작
       tower4.setBackground(Color.LIGHT_GRAY);
       tower5.setBackground(Color.LIGHT_GRAY);
       
-      
+      //towerPanel 내부요소 flowLayout처리
       towerPanel.setLayout(new FlowLayout());
       
-      JLabel title = new JLabel("        Tower        ");
-      title.setFont(new Font("100", Font.BOLD, 40));
-      title.setForeground(Color.BLACK);
+      JLabel title = new JLabel(towertitleImg);
       
-      JLabel space = new JLabel("                  ");
-      title.setFont(new Font("100", Font.BOLD, 40));
+      //공간배치를 위한 레이블
+      JLabel space = new JLabel("                           ");
+      space.setFont(new Font("asd", Font.BOLD, 40));
+      JLabel spaceField = new JLabel("  ");
+      spaceField.setFont(new Font("asd", Font.BOLD, 40));
+      
+      
       
       towerPanel.add(title);
       towerPanel.add(scoreLabel);
       towerPanel.add(scoreField);
       towerPanel.add(moneyLabel);
+      towerPanel.add(spaceField);
       towerPanel.add(moneyField);
       towerPanel.add(space);
       towerPanel.add(tower0);
@@ -102,12 +115,14 @@ public class SinglePanel extends JPanel {//2018/1/3 안종희UI제작
       towerPanel.add(tower4);
       towerPanel.add(tower5);
       
+      //맵레이블과 타워패널 적절히 배치
       add(mapLabel, BorderLayout.WEST);
       add(towerPanel, BorderLayout.CENTER);
       
       setVisible(true);
    }
    
+   //이벤트처리는 control에서
    
    public JLabel getMapLabel() {
       return mapLabel;

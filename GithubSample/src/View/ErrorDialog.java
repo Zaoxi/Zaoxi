@@ -5,6 +5,8 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
+// 2018-01-05 조희재 구현
+// 예외 발생시 출력하는 다이얼로그
 public class ErrorDialog extends JDialog {
 	private String errName;
 	private JLabel errInfo;

@@ -4,6 +4,7 @@ import javax.swing.*;
 import View.ViewManager;
 import java.awt.event.*;
 
+// 멀티 플레이 패배 화면에서 menu 버튼 리스너
 class MultiLoseMenuMouseListener extends MouseAdapter {
 	private Control_Manager control;
 	private ViewManager ui;

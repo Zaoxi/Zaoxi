@@ -117,7 +117,7 @@ class Bullet1 extends Bullet implements Runnable {
 	final ImageIcon imgEffect = new ImageIcon("Image/Effect/effect1.png");
 	private JLabel mapLabel;
 	private Control_Manager control;
-	final public static int DAMAGE = 3;
+	final public static int DAMAGE = 4;
 	final public static int BULLET_MILLISECOND = 100;
 	final public static int EFFECT_MILLISECOND = 500;
 	
@@ -176,7 +176,7 @@ class Bullet2 extends Bullet implements Runnable {
 	final ImageIcon imgEffect = new ImageIcon("Image/Effect/effect2.png");
 	private JLabel mapLabel;
 	private Control_Manager control;
-	final public static int DAMAGE = 5;
+	final public static int DAMAGE = 8;
 	final public static int BULLET_MILLISECOND = 100;
 	final public static int EFFECT_MILLISECOND = 500;
 	
@@ -294,7 +294,7 @@ class Bullet4 extends Bullet implements Runnable {
 	final ImageIcon imgEffect = new ImageIcon("Image/Effect/effect4.png");
 	private JLabel mapLabel;
 	private Control_Manager control;
-	final public static int DAMAGE = 15;
+	final public static int DAMAGE = 20;
 	final public static int BULLET_MILLISECOND = 100;
 	final public static int EFFECT_MILLISECOND = 500;
 	

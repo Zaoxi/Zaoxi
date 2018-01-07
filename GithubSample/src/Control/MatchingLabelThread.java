@@ -4,6 +4,7 @@ import javax.swing.*;
 import View.ViewManager;
 import java.awt.event.*;
 
+// 매칭 화면 애니메이션을 담당하는 스레드
 public class MatchingLabelThread extends Thread {
 	private Control_Manager control;
 	private ViewManager ui;
@@ -40,6 +41,7 @@ public class MatchingLabelThread extends Thread {
 	}
 }
 
+// 매칭 화면에서 Cancel버튼 리스너
 class MatchCancelBtnMouseListener extends MouseAdapter {
 	private Control_Manager control;
 	private ViewManager ui;

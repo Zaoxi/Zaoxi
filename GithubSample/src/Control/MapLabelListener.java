@@ -3,7 +3,7 @@ import javax.swing.*;
 import java.awt.event.*;
 import java.util.*;
 
-// 맵 행렬상에서 마우스 커서를 관리
+// 맵 레이블 상에서 마우스 커서를 관리
 public class MapLabelListener extends MouseAdapter {
 	
 	final private ImageIcon focusImg = new ImageIcon("Image/Map/map_focus.png");

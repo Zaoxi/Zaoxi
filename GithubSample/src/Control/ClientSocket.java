@@ -72,7 +72,13 @@ public class ClientSocket extends Thread{
 				
 				Point start;
 				MapMulti map = (MapMulti)control.getMapArray();	
-				if(info.getType().equals(GsonInfo.MONSTER)) {
+				
+				// 수신한 데이터에 대한 처리
+				if(info.getType().equals(GsonInfo.LOSE)) {
+					control.setGameFlag(Control_Manager.MULTI_WIN);
+					closeClient();
+				}
+				else if(info.getType().equals(GsonInfo.MONSTER)) {
 					if(info.getLine() == GsonInfo.FIRST) {
 						start = map.getFirstStart();
 					}
@@ -156,10 +162,6 @@ public class ClientSocket extends Thread{
 						monsterThread.start();
 						break;
 					}
-				}
-				else if(info.getType().equals(GsonInfo.LOSE)) {
-					control.setGameFlag(Control_Manager.MULTI_WIN);
-					closeClient();
 				}
 			}
 		} catch(SocketException e) {

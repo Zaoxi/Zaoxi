@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import View.*;
 import Model.*;
 
+// 싱글 플레이 결과화면에 대한 리스너 클래스
 class SingleResultRegistBtnMouseListener extends MouseAdapter {
 	private Control_Manager control;
 	private ViewManager ui;

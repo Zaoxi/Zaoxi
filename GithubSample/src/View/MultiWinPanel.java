@@ -3,6 +3,9 @@ package View;
 import javax.swing.*;
 import java.awt.*;
 
+//2018-01-04 조희재 구현
+//2018-01-06 안종희 개선 - 각종 폰트 이미지 추가
+//멀티플레이 승리 화면
 public class MultiWinPanel extends JPanel {
 	JLabel background;
 	JLabel winLabel;
@@ -10,6 +13,7 @@ public class MultiWinPanel extends JPanel {
 	
 	final private ImageIcon BACKGROUND = new ImageIcon("Image/Label/common_background.png");
 	final private ImageIcon BUTTON = new ImageIcon("Image/Label/button.png");
+	final private ImageIcon WIN = new ImageIcon("Image/Label/You-Win.png");
 	
 	public MultiWinPanel() {
 		setSize(ViewManager.WIDTH, ViewManager.HEIGHT);
@@ -17,7 +21,7 @@ public class MultiWinPanel extends JPanel {
 		
 		// 컴포넌트 생성
 		background = new JLabel(BACKGROUND);
-		winLabel = new JLabel("You Win!!!");
+		winLabel = new JLabel(WIN);
 		menuLabel = new JLabel(BUTTON);
 		JLabel menu = new JLabel("Menu");
 		

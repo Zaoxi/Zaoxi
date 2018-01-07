@@ -10,7 +10,7 @@ import View.ErrorDialog;
 import View.ViewManager;
 import Model.*;
 
-// 싱글버튼 리스너
+// 메인메뉴에서 싱글버튼 리스너
 class SingleLabelActionListener extends MouseAdapter {
 	private ViewManager ui;
 	private Control_Manager control;
@@ -37,7 +37,7 @@ class SingleLabelActionListener extends MouseAdapter {
 		control.setGameFlag(Control_Manager.STAGE1);
 	}
 }
-// 멀티버튼 리스너
+// 메인메뉴에서 멀티버튼 리스너
 class MultiLabelActionListener extends MouseAdapter {
 	private ViewManager ui;
 	private Control_Manager control;
@@ -61,7 +61,7 @@ class MultiLabelActionListener extends MouseAdapter {
 		ui.getCard().show(c, "select");
 	}
 }
-// 랭킹 버튼 리스너
+// 메인메뉴에서 랭킹 버튼 리스너
 class RankLabelActionListener extends MouseAdapter {
 	private ViewManager ui;
 	private Control_Manager control;
@@ -105,7 +105,7 @@ class RankLabelActionListener extends MouseAdapter {
 }
 
 
-// 나가기 버튼 리스너
+// 메인메뉴에서 나가기 버튼 리스너
 class ExitLabelActionListener extends MouseAdapter {
 	private ViewManager ui;
 	private Control_Manager control;

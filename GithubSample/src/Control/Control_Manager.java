@@ -266,7 +266,7 @@ public class Control_Manager {
 					}
 					// Stage2
 					if(gameFlag == STAGE2 && stateFlag) {
-						setMoney(800);
+						setMoney(500);
 						
 						Stage2_Monster stage2 = new Stage2_Monster(this);
 						stage2.start();
@@ -305,7 +305,7 @@ public class Control_Manager {
 					}
 					// Stage3
 					if(gameFlag == STAGE3 && stateFlag) {
-						setMoney(1000);
+						setMoney(500);
 						
 						Stage3_Monster stage3 = new Stage3_Monster(this);
 						stage3.start();
@@ -347,7 +347,7 @@ public class Control_Manager {
 					
 					// Stage4
 					if(gameFlag == STAGE4 && stateFlag) {
-						setMoney(1000);
+						setMoney(500);
 						
 						Stage4_Monster stage4 = new Stage4_Monster(this);
 						stage4.start();
@@ -389,7 +389,7 @@ public class Control_Manager {
 					
 					// Stage5
 					if(gameFlag == STAGE5 && stateFlag) {
-						setMoney(1200);
+						setMoney(500);
 						
 						Stage5_Monster stage5 = new Stage5_Monster(this);
 						stage5.start();
@@ -430,7 +430,7 @@ public class Control_Manager {
 					}
 					// Stage6
 					if(gameFlag == STAGE6 && stateFlag) {
-						setMoney(1200);
+						setMoney(500);
 						
 						Stage6_Monster stage6 = new Stage6_Monster(this);
 						stage6.start();
@@ -472,7 +472,7 @@ public class Control_Manager {
 					
 					// Stage7
 					if(gameFlag == STAGE7 && stateFlag) {
-						setMoney(1500);
+						setMoney(500);
 						
 						Stage7_Monster stage7 = new Stage7_Monster(this);
 						stage7.start();
@@ -514,7 +514,7 @@ public class Control_Manager {
 					
 					// Stage8
 					if(gameFlag == STAGE8 && stateFlag) {
-						setMoney(1600);
+						setMoney(500);
 						
 						Stage8_Monster stage8 = new Stage8_Monster(this);
 						stage8.start();
@@ -556,7 +556,7 @@ public class Control_Manager {
 					
 					// Stage9
 					if(gameFlag == STAGE9 && stateFlag) {
-						setMoney(1000);
+						setMoney(500);
 						
 						Stage9_Monster stage9 = new Stage9_Monster(this);
 						stage9.start();
@@ -598,7 +598,7 @@ public class Control_Manager {
 					
 					// Stage10
 					if(gameFlag == STAGE10 && stateFlag) {
-						setMoney(800);
+						setMoney(500);
 						
 						Stage10_Monster stage10 = new Stage10_Monster(this);
 						stage10.start();
@@ -648,6 +648,7 @@ public class Control_Manager {
 						rankManager.closeDB();
 						// 유저 리스트 점수 기준으로 오름차순 정렬
 						Collections.sort(userList);
+						Collections.reverse(userList);
 						
 						// 정렬한 리스트를 대상으로 현재 점수의 등수를 계산
 						int rank = 1;
@@ -670,7 +671,7 @@ public class Control_Manager {
 						// 멀티플레이 시 ui의 사이즈를 1360x680으로 변환
 						ui.setSize(ViewManager.WIDTH + 360, ViewManager.HEIGHT + 40);
 						ui.getCard().show(ui.getContentPane(), "multi");
-						setMoney(500); setScore(0);
+						setMoney(1500); setScore(0);
 						
 						MultiStage multiStage = new MultiStage(this);
 						multiStage.start();
@@ -768,7 +769,7 @@ public class Control_Manager {
 						Thread.sleep(3000);
 						while(gameFlag == MULTI && stateFlag) {
 							sumCount++;
-							if(sumCount == 200) {
+							if(sumCount == 100) {
 								sumCount = 0;
 							int i = (int)(Math.random()*4);
 							
