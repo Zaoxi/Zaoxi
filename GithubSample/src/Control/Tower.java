@@ -104,7 +104,7 @@ class Tower0 extends Tower implements Runnable {
 class Tower1 extends Tower implements Runnable {
 	// 발사 속도
 	final public static int FIRE_SPEED = 600;
-	final public static int COST = 300;
+	final public static int COST = 500;
 	private Bullet1 bullet;
 	private boolean towerFlag = true;
 	private ImageIcon TOWER1 = new ImageIcon("Image/Tower/tower1.png");
@@ -139,7 +139,7 @@ class Tower1 extends Tower implements Runnable {
 class Tower2 extends Tower implements Runnable {
 	// 발사 속도
 	final public static int FIRE_SPEED = 600;
-	final public static int COST = 500;
+	final public static int COST = 1000;
 	private Bullet2 bullet;
 	private boolean towerFlag = true;
 	private ImageIcon TOWER2 = new ImageIcon("Image/Tower/tower2.png");
@@ -175,7 +175,7 @@ class Tower2 extends Tower implements Runnable {
 class Tower3 extends Tower implements Runnable {
 	// 발사 속도
 	final public static int FIRE_SPEED = 800;
-	final public static int COST = 800;
+	final public static int COST = 1500;
 	private Bullet3 bullet;
 	private boolean towerFlag = true;
 	private ImageIcon TOWER3 = new ImageIcon("Image/Tower/tower3.png");
@@ -211,7 +211,7 @@ class Tower3 extends Tower implements Runnable {
 class Tower4 extends Tower implements Runnable {
 	// 발사 속도
 	final public static int FIRE_SPEED = 800;
-	final public static int COST = 1300;
+	final public static int COST = 2000;
 	private Bullet4 bullet;
 	private boolean towerFlag = true;
 	private ImageIcon TOWER4 = new ImageIcon("Image/Tower/tower4.png");
@@ -247,7 +247,7 @@ class Tower4 extends Tower implements Runnable {
 class Tower5 extends Tower implements Runnable {
 	// 발사 속도
 	final public static int FIRE_SPEED = 400;
-	final public static int COST = 2000;
+	final public static int COST = 4000;
 	private Bullet5 bullet;
 	private boolean towerFlag = true;
 	private ImageIcon TOWER5 = new ImageIcon("Image/Tower/tower5.png");

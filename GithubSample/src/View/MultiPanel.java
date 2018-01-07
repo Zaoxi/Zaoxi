@@ -98,11 +98,11 @@ public class MultiPanel extends JPanel {
 		towerPanel.setBackground(Color.gray);
 		
 		tower0.setText("100");
-		tower1.setText("300");
-		tower2.setText("500");
-		tower3.setText("800");
-		tower4.setText("1300");
-		tower5.setText("2000");
+		tower1.setText("500");
+		tower2.setText("1000");
+		tower3.setText("1500");
+		tower4.setText("2000");
+		tower5.setText("4000");
 		monster0.setText("20");
 		monster1.setText("50");
 		monster2.setText("100");
@@ -111,7 +111,7 @@ public class MultiPanel extends JPanel {
 		monster5.setText("500");
 		monster6.setText("2000");
 		monster7.setText("3000");
-		monster8.setText("400");
+		monster8.setText("4000");
 		monster9.setText("8000");
 		
 		tower0.setFont(new Font("100", Font.ITALIC, 20));

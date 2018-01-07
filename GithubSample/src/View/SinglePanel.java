@@ -68,11 +68,11 @@ public class SinglePanel extends JPanel {//2018-01-03 안종희 제작
       
       //타워 버튼을 설명할 텍스트
       tower0.setText("100");
-      tower1.setText("300");
-      tower2.setText("500");
-      tower3.setText("800");
-      tower4.setText("1300");
-      tower5.setText("2000");
+      tower1.setText("500");
+      tower2.setText("1000");
+      tower3.setText("1500");
+      tower4.setText("2000");
+      tower5.setText("4000");
       
       tower0.setFont(new Font("100", Font.ITALIC, 20));
       tower1.setFont(new Font("200", Font.ITALIC, 20));
