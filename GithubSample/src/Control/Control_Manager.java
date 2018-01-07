@@ -1,5 +1,5 @@
 // This game was produced by Ahn & Joe Team.
-// Tower Defense 0.5 Beta.
+// Tower Defense 1.0 Alpha
 // This project is for everyone.
 // When you use this code, you have to evidence the source.
 
